@@ -8,6 +8,8 @@ import android.view.ViewGroup
 
 class ForgotpasswordFragment : Fragment() {
 
+    //oncreateview
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
