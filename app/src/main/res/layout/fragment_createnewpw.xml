@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".authentication.ForgotpasswordFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="105dp"
+        tools:ignore="ContentDescription"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="28dp"
+        android:layout_centerHorizontal="true"
+        android:text="@string/enter_password"
+        android:layout_marginTop="220dp"
+        android:textColor="#A6A0A0"
+        android:textSize="19sp"/>
+
+    <EditText
+        android:id="@+id/enter_pw"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:textColor="@color/white"
+        android:layout_marginTop="250dp"
+        android:backgroundTint="#A6A0A0"
+        tools:ignore="Autofill,LabelFor"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="28dp"
+        android:layout_centerHorizontal="true"
+        android:text="@string/confirm_password"
+        android:layout_marginTop="310dp"
+        android:textColor="#A6A0A0"
+        android:textSize="19sp"/>
+
+    <EditText
+        android:id="@+id/confirm_pw"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:textColor="@color/white"
+        android:layout_marginTop="340dp"
+        android:backgroundTint="#A6A0A0"
+        tools:ignore="Autofill,LabelFor"/>
+
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:layout_marginStart="30dp"
+        android:textAllCaps="false"
+        android:layout_marginEnd="30dp"
+        android:text="@string/submit"
+        android:textColor="#D1CDCD"
+        android:textSize="18sp"
+        android:backgroundTint="@android:color/transparent"
+        android:background="@drawable/forgotpwdesign"
+        android:layout_marginTop="480dp"/>
+
+</RelativeLayout>
