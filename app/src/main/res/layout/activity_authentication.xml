@@ -6,4 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".authentication.AuthenticationActivity">
 
+    <FrameLayout
+        android:id="@+id/authenticaion_framelayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
