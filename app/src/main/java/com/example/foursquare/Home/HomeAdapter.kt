@@ -1,4 +1,4 @@
-package com.example.foursquare
+package com.example.foursquare.Home
 
 import android.content.Context
 import androidx.fragment.app.Fragment
