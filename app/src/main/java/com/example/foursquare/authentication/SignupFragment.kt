@@ -9,7 +9,7 @@ import android.widget.Button
 import android.widget.EditText
 import com.example.foursquare.R
 
-class SignupFragment : Fragment(), View.OnClickListener {
+class SignupFragment : Fragment(){
 
     lateinit var email: EditText
     lateinit var phoneNumber: EditText
@@ -21,15 +21,6 @@ class SignupFragment : Fragment(), View.OnClickListener {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        //return inflater.inflate(R.layout.fragment_signup, container, false)
-
-        val myView: View = inflater.inflate(R.layout.fragment_signup, container, false)
-        var loginButton = myView.findViewById<Button>(R.id.loginbutton)
-        loginButton.setOnClickListener(this)
-        return myView
-    }
-
-    override fun onClick(v: View?) {
-        TODO("Not yet implemented")
+        return inflater.inflate(R.layout.fragment_signup, container, false)
     }
 }
