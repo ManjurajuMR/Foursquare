@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PhotoDetaisActivity">
+
+    <ImageView
+        android:id="@+id/photo_detail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/food"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:cropToPadding="true"/>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardview1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#AA000000"
+        android:layout_alignParentBottom="true">
+       <RelativeLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent">
+
+           <androidx.cardview.widget.CardView
+               android:id="@+id/cardview2"
+               android:layout_width="60dp"
+               android:layout_height="60dp"
+               app:cardCornerRadius="30dp"
+               android:layout_marginTop="10dp"
+               android:layout_marginBottom="10dp"
+               android:layout_marginStart="20sp">
+        <ImageView
+            android:id="@+id/profile_photo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/food"
+            android:scaleType="fitCenter" />
+           </androidx.cardview.widget.CardView>
+
+           <TextView
+               android:id="@+id/user_name"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_toRightOf="@+id/cardview2"
+               android:layout_marginLeft="20sp"
+               android:layout_marginTop="10dp"
+               android:text="Saish Balu"
+               android:textSize="20sp"
+               android:textColor="@color/white"/>
+
+           <TextView
+               android:id="@+id/added_date"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_toRightOf="@+id/cardview2"
+               android:layout_below="@+id/user_name"
+               android:layout_marginLeft="20sp"
+               android:layout_marginTop="2dp"
+               android:text="Added May 12,2016"
+               android:textSize="18sp"
+               android:textColor="@color/white"/>
+
+       </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:elevation="0dp">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar1"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="#00000000"
+            app:navigationIcon="@drawable/close_icon"
+            app:menu="@menu/photodetailscreen_menu">
+
+            <TextView
+                android:id="@+id/toolbar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="@color/white"
+                android:text="Attil"
+                android:textSize="24sp" />
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+</RelativeLayout>
