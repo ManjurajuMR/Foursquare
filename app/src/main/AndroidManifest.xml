@@ -9,9 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Foursquare">
+
         <activity android:name=".PhotoDetaisActivity"></activity>
         <activity android:name=".PhotosActivity" />
         <activity android:name=".AddReviewActivity" />
+
+        <activity android:name=".DetailsScreenActivity"></activity>
+        <activity android:name=".ReviewScreenActivity" />
+
         <activity android:name=".Home.HomeActivity" />
         <activity android:name=".authentication.AuthenticationActivity" />
         <activity android:name=".MainActivity">

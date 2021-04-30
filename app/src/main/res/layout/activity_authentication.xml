@@ -6,8 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".authentication.AuthenticationActivity">
 
-    <FrameLayout
+    <fragment
         android:id="@+id/authenticaion_framelayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        app:navGraph="@navigation/authentication_navigation"
+        app:defaultNavHost="true"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

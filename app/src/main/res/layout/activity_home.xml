@@ -83,6 +83,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/include"
             app:tabGravity="fill"
+            app:tabMode="scrollable"
             android:background="#370F24"
             app:tabIndicatorColor="@color/white"
             app:tabSelectedTextColor="@color/white"
