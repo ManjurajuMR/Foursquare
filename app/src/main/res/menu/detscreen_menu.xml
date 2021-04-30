@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/share_det"
+        android:visible="true"
+        android:title="Share Details"
+        android:icon="@drawable/share_icon"
+        android:orderInCategory="1"
+        app:showAsAction="ifRoom|collapseActionView"
+        android:clickable="true" />
+
+    <item
+        android:id="@+id/addplace_tofav"
+        android:visible="true"
+        android:title="Add to Fav"
+        android:icon="@drawable/favourite_icon_copy"
+        android:orderInCategory="2"
+        app:showAsAction="always"
+        android:clickable="true"/>
+
+</menu>

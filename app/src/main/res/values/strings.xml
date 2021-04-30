@@ -13,5 +13,9 @@
     <string name="submit">Submit</string>
     <string name="enter_password">Enter Password</string>
     <string name="confirm_password">Confirm Password</string>
+    <string name="res_address">Daffodils,Laxmindra Nagar,2nd cross Udupi</string>
+    <string name="res_phno">+91 9900880123</string>
+    <string name="drive">Drive:</string>
+    <string name="distance">5</string>
 
 </resources>
