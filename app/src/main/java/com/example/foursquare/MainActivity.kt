@@ -17,7 +17,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
+        val check_btn=findViewById<TextView>(R.id.hellowold)
+        check_btn.setOnClickListener {
+           /* val intent=Intent(this,PhotoDetaisActivity::class.java)
+            startActivity(intent)*/
+        }
 
     }
 }
