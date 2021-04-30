@@ -2,6 +2,8 @@ package com.example.foursquare.authentication
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.navigation.findNavController
+import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.foursquare.R
 
 class AuthenticationActivity : AppCompatActivity() {
@@ -11,7 +13,7 @@ class AuthenticationActivity : AppCompatActivity() {
 
         supportActionBar?.hide()
 
-
-        supportFragmentManager.beginTransaction().add(R.id.authenticaion_framelayout,SigninFragment()).commit()
+        setupActionBarWithNavController(findNavController(R.id.authenticaion_framelayout))
+        //supportFragmentManager.beginTransaction().add(R.id.authenticaion_framelayout,SigninFragment()).commit()
     }
 }

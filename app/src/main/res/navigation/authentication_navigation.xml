@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/authentication_navigation"
+    app:startDestination="@id/signinFragment">
+
+    <fragment
+        android:id="@+id/signinFragment"
+        android:name="com.example.foursquare.authentication.SigninFragment"
+        android:label="fragment_signin"
+        tools:layout="@layout/fragment_signin" >
+        <action
+            android:id="@+id/action_signinFragment_to_signupFragment"
+            app:destination="@id/signupFragment" />
+        <action
+            android:id="@+id/action_signinFragment_to_forgotpasswordFragment"
+            app:destination="@id/forgotpasswordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signupFragment"
+        android:name="com.example.foursquare.authentication.SignupFragment"
+        android:label="fragment_signup"
+        tools:layout="@layout/fragment_signup" >
+        <action
+            android:id="@+id/action_signupFragment_to_signinFragment"
+            app:destination="@id/signinFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/forgotpasswordFragment"
+        android:name="com.example.foursquare.authentication.ForgotpasswordFragment"
+        android:label="fragment_forgotpassword"
+        tools:layout="@layout/fragment_forgotpassword" >
+        <action
+            android:id="@+id/action_forgotpasswordFragment_to_createnewpwFragment"
+            app:destination="@id/createnewpwFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createnewpwFragment"
+        android:name="com.example.foursquare.authentication.CreatenewpwFragment"
+        android:label="fragment_createnewpw"
+        tools:layout="@layout/fragment_createnewpw" >
+        <action
+            android:id="@+id/action_createnewpwFragment_to_signinFragment"
+            app:destination="@id/signinFragment" />
+    </fragment>
+</navigation>
