@@ -21,6 +21,8 @@ class MainActivity : AppCompatActivity() {
         check_btn.setOnClickListener {
            /* val intent=Intent(this,PhotoDetaisActivity::class.java)
             startActivity(intent)*/
+           /* val intent=Intent(this,DetailsScreenActivity::class.java)
+            startActivity(intent)*/
         }
 
     }

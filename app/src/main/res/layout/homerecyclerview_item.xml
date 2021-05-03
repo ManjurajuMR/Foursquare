@@ -59,7 +59,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
                         android:gravity="end"
-                        android:src="@drawable/favourite_icon" />
+                        android:src="@drawable/favourite_icon"/>
 
                     <LinearLayout
                         android:id="@+id/ratingtext"

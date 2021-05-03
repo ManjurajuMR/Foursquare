@@ -26,4 +26,9 @@
 
     <style name="Theme.Foursquare.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
+    <style name="RatingBar" parent="Theme.AppCompat">
+        <item name="colorAccent">#FA9110</item>
+        <item name="android:colorControlNormal">#ffffff</item>
+    </style>
+
 </resources>
