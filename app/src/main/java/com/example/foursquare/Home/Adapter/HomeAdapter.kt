@@ -1,9 +1,10 @@
-package com.example.foursquare.Home
+package com.example.foursquare.Home.Adapter
 
 import android.content.Context
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
+import com.example.foursquare.Home.*
 
 class HomeAdapter(private val context: Context, fm: FragmentManager, var totalTabs:Int): FragmentPagerAdapter(fm) {
 
