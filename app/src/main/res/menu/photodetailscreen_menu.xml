@@ -3,9 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/search"
+        android:id="@+id/add_photos_to_review"
         android:orderInCategory="100"
         android:title="camera"
         app:showAsAction="always"
-        android:icon="@drawable/share_icon"/>
+        android:icon="@drawable/share_icon"
+        android:checkable="true"/>
 </menu>

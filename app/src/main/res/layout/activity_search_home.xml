@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".search.Search_homeActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar1"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/toolbar_color"
+            app:navigationIcon="@drawable/back_icon"
+            app:menu="@menu/search_screen_menu">
+
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/search_bar1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="23dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/searchbox_background"
+                android:gravity="center"
+                app:defaultQueryHint="Search"/>
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar2"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/toolbar_color">
+
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/search_bar2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:background="@drawable/searchbox_background"
+                android:layout_marginStart="72dp"
+                android:layout_marginEnd="70dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp"/>
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+ <FrameLayout
+     android:id="@+id/search_framelayout"
+     android:layout_below="@+id/appBar"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"/>
+
+</RelativeLayout>
