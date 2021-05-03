@@ -12,7 +12,7 @@ class AddReviewActivity : AppCompatActivity() {
 
         supportActionBar?.hide()
 
-        var topAppbar=findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar1)
+        var topAppbar=findViewById<androidx.appcompat.widget.Toolbar>(R.id.detailscreen_toolbar)
         topAppbar.setNavigationOnClickListener {
          onBackPressed()
         }
