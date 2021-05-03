@@ -4,12 +4,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
-import android.os.Handler
-import android.os.Looper
-
 import android.widget.TextView
 
-import com.example.foursquare.authentication.AuthenticationActivity
+import com.example.foursquare.search.Search_homeActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,10 +16,8 @@ class MainActivity : AppCompatActivity() {
 
         val check_btn=findViewById<TextView>(R.id.hellowold)
         check_btn.setOnClickListener {
-           /* val intent=Intent(this,PhotoDetaisActivity::class.java)
-            startActivity(intent)*/
-           /* val intent=Intent(this,DetailsScreenActivity::class.java)
-            startActivity(intent)*/
+            val intent=Intent(this, Search_homeActivity::class.java)
+            startActivity(intent)
         }
 
     }

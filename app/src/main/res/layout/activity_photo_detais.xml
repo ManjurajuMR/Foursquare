@@ -69,7 +69,7 @@
     </androidx.cardview.widget.CardView>
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout"
+        android:id="@+id/appBar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:elevation="0dp">
@@ -78,7 +78,7 @@
             android:id="@+id/toolbar1"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="#00000000"
+            android:background="@color/transparent_color"
             app:navigationIcon="@drawable/close_icon"
             app:menu="@menu/photodetailscreen_menu">
 

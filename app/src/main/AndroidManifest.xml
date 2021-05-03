@@ -9,7 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Foursquare">
+
+        <activity android:name=".search.Search_homeActivity"></activity>
+        <activity
+            android:name=".FeedbackActivity"
+            android:windowSoftInputMode="adjustResize" />
+
         <activity android:name=".AboutusActivity"></activity>
+
         <activity android:name=".PhotoDetaisActivity" />
         <activity android:name=".PhotosActivity" />
         <activity android:name=".AddReviewActivity" />
