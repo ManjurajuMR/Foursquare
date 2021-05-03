@@ -3,6 +3,7 @@ package com.example.foursquare.Home
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
+import com.example.foursquare.Home.Adapter.HomeAdapter
 import com.example.foursquare.R
 import com.google.android.material.tabs.TabLayout
 
