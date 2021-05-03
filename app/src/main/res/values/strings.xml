@@ -17,5 +17,14 @@
     <string name="res_phno">+91 9900880123</string>
     <string name="drive">Drive:</string>
     <string name="distance">5</string>
-
+    <string name="overall_rating">Overall Rating</string>
+    <string name="about_us">Lorem Ipsum is simply dummy text of printing and typesetting Industry.
+        Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown
+        printer took a galery of type and scrambled it to make a specimen book. It has survived not
+        only five centuries , but also the leap into electronic typesetting, remaining essentially
+        unchanged. It was popularized in the 1960s with the release of letraset sheets containing
+        Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker
+        including versions of Lorem Ipsum. </string>
+    <string name="about_usptwo">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+        Lorem Ipsum has been the Industry</string>
 </resources>

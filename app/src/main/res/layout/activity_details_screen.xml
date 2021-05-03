@@ -9,12 +9,12 @@
 
 <RelativeLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <ImageView
         android:id="@+id/rest_img"
         android:layout_width="match_parent"
-        android:layout_height="300dp"/>
+        android:layout_height="350dp"/>
 
     <!--<include
         layout="@layout/detailscreen_toolbar"/>-->
@@ -26,39 +26,51 @@
         app:elevation="0dp">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/reviewscreen_toolbar"
+            android:id="@+id/detailscreen_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/black"
+            android:background="@android:color/transparent"
             app:navigationIcon="@drawable/back_icon"
-            app:menu="@menu/detscreen_menu"/>
+            app:menu="@menu/detscreen_menu">
+
+            <TextView
+                android:id="@+id/detscreentoolbar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="@color/white"
+                android:text="Attil"
+                android:textSize="24sp"/>
+
+        </androidx.appcompat.widget.Toolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
 
     <TextView
         android:id="@+id/res_name"
-        android:layout_width="wrap_content"
+        android:layout_width="350dp"
         android:layout_height="50dp"
         android:text="heollo this is walter white"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="230dp"
         android:textColor="@color/white"
         android:layout_centerHorizontal="true"
         android:textSize="23sp"/>
 
-    <!--<RatingBar
+    <RatingBar
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:id="@+id/show_rating"
         android:numStars="5"
         android:stepSize="0.5"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="260dp"/>-->
+        android:layout_marginTop="290dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:orientation="horizontal"
-        android:layout_marginTop="305dp">
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="355dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -67,11 +79,14 @@
             android:orientation="vertical">
 
             <ImageView
+                android:onClick="ShowPopup"
                 android:layout_marginStart="70dp"
                 android:id="@+id/give_rating"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/rating_icon"/>
+                android:src="@drawable/rating_icon"
+                android:clickable="true"
+                android:focusable="true"/>
 
             <TextView
                 android:layout_marginStart="65dp"
@@ -132,7 +147,7 @@
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:background="#3E3E3E"
-        android:layout_marginTop="400dp"
+        android:layout_marginTop="450dp"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30sp"/>
 
@@ -142,7 +157,7 @@
         android:text="Overview"
         android:textColor="#351047"
         android:textSize="25sp"
-        android:layout_marginTop="420dp"
+        android:layout_marginTop="470dp"
         android:layout_marginStart="30dp"/>
 
     <TextView
@@ -151,20 +166,20 @@
         android:layout_height="150dp"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginTop="470dp"/>
+        android:layout_marginTop="520dp"/>
     
     <ImageView
         android:id="@+id/reslocn_img"
         android:layout_width="match_parent"
         android:layout_height="170dp"
-        android:layout_marginTop="640dp" />
+        android:layout_marginTop="690dp" />
 
     <TextView
         android:id="@+id/res_address"
         android:layout_width="150dp"
         android:layout_height="45dp"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="670dp"
+        android:layout_marginTop="720dp"
         android:textColor="#000000"
         android:text="@string/res_address"/>
 
@@ -173,7 +188,7 @@
         android:layout_width="110dp"
         android:layout_height="20dp"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="725dp"
+        android:layout_marginTop="775dp"
         android:textColor="#000000"
         android:text="@string/res_phno"/>
 
@@ -181,7 +196,7 @@
         android:layout_width="40dp"
         android:layout_height="20dp"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="755dp"
+        android:layout_marginTop="805dp"
         android:textColor="#000000"
         android:text="@string/drive"/>
 
@@ -190,7 +205,7 @@
         android:layout_width="40dp"
         android:layout_height="20dp"
         android:layout_marginStart="70dp"
-        android:layout_marginTop="755dp"
+        android:layout_marginTop="805dp"
         android:textColor="#000000"
         android:text="@string/distance"/>
 
@@ -199,7 +214,6 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_below="@+id/reslocn_img"
-        android:layout_marginTop="10dp"
         android:text="Add Review"
         android:textSize="21sp"
         android:textAllCaps="false"
