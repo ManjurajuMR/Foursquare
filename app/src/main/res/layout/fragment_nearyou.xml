@@ -21,7 +21,7 @@
 
     <!-- TODO: Update blank fragment layout -->
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/nearyou_recyclerView"
         tools:listitem="@layout/homerecyclerview_item"
         android:layout_width="match_parent"
         android:layout_height="0dp"

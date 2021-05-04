@@ -54,12 +54,17 @@
                         android:textColor="#1D1D26"
                         android:textSize="18dp" />
 
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                    <ToggleButton
+                        android:id="@+id/toggle1"
+                        style="@style/toggleButton"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
                         android:layout_alignParentEnd="true"
-                        android:gravity="end"
-                        android:src="@drawable/favourite_icon" />
+                        android:layout_marginEnd="227dp"
+                        android:background="@drawable/fav_toggle_bg"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <LinearLayout
                         android:id="@+id/ratingtext"
