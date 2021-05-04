@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="Widget.Button.Toggle" parent="android:Widget">
-        <item name="android:background">@drawable/fav_toggle_bg</item>
+        <item name="android:background">@drawable/favourite_icon</item>
         <item name="android:disabledAlpha">?android:attr/disabledAlpha</item>
     </style>
 
