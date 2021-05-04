@@ -60,11 +60,16 @@
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:layout_alignParentEnd="true"
+
                         android:layout_marginEnd="227dp"
                         android:background="@drawable/fav_toggle_bg"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
+
+                        android:gravity="end"
+                        android:src="@drawable/favourite_icon"/>
+
 
                     <LinearLayout
                         android:id="@+id/ratingtext"

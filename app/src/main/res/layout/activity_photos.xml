@@ -11,7 +11,7 @@
         android:id="@+id/photos_gridview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/appBarLayout"
+        android:layout_below="@+id/appBar"
         android:numColumns="3"
         android:layout_marginTop="2dp"
         android:horizontalSpacing="2dp"
@@ -20,7 +20,7 @@
     </GridView>
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appBarLayout"
+        android:id="@+id/appBar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize">
 

@@ -3,15 +3,15 @@ package com.example.foursquare
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
-class ReviewScreenActivity : AppCompatActivity() {
+class AboutusActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_review_screen)
+        setContentView(R.layout.activity_aboutus)
 
         supportActionBar?.hide()
 
-        val rvscreen_tb=findViewById<androidx.appcompat.widget.Toolbar>(R.id.reviewscreen_toolbar)
-        rvscreen_tb.setNavigationOnClickListener {
+        val aboutus_tb=findViewById<androidx.appcompat.widget.Toolbar>(R.id.aboutus_toolbar)
+        aboutus_tb.setNavigationOnClickListener {
             onBackPressed()
         }
     }
