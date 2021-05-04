@@ -2,6 +2,7 @@ package com.example.foursquare.search
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.foursquare.NearbySearchFragment
 import com.example.foursquare.R
 
 class Search_homeActivity : AppCompatActivity() {
@@ -15,7 +16,7 @@ class Search_homeActivity : AppCompatActivity() {
             onBackPressed()
         }
 
-        //supportFragmentManager.beginTransaction().add(R.id.search_framelayout,ListViewFragment()).commit()
+        supportFragmentManager.beginTransaction().add(R.id.search_framelayout,NearbySearchFragment()).commit()
 
     }
 }

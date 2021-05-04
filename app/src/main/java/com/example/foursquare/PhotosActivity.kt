@@ -1,8 +1,17 @@
 package com.example.foursquare
 
+import android.content.Context
 import android.content.Intent
+import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.BaseAdapter
+import android.widget.GridView
+import android.widget.ImageView
+import java.util.ArrayList
 
 class PhotosActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,4 +26,5 @@ class PhotosActivity : AppCompatActivity() {
         }
 
     }
+
 }

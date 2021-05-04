@@ -10,14 +10,14 @@
     <GridView
         android:id="@+id/photos_gridview"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_below="@+id/appBar"
         android:numColumns="3"
+        android:gravity="center"
         android:layout_marginTop="2dp"
         android:horizontalSpacing="2dp"
         android:verticalSpacing="2dp"
-        tools:listitem="@layout/photos">
-    </GridView>
+        tools:listitem="@layout/photos"/>
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBar"
