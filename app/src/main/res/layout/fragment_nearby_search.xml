@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NearbySearchFragment">
+    tools:context=".search.NearbySearchFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
@@ -14,6 +14,7 @@
         android:textSize="22sp"
         android:paddingStart="25dp"
         android:paddingTop="12dp"
+        android:fontFamily="@font/avenir_medium"
         android:background="#F4F4F4"/>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -22,7 +23,7 @@
         android:layout_height="150dp"
         android:clipToPadding="false"
         tools:listitem="@layout/nearby_item"
-        android:layout_marginTop="56dp"/>
+        android:layout_marginTop="60dp"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -31,8 +32,15 @@
         android:text="Suggestions"
         android:textColor="#858585"
         android:textSize="22sp"
+        android:fontFamily="@font/avenir_book"
         android:paddingStart="25dp"
         android:paddingTop="12dp"
         android:background="#F4F4F4"/>
+
+    <ListView
+        android:id="@+id/suggestions_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="270dp"/>
 
 </RelativeLayout>

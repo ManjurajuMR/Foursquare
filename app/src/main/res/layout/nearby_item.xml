@@ -29,8 +29,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="110dp"
             android:layout_centerVertical="true"
+            android:fontFamily="@font/avenir_book"
             android:text="Udupi"
-            android:textSize="23sp"
+            android:textSize="25sp"
             android:textColor="@color/black"
             />
 
