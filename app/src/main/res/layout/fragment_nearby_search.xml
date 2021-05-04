@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NearbySearchFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="Near by Places"
+        android:textColor="#858585"
+        android:textSize="22sp"
+        android:paddingStart="25dp"
+        android:paddingTop="12dp"
+        android:background="#F4F4F4"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/nearbysearch_rv"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:clipToPadding="false"
+        tools:listitem="@layout/nearby_item"
+        android:layout_marginTop="56dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@+id/nearbysearch_rv"
+        android:text="Suggestions"
+        android:textColor="#858585"
+        android:textSize="22sp"
+        android:paddingStart="25dp"
+        android:paddingTop="12dp"
+        android:background="#F4F4F4"/>
+
+</RelativeLayout>

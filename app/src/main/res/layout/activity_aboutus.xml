@@ -12,32 +12,44 @@
         app:elevation="0dp">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/reviewscreen_toolbar"
+            android:id="@+id/aboutus_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="#370F24"
-            app:navigationIcon="@drawable/back_icon"
-            app:menu="@menu/rvscreen_menu">
+            app:navigationIcon="@drawable/back_icon">
 
             <TextView
-                android:id="@+id/reviewscreentoolbar_title"
+                android:id="@+id/aboutustoolbar_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:textColor="@color/white"
-                android:text="Attil"
-                android:textSize="24sp"/>
+                android:text="About us"
+                android:textSize="24sp" />
 
         </androidx.appcompat.widget.Toolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvscrn_rv"
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:textColor="#787777"
+        android:textSize="23sp"
+        android:text="@string/about_us"/>
+
+    <!--<TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clipToPadding="false"
-        tools:listitem="@layout/review_item"
-        android:layout_marginTop="56dp"/>
+        android:layout_marginTop="560dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:textColor="#787777"
+        android:textSize="23sp"
+        android:text="@string/about_usptwo"/>-->
 
 </RelativeLayout>

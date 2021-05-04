@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddReviewActivity">
+    android:fitsSystemWindows="true"
+    tools:context=".FeedbackActivity">
 
     <TextView
         android:id="@+id/textview1"
@@ -13,7 +14,7 @@
         android:layout_below="@+id/appBar"
         android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
-        android:text="Write Review"
+        android:text="Write your feedback"
         android:textColor="#351347"
         android:textSize="20sp"/>
 
@@ -33,46 +34,8 @@
         android:textSize="20sp"
         android:textColor="#8D8D8D"/>
 
-    <TextView
-        android:id="@+id/textview2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/review_txt_input"
-        android:text="Add a photos to your review"
-        android:textSize="16sp"
-        android:layout_marginStart="16sp"
-        android:layout_marginTop="12dp"
-        android:textColor="#351347"/>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/Addreview_photos_recyclerview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:scrollbars="horizontal"
-        android:layout_below="@+id/textview2"
-        android:layout_marginStart="16sp"
-        android:layout_marginTop="12dp"
-        tools:listitem="@layout/photos"/>
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toEndOf="@+id/Addreview_photos_recyclerview"
-        android:layout_below="@+id/textview2"
-        android:layout_marginTop="12dp"
-        app:cardCornerRadius="5dp">
-
-        <ImageView
-            android:id="@+id/camera_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/photos_icon"
-            android:scaleType="centerCrop"/>
-
-    </androidx.cardview.widget.CardView>
-
     <Button
-        android:id="@+id/submit_btn_addreview"
+        android:id="@+id/submit_btn_feedback"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -81,7 +44,6 @@
         android:text="Submit"
         android:textSize="20sp"
         android:backgroundTint="#351347"/>
-
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBar"
@@ -101,7 +63,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:textColor="@color/white"
-                android:text="Add Review"
+                android:text="Feedback"
                 android:textSize="24sp" />
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>

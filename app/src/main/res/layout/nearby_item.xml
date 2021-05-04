@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="75dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardBackgroundColor="@color/white"
+    android:id="@+id/rowLayout"
+    android:layout_marginBottom="1dp"
+    app:cardElevation="3dp"
+    app:cardCornerRadius="1dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/rl">
+
+        <ImageView
+            android:id="@+id/person_img"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="10dp"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/nearby_placename"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="110dp"
+            android:layout_centerVertical="true"
+            android:text="Udupi"
+            android:textSize="23sp"
+            android:textColor="@color/black"
+            />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

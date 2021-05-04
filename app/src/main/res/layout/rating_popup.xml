@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="350dp"
+    android:layout_height="480dp"
+    android:layout_gravity="center">
+
+    <TextView
+        android:id="@+id/close_popup"
+        android:layout_width="wrap_content"
+        android:layout_height="38dp"
+        android:text="X"
+        android:layout_marginStart="330dp"
+        android:textSize="30sp"
+        android:textColor="#807D7D"
+        android:background="@drawable/circle_bg"/>
+
+    <TextView
+        android:id="@+id/ovrl_rat_popup"
+        android:layout_width="wrap_content"
+        android:layout_height="38dp"
+        android:layout_marginTop="50dp"
+        android:layout_centerHorizontal="true"
+        android:text="@string/overall_rating"
+        android:textSize="30sp"
+        android:textColor="#000000"/>
+
+    <TextView
+        android:id="@+id/avg_rating_popup"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_below="@+id/ovrl_rat_popup"
+        android:layout_marginTop="15dp"
+        android:layout_centerHorizontal="true"
+        android:text="4.5"
+        android:textSize="42sp"
+        android:textStyle="bold"
+        android:textColor="#36B000"/>
+
+    <TextView
+        android:id="@+id/ur_exp_popup"
+        android:layout_width="280dp"
+        android:layout_height="75dp"
+        android:layout_below="@+id/avg_rating_popup"
+        android:layout_marginTop="50dp"
+        android:layout_centerHorizontal="true"
+        android:text="How would you rate your experience?"
+        android:textSize="30sp"
+        android:textColor="#000000"
+        android:gravity="center"/>
+
+    <RatingBar
+        android:id="@+id/ratbar_popup"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:numStars="5"
+        android:stepSize="0.5"
+        android:rating="4"
+        android:layout_below="@id/ur_exp_popup"
+        android:layout_centerHorizontal="true"
+        android:theme="@style/RatingBar"
+        android:clickable="true"
+        android:contextClickable="true"
+        android:outlineProvider="bounds"
+        android:layout_marginTop="20dp"
+        android:focusable="true" />
+
+    <Button
+        android:id="@+id/submit_rating_popup"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_alignParentBottom="true"
+        android:textColor="#351347"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        android:text="@string/submit"/>
+
+</RelativeLayout>
+
