@@ -2,7 +2,7 @@ package com.example.foursquare.search
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.foursquare.NearbySearchFragment
+//import com.example.foursquare.NearbySearchFragment
 import com.example.foursquare.R
 
 class Search_homeActivity : AppCompatActivity() {

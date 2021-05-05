@@ -52,7 +52,8 @@
                         android:layout_height="wrap_content"
                         android:text="Resturant Name"
                         android:textColor="#1D1D26"
-                        android:textSize="18dp" />
+                        android:fontFamily="@font/avenir_medium"
+                        android:textSize="15dp" />
 
                     <ToggleButton
                         android:id="@+id/toggle1"
@@ -70,13 +71,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/restname"
-                        android:paddingTop="20dp">
+                        android:paddingTop="14dp">
 
                         <TextView
                             android:id="@+id/rating"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/restname"
+                            android:fontFamily="@font/avenir_book"
                             android:background="@drawable/ratingtextbackground"
                             android:padding="3dp"
                             android:text="9.5"
@@ -88,8 +90,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/ratingtext"
+                        android:fontFamily="@font/avenir_book"
                         android:text="place"
-                        android:paddingTop="4dp"
                         android:textColor="#000000"
                         android:textSize="14dp" />
 
@@ -98,6 +100,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/place"
+                        android:fontFamily="@font/avenir_book"
                         android:text="address"
                         android:textColor="#000000"
                         android:textSize="14dp" />
