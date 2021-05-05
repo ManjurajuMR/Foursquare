@@ -27,4 +27,11 @@
         including versions of Lorem Ipsum. </string>
     <string name="about_usptwo">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
         Lorem Ipsum has been the Industry</string>
+    <string name="open">Drawer open</string>
+    <string name="close">Drawer close</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="menu_fav">Favourite</string>
+    <string name="menu_feedback">Feedback</string>
+    <string name="menu_aboutus">About Us</string>
+    <string name="menu_logout">Logout</string>
 </resources>
