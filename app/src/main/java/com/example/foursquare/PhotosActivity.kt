@@ -24,7 +24,6 @@ class PhotosActivity : AppCompatActivity() {
         topAppbar.setNavigationOnClickListener {
           onBackPressed()
         }
-
     }
 
 }

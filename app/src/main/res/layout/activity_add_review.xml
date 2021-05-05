@@ -15,6 +15,7 @@
         android:layout_marginTop="20dp"
         android:text="Write Review"
         android:textColor="#351347"
+        android:fontFamily="@font/avenir_book"
         android:textSize="20sp"/>
 
     <EditText
@@ -31,6 +32,7 @@
         android:lines="8"
         android:maxLines="16"
         android:textSize="20sp"
+        android:fontFamily="@font/avenir_book"
         android:textColor="#8D8D8D"/>
 
     <TextView
@@ -40,6 +42,7 @@
         android:layout_below="@id/review_txt_input"
         android:text="Add a photos to your review"
         android:textSize="16sp"
+        android:fontFamily="@font/avenir_book"
         android:layout_marginStart="16sp"
         android:layout_marginTop="12dp"
         android:textColor="#351347"/>
@@ -81,8 +84,8 @@
         android:textAllCaps="false"
         android:text="Submit"
         android:textSize="20sp"
+        android:fontFamily="@font/avenir_medium"
         android:backgroundTint="#351347"/>
-
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBar"
