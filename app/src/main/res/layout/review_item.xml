@@ -31,7 +31,8 @@
             android:layout_marginStart="90dp"
             android:layout_marginTop="20dp"
             android:textColor="#000000"
-            android:textSize="18sp"/>
+            android:textSize="18sp"
+            android:fontFamily="@font/avenir_book"/>
 
         <TextView
             android:id="@+id/person_review"
@@ -41,7 +42,8 @@
             android:layout_marginStart="90dp"
             android:layout_marginTop="50dp"
             android:textColor="#7C7C7F"
-            android:textSize="15sp"/>
+            android:textSize="15sp"
+            android:fontFamily="@font/avenir_book"/>
 
         <TextView
             android:id="@+id/review_date"
@@ -51,7 +53,8 @@
             android:layout_marginTop="20dp"
             android:layout_marginStart="295dp"
             android:textColor="#BBB8B8"
-            android:textSize="14sp"/>
+            android:textSize="14sp"
+            android:fontFamily="@font/avenir_book"/>
 
     </RelativeLayout>
 

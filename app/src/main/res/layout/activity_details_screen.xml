@@ -40,6 +40,7 @@
                 android:layout_gravity="center"
                 android:textColor="@color/white"
                 android:text="Attil"
+                android:fontFamily="@font/avenir_medium"
                 android:textSize="24sp"/>
 
         </androidx.appcompat.widget.Toolbar>
@@ -54,7 +55,8 @@
         android:layout_marginTop="230dp"
         android:textColor="@color/white"
         android:layout_centerHorizontal="true"
-        android:textSize="23sp"/>
+        android:textSize="23sp"
+        android:fontFamily="@font/avenir_book"/>
 
     <RatingBar
         android:layout_width="wrap_content"
@@ -93,7 +95,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Rating"
-                android:textSize="19sp"/>
+                android:textSize="19sp"
+                android:fontFamily="@font/avenir_book"/>
 
         </LinearLayout>
 
@@ -115,7 +118,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Photos"
-                android:textSize="19sp"/>
+                android:textSize="19sp"
+                android:fontFamily="@font/avenir_book"/>
 
         </LinearLayout>
 
@@ -137,7 +141,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Review"
-                android:textSize="19sp"/>
+                android:textSize="19sp"
+                android:fontFamily="@font/avenir_book"/>
 
         </LinearLayout>
 
@@ -166,13 +171,15 @@
         android:layout_height="150dp"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginTop="520dp"/>
+        android:layout_marginTop="520dp"
+        android:fontFamily="@font/avenir_book"/>
     
     <ImageView
         android:id="@+id/reslocn_img"
         android:layout_width="match_parent"
         android:layout_height="170dp"
-        android:layout_marginTop="690dp" />
+        android:layout_marginTop="690dp"
+        android:fontFamily="@font/avenir_book"/>
 
     <TextView
         android:id="@+id/res_address"
@@ -181,7 +188,8 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="720dp"
         android:textColor="#000000"
-        android:text="@string/res_address"/>
+        android:text="@string/res_address"
+        android:fontFamily="@font/avenir_medium"/>
 
     <TextView
         android:id="@+id/res_phno"
@@ -198,7 +206,8 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="805dp"
         android:textColor="#000000"
-        android:text="@string/drive"/>
+        android:text="@string/drive"
+        android:fontFamily="@font/avenir_medium"/>
 
     <TextView
         android:id="@+id/res_dis"
@@ -207,7 +216,8 @@
         android:layout_marginStart="70dp"
         android:layout_marginTop="805dp"
         android:textColor="#000000"
-        android:text="@string/distance"/>
+        android:text="@string/distance"
+        android:fontFamily="@font/avenir_medium"/>
 
     <Button
         android:id="@+id/add_review"
@@ -218,7 +228,8 @@
         android:textSize="21sp"
         android:textAllCaps="false"
         android:textColor="#F7F7F7"
-        android:backgroundTint="#351347"/>
+        android:backgroundTint="#351347"
+        android:fontFamily="@font/avenir_medium"/>
 
 </RelativeLayout>
 
