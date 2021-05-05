@@ -32,13 +32,15 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
+        //supportActionBar?.hide()
+
         tabLayout=findViewById(R.id.tabLayout)
         viewPager=findViewById(R.id.view_pager)
-        nearyou=findViewById(R.id.nearyou)
-        toppick=findViewById(R.id.toppick)
-        popular=findViewById(R.id.popular)
-        lunch=findViewById(R.id.lunch)
-        coffee=findViewById(R.id.coffee)
+//        nearyou=findViewById(R.id.nearyou)
+//        toppick=findViewById(R.id.toppick)
+//        popular=findViewById(R.id.popular)
+//        lunch=findViewById(R.id.lunch)
+//        coffee=findViewById(R.id.coffee)
 
         drawerLayout = findViewById(R.id.drawer)
         navigationView = findViewById(R.id.nav_view)
