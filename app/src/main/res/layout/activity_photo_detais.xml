@@ -50,6 +50,7 @@
                android:layout_marginTop="10dp"
                android:text="Saish Balu"
                android:textSize="20sp"
+               android:fontFamily="@font/avenir_medium"
                android:textColor="@color/white"/>
 
            <TextView
@@ -62,6 +63,7 @@
                android:layout_marginTop="2dp"
                android:text="Added May 12,2016"
                android:textSize="18sp"
+               android:fontFamily="@font/avenir_book"
                android:textColor="@color/white"/>
 
        </RelativeLayout>
