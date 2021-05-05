@@ -26,7 +26,8 @@
                 android:layout_gravity="center"
                 android:textColor="@color/white"
                 android:text="Attil"
-                android:textSize="24sp"/>
+                android:textSize="24sp"
+                android:fontFamily="@font/avenir_medium"/>
 
         </androidx.appcompat.widget.Toolbar>
 

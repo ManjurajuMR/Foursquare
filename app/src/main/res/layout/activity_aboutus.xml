@@ -25,7 +25,8 @@
                 android:layout_gravity="center"
                 android:textColor="@color/white"
                 android:text="About us"
-                android:textSize="24sp" />
+                android:textSize="24sp"
+                android:fontFamily="@font/avenir_medium"/>
 
         </androidx.appcompat.widget.Toolbar>
 
@@ -34,11 +35,12 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="75dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:textColor="#787777"
         android:textSize="23sp"
+        android:fontFamily="@font/avenir_book"
         android:text="@string/about_us"/>
 
     <!--<TextView
