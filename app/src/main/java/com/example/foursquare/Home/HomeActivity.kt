@@ -43,6 +43,15 @@ class HomeActivity : AppCompatActivity() {
         drawerLayout = findViewById(R.id.drawer)
         navigationView = findViewById(R.id.nav_view)
 
+        val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
+
+        toggle = ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.open,R.string.close)
+
+        drawerLayout.addDrawerListener(toggle)
+        toggle.setDrawerIndicatorEnabled(true)
+        toggle.syncState()
+
 //        tabLayout.addTab(tabLayout.newTab().setText("Near you"))
 //        tabLayout.addTab(tabLayout.newTab().setText("Toppick"))
 //        tabLayout.addTab(tabLayout.newTab().setText("Popular"))
@@ -50,14 +59,11 @@ class HomeActivity : AppCompatActivity() {
 //        tabLayout.addTab(tabLayout.newTab().setText("Coffee"))
 //        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL)
 
-        adapter = HomeAdapter(this,getSupportFragmentManager(),FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT,tabLayout.tabCount)
-        viewPager.adapter = adapter
-
 //        val adapter= HomeAdapter(this,supportFragmentManager,tabLayout.tabCount)
 //        viewPager.adapter=adapter
-//
+
         viewPager.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(tabLayout))
-//
+
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
                 viewPager.currentItem = tab.position
@@ -70,13 +76,8 @@ class HomeActivity : AppCompatActivity() {
             }
         })
 
-        val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar)
-        setSupportActionBar(toolbar)
+        adapter = HomeAdapter(this,getSupportFragmentManager(),FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT,tabLayout.tabCount)
+        viewPager.adapter = adapter
 
-        toggle = ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.open,R.string.close)
-
-        drawerLayout.addDrawerListener(toggle)
-        toggle.setDrawerIndicatorEnabled(true)
-        toggle.syncState()
     }
 }
