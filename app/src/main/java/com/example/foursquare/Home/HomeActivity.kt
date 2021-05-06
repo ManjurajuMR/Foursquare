@@ -1,11 +1,13 @@
 package com.example.foursquare.Home
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
+import com.example.foursquare.FilterActivity
 import com.example.foursquare.Home.Adapter.HomeAdapter
 import com.example.foursquare.R
 import com.google.android.material.navigation.NavigationView
@@ -81,5 +83,10 @@ class HomeActivity : AppCompatActivity() {
         adapter = HomeAdapter(this,getSupportFragmentManager(),FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT,tabLayout.tabCount)
         viewPager.adapter = adapter
 
+    }
+
+    fun onFilterClick(){
+        val intent = Intent(this,FilterActivity::class.java)
+        startActivity(intent)
     }
 }
