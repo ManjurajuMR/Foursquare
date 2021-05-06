@@ -10,12 +10,14 @@
         <item
             android:id="@+id/nav_feedback"
             android:icon="@drawable/feedback"
-            android:title="@string/menu_feedback" />
+            android:title="@string/menu_feedback"
+            />
 
         <item
             android:id="@+id/nav_aboutus"
             android:icon="@drawable/about"
-            android:title="@string/menu_aboutus" />
+            android:title="@string/menu_aboutus"
+            />
 
         <item
             android:id="@+id/nav_logout"
