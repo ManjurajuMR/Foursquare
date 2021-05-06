@@ -34,7 +34,7 @@
      android:id="@+id/logo"
      android:layout_width="wrap_content"
      android:layout_height="wrap_content"
-     android:layout_marginTop="110dp"
+     android:layout_marginTop="100dp"
      android:layout_centerHorizontal="true"
      android:src="@drawable/logo"/>
 
@@ -110,15 +110,17 @@
      android:fontFamily="@font/avenir_book"
      android:layout_below="@+id/input_password"
      android:layout_marginTop="20sp"
-     android:layout_centerHorizontal="true"/>
+     android:layout_centerHorizontal="true"
+     android:clickable="true"
+     android:focusable="true" />
 
 <TextView
     android:id="@+id/login_btn"
     android:layout_width="match_parent"
-    android:layout_height="60dp"
+    android:layout_height="50dp"
     android:text="Login"
     android:layout_below="@id/forgot_password"
-    android:layout_marginTop="50dp"
+    android:layout_marginTop="40dp"
     android:textColor="@color/white"
     android:fontFamily="@font/avenir_book"
     android:textSize="28sp"
@@ -138,7 +140,9 @@
      android:layout_height="wrap_content"
      android:layout_below="@+id/login_btn"
      android:layout_marginTop="25dp"
-     android:layout_centerHorizontal="true"/>
+     android:layout_centerHorizontal="true"
+     android:clickable="true"
+     android:focusable="true" />
 
  <TextView
      android:id="@+id/or_txt"
@@ -159,7 +163,7 @@
      android:layout_width="350dp"
      android:layout_centerHorizontal="true"
      android:orientation="horizontal"
-     android:layout_marginTop="25dp"
+     android:layout_marginTop="20sp"
      android:layout_height="wrap_content"
      android:layout_below="@+id/or_txt"
      android:weightSum="1">
