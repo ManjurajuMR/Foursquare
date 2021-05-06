@@ -1,13 +1,17 @@
 package com.example.foursquare.Home
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.ImageView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
+import com.example.foursquare.FilterActivity
 import com.example.foursquare.Home.Adapter.HomeAdapter
 import com.example.foursquare.R
+import com.example.foursquare.search.Search_homeActivity
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.tabs.TabItem
 import com.google.android.material.tabs.TabLayout
@@ -19,6 +23,8 @@ class HomeActivity : AppCompatActivity() {
     lateinit var drawerLayout: DrawerLayout
     lateinit var toggle: ActionBarDrawerToggle
     lateinit var navigationView: NavigationView
+    lateinit var search: ImageView
+    lateinit var filter: ImageView
 
     lateinit var nearyou: TabItem
     lateinit var toppick: TabItem
@@ -80,6 +86,20 @@ class HomeActivity : AppCompatActivity() {
 
         adapter = HomeAdapter(this,getSupportFragmentManager(),FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT,tabLayout.tabCount)
         viewPager.adapter = adapter
+
+
+        search=findViewById(R.id.imageView5)
+        search.setOnClickListener {
+            val intent= Intent(this,Search_homeActivity::class.java)
+            startActivity(intent)
+        }
+        filter=findViewById(R.id.imageView4)
+        search.setOnClickListener {
+            val intent= Intent(this,FilterActivity::class.java)
+            startActivity(intent)
+        }
+
+
 
     }
 

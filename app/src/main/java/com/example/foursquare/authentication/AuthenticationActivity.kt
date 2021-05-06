@@ -11,6 +11,9 @@ class AuthenticationActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_authentication)
 
+        supportActionBar?.hide()
+
+
         findNavController(R.id.authenticaion_framelayout)
         //supportFragmentManager.beginTransaction().add(R.id.authenticaion_framelayout,SigninFragment()).commit()
     }
