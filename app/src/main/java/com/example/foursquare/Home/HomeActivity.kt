@@ -2,14 +2,15 @@ package com.example.foursquare.Home
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
-import com.example.foursquare.FilterActivity
+import com.example.foursquare.*
 import com.example.foursquare.Home.Adapter.HomeAdapter
-import com.example.foursquare.R
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.tabs.TabItem
 import com.google.android.material.tabs.TabLayout
@@ -82,6 +83,21 @@ class HomeActivity : AppCompatActivity() {
 
         adapter = HomeAdapter(this,getSupportFragmentManager(),FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT,tabLayout.tabCount)
         viewPager.adapter = adapter
+
+        navigationView.setNavigationItemSelectedListener { menuItem ->
+            val id = menuItem.itemId
+            if (id == R.id.nav_fav) {
+                startActivity(Intent(this, FavouritesActivity::class.java))
+            } else if (id == R.id.nav_feedback) {
+                startActivity(Intent(this, FeedbackActivity::class.java))
+            }else if (id == R.id.nav_aboutus) {
+                startActivity(Intent(this, AboutusActivity::class.java))
+            }else if (id == R.id.nav_feedback) {
+                Toast.makeText(this,"logout",Toast.LENGTH_SHORT).show()
+            }
+            drawerLayout.closeDrawer(GravityCompat.START)
+            true
+        }
 
     }
 
