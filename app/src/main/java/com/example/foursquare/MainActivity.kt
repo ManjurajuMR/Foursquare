@@ -6,6 +6,7 @@ import android.os.Bundle
 
 import android.widget.TextView
 import com.example.foursquare.Home.HomeActivity
+import com.example.foursquare.authentication.AuthenticationActivity
 
 class MainActivity : AppCompatActivity() {
 
