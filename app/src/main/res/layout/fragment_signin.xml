@@ -110,7 +110,9 @@
      android:fontFamily="@font/avenir_book"
      android:layout_below="@+id/input_password"
      android:layout_marginTop="20sp"
-     android:layout_centerHorizontal="true"/>
+     android:layout_centerHorizontal="true"
+     android:clickable="true"
+     android:focusable="true" />
 
 <TextView
     android:id="@+id/login_btn"
@@ -138,7 +140,9 @@
      android:layout_height="wrap_content"
      android:layout_below="@+id/login_btn"
      android:layout_marginTop="25dp"
-     android:layout_centerHorizontal="true"/>
+     android:layout_centerHorizontal="true"
+     android:clickable="true"
+     android:focusable="true" />
 
  <TextView
      android:id="@+id/or_txt"

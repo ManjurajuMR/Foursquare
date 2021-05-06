@@ -82,4 +82,5 @@ class HomeActivity : AppCompatActivity() {
         viewPager.adapter = adapter
 
     }
+
 }
