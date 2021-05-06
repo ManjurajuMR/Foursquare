@@ -2,15 +2,14 @@ package com.example.foursquare.Home
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
-import com.example.foursquare.*
+import com.example.foursquare.FilterActivity
 import com.example.foursquare.Home.Adapter.HomeAdapter
+import com.example.foursquare.R
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.tabs.TabItem
 import com.google.android.material.tabs.TabLayout
@@ -37,8 +36,8 @@ class HomeActivity : AppCompatActivity() {
 
         //supportActionBar?.hide()
 
-        tabLayout = findViewById(R.id.tabLayout)
-        viewPager = findViewById(R.id.view_pager)
+        tabLayout=findViewById(R.id.tabLayout)
+        viewPager=findViewById(R.id.view_pager)
 //        nearyou=findViewById(R.id.nearyou)
 //        toppick=findViewById(R.id.toppick)
 //        popular=findViewById(R.id.popular)
@@ -51,29 +50,11 @@ class HomeActivity : AppCompatActivity() {
         val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
 
-        toggle = ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close)
+        toggle = ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.open,R.string.close)
 
         drawerLayout.addDrawerListener(toggle)
         toggle.setDrawerIndicatorEnabled(true)
         toggle.syncState()
-
-
-        navigationView.setNavigationItemSelectedListener { menuItem ->
-            val id = menuItem.itemId
-            if (id == R.id.nav_fav) {
-                startActivity(Intent(this, FavouritesActivity::class.java))
-            } else if (id == R.id.nav_feedback) {
-                startActivity(Intent(this, FeedbackActivity::class.java))
-            } else if (id == R.id.nav_aboutus) {
-                startActivity(Intent(this, AboutusActivity::class.java))
-            } else if (id == R.id.nav_logout) {
-                Toast.makeText(this,
-            "logging out",
-            Toast.LENGTH_SHORT).show()
-            }
-            drawerLayout.closeDrawer(GravityCompat.START)
-            true
-        }
 
 //        tabLayout.addTab(tabLayout.newTab().setText("Near you"))
 //        tabLayout.addTab(tabLayout.newTab().setText("Toppick"))
@@ -91,52 +72,21 @@ class HomeActivity : AppCompatActivity() {
             override fun onTabSelected(tab: TabLayout.Tab) {
                 viewPager.currentItem = tab.position
             }
-
             override fun onTabUnselected(tab: TabLayout.Tab) {
 
             }
-
             override fun onTabReselected(tab: TabLayout.Tab) {
 
             }
         })
 
-        adapter = HomeAdapter(
-            this,
-            getSupportFragmentManager(),
-            FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT,
-            tabLayout.tabCount
-        )
+        adapter = HomeAdapter(this,getSupportFragmentManager(),FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT,tabLayout.tabCount)
         viewPager.adapter = adapter
-
-
 
     }
 
-//        fun onFilterClick() {
-//            startActivity(Intent(this, FilterActivity::class.java))
-//        }
-
-//        fun onFavouriteClick() {
-//            val intent = Intent(this, FavouritesActivity::class.java)
-//            startActivity(intent)
-//        }
-//
-//        fun onFeedbackClick() {
-//            val intent = Intent(this, FeedbackActivity::class.java)
-//            startActivity(intent)
-//        }
-//
-//        fun onAboutusClick() {
-//            val intent = Intent(this, AboutusActivity::class.java)
-//            startActivity(intent)
-//        }
-//
-//    fun onLogoutClick(){
-//        Toast.makeText(getApplicationContext(),
-//            "logout",
-//            Toast.LENGTH_SHORT).show()
-//    }
-
-
+    fun onFilterClick(){
+        val intent = Intent(this,FilterActivity::class.java)
+        startActivity(intent)
+    }
 }
