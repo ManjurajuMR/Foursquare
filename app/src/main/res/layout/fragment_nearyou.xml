@@ -8,8 +8,8 @@
     tools:context=".Home.NearyouFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <ImageView
-        android:id="@+id/map"
+    <FrameLayout
+        android:id="@+id/mapLayout"
         android:layout_width="match_parent"
         android:layout_height="250dp"
         app:layout_constraintBottom_toTopOf="@+id/recyclerView"
@@ -17,7 +17,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-    </ImageView>
+    </FrameLayout>
 
     <!-- TODO: Update blank fragment layout -->
     <androidx.recyclerview.widget.RecyclerView
@@ -29,6 +29,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/map" />
+        app:layout_constraintTop_toBottomOf="@+id/mapLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

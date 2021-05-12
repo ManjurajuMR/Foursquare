@@ -1,6 +1,8 @@
 package com.example.foursquare.Home
 
 import android.content.Intent
+import android.location.Location
+import android.location.LocationListener
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -8,14 +10,19 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.FragmentPagerAdapter
+import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager.widget.ViewPager
 import com.example.foursquare.*
 import com.example.foursquare.Home.Adapter.HomeAdapter
+
+import com.example.foursquare.viewmodel.PlaceViewModel
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.tabs.TabItem
 import com.google.android.material.tabs.TabLayout
 
 class HomeActivity : AppCompatActivity() {
+    private lateinit var placeViewModel : PlaceViewModel
+
     lateinit var tabLayout: TabLayout
     lateinit var viewPager: ViewPager
 
@@ -31,10 +38,13 @@ class HomeActivity : AppCompatActivity() {
 
     lateinit var adapter: HomeAdapter
 
+    private lateinit var listener : LocationListener
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-
+        placeViewModel = ViewModelProvider(this).get(PlaceViewModel::class.java)
+        //getUserLocation()
         //supportActionBar?.hide()
 
         tabLayout=findViewById(R.id.tabLayout)
@@ -100,6 +110,7 @@ class HomeActivity : AppCompatActivity() {
         }
 
     }
+
 
     fun onFilterClick(){
         val intent = Intent(this,FilterActivity::class.java)

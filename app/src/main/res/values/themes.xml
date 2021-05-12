@@ -3,7 +3,6 @@
     <style name="Theme.Foursquare" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
 
-
         <item name="colorPrimary">@android:color/transparent</item>
         <item name="colorPrimaryVariant">@color/black</item>
 

@@ -1,7 +1,6 @@
 package com.example.foursquare.Home.Adapter
 
 import android.content.Context
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,8 +14,9 @@ import com.example.foursquare.Home.Adapter.tools.PriceRange
 import com.example.foursquare.Home.Adapter.tools.RatingBackground
 import com.example.foursquare.R
 import com.example.foursquare.model.Datum
+import com.example.foursquare.model.Datum1
 
-class RecyclerviewAdapter(private var arrayList: List<Datum>,private val mycontaxt:Context): RecyclerView.Adapter<RecyclerviewAdapter.ViewHolder>() {
+class PopularPlaceAdapter(private var arrayList: List<Datum1>, private val mycontaxt: Context): RecyclerView.Adapter<PopularPlaceAdapter.ViewHolder>() {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
             val itemView = LayoutInflater.from(parent.context).inflate(R.layout.homerecyclerview_item, parent, false)
@@ -26,17 +26,17 @@ class RecyclerviewAdapter(private var arrayList: List<Datum>,private val myconta
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
             val arrayList = arrayList[position]
             if (arrayList!=null) {
-                holder.restname.text = arrayList.place.name
-                Glide.with(mycontaxt).load(arrayList.place.image).placeholder(R.drawable.loading)
+                holder.restname.text = arrayList.name
+                Glide.with(mycontaxt).load(arrayList.image).placeholder(R.drawable.loading)
                     .into(holder.restimage)
-                val rating = arrayList.place.overallRating
-                holder.address.text = arrayList.place.landmark
-                holder.resType.text=arrayList.place.placeType[0].name
-                val cost=arrayList.place.cost
-                val priceRange=PriceRange().getRupeeIcon(cost)
+                val rating = arrayList.overallRating
+                holder.address.text = arrayList.landmark
+                holder.resType.text=arrayList.placeType[0].name
+                val cost=arrayList.cost
+                val priceRange= PriceRange().getRupeeIcon(cost)
                 holder.priceRange.text=priceRange
-                holder.distance.text=String.format("%.1f km", arrayList.distance)
-                holder.rating.text = arrayList.place.overallRating.toString()
+               // holder.distance.text=String.format("%.1f km", arrayList.distance)
+                holder.rating.text = arrayList.overallRating.toString()
                 val ratingBackground = RatingBackground().getRatingColor(rating)
                 holder.ratingBackground.background.setTint(ratingBackground)
             }else{
@@ -58,13 +58,14 @@ class RecyclerviewAdapter(private var arrayList: List<Datum>,private val myconta
             val priceRange: TextView =view.findViewById(R.id.price_range)
             val distance: TextView =view.findViewById(R.id.distance)
 
-       /*     init {
-                fav_button.setOnClickListener {
-                    MainActivity.myweatherdatabase?.myDao()?.delete(arrayList[adapterPosition].PlaceName)
-                    //arrayList.remove(arrayList[adapterPosition])
-                    // notifyDataSetChanged()
-                    view.findNavController().navigate(R.id.nav_favourite)
-                }
-            }*/
+            /*     init {
+                     fav_button.setOnClickListener {
+                         MainActivity.myweatherdatabase?.myDao()?.delete(arrayList[adapterPosition].PlaceName)
+                         //arrayList.remove(arrayList[adapterPosition])
+                         // notifyDataSetChanged()
+                         view.findNavController().navigate(R.id.nav_favourite)
+                     }
+                 }*/
         }
 }
+
