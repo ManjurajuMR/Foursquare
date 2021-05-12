@@ -9,4 +9,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="toolbar_color">#370F24</color>
     <color name="transparent_color">@android:color/transparent</color>
+    <color name="rating2.5">#FF0000</color>
+    <color name="rating2.5to5.0">#FFD700</color>
+    <color name="rating5.0to7.5">#76ff03</color>
+    <color name="rating_above7.5">#36B000</color>
 </resources>

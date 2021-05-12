@@ -65,7 +65,7 @@
                         />
 
                     <LinearLayout
-                        android:id="@+id/ratingtext"
+                        android:id="@+id/ratingBackground"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/restname"
@@ -88,7 +88,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:layout_below="@id/ratingtext">
+                        android:layout_below="@id/ratingBackground">
 
                         <TextView
                             android:id="@+id/place"
