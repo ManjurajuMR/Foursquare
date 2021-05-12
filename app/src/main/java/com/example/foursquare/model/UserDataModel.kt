@@ -45,5 +45,4 @@ data class UserData(
     fun getDateOfBirth() = dateOfBirth
     fun getGender() = gender
     fun getPhone() = phone
-
 }
