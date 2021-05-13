@@ -5,10 +5,7 @@ import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.foursquare.Home.Adapter.RecyclerviewAdapter
-import com.example.foursquare.Home.Adapter.ReviewScreenAdapter
-import com.example.foursquare.viewmodel.HomeViewModel
-import com.example.foursquare.viewmodel.PlaceViewModel
+import com.example.foursquare.adapters.ReviewScreenAdapter
 import com.example.foursquare.viewmodel.ReviewsViewModel
 import kotlinx.android.synthetic.main.activity_review_screen.*
 

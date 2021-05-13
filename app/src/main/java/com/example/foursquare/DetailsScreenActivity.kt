@@ -52,8 +52,11 @@ class DetailsScreenActivity : AppCompatActivity() {
         }
         myDialog = Dialog(this)
 
-        homeViewModel.getPlaceDetailsByPlaceId(11)
-        setlivedata()
+        val placeID= intent.getIntExtra("placeId",0)
+        if (placeID!=null){
+            homeViewModel.getPlaceDetailsByPlaceId(placeID)
+            setlivedata()
+        }
 
         locnManager = this.let { LocationServices.getFusedLocationProviderClient(it) }!!
         val supportMapFragment = SupportMapFragment.newInstance()
@@ -69,7 +72,7 @@ class DetailsScreenActivity : AppCompatActivity() {
 
         add_review.setOnClickListener {
             val intent = Intent(this,AddReviewActivity::class.java)
-            intent.putExtra("pid",pid)
+            intent.putExtra("pid",placeID)
             intent.putExtra("pname",pname)
             startActivity(intent)
         }

@@ -17,6 +17,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.foursquare.DetailsScreenActivity
 import com.example.foursquare.Home.Adapter.RecyclerviewAdapter
 import com.example.foursquare.PhotosActivity
 import com.example.foursquare.R
@@ -150,8 +151,11 @@ class NearyouFragment : Fragment(),RecyclerviewAdapter.OnSiteItemClickListener {
         }
     }
 
-    override fun onSiteClick(position: Int) {
-        Log.d("position", "${position} got")
-        Toast.makeText(context, "Item is clicked ${position}", Toast.LENGTH_LONG).show()
+    override fun onSiteClick(placeId: Long) {
+        val placeID=placeId.toInt()
+        Log.d("position", "${placeId} got")
+        val intent = Intent(activity, DetailsScreenActivity::class.java)
+        intent.putExtra("placeId",placeID)
+        activity?.startActivity(intent)
     }
 }
