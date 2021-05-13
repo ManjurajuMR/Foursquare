@@ -4,12 +4,12 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import com.example.foursquare.model.ReviewData
-import com.example.foursquare.repository.ReviewRepository
+import com.example.foursquare.repository.AddReviewRepository
 
 
 
-class ReviewViewModel(application: Application): AndroidViewModel(application) {
-    private val mainRepository = ReviewRepository(application)
+class AddReviewViewModel(application: Application): AndroidViewModel(application) {
+    private val mainRepository = AddReviewRepository(application)
 
     fun addReviews(token: String,userid: Int,placeid: Int,review: String): LiveData<ReviewData> {
 

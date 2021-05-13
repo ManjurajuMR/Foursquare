@@ -1,7 +1,7 @@
 package com.example.foursquare.model
 
 import com.beust.klaxon.*
-import com.example.foursquare.services.ReviewApi
+import com.example.foursquare.services.AddReviewApi
 
 private val klaxon = Klaxon()
 
@@ -17,6 +17,6 @@ data class ReviewData (
     public fun toJson() = klaxon.toJsonString(this)
 
     companion object {
-        public fun fromJson(json: String) = klaxon.parse<ReviewApi>(json)
+        public fun fromJson(json: String) = klaxon.parse<AddReviewApi>(json)
     }
 }

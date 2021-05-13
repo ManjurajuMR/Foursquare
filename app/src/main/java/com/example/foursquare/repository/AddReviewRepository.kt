@@ -5,16 +5,15 @@ import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.foursquare.model.Place
 import com.example.foursquare.model.ReviewData
 import com.example.foursquare.services.RetrofitApiInstance
-import com.example.foursquare.services.ReviewApi
+import com.example.foursquare.services.AddReviewApi
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ReviewRepository(private val application: Application) {
-    private val reviewApi = RetrofitApiInstance.getApiInstance(ReviewApi::class.java)
+class AddReviewRepository(private val application: Application) {
+    private val reviewApi = RetrofitApiInstance.getApiInstance(AddReviewApi::class.java)
 
     fun addreview(token: String, userid: Int,placeid: Int,review: String): LiveData<ReviewData> {
         val addreview: MutableLiveData<ReviewData> = MutableLiveData()
