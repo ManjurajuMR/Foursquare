@@ -78,7 +78,7 @@ data class Rplace (
     public fun toJson() = klaxon.toJsonString(this)
 
     companion object {
-        public fun fromJson(json: String) = klaxon.parse<Place>(json)
+        public fun fromJson(json: String) = klaxon.parse<Rplace>(json)
     }
 }
 

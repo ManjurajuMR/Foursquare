@@ -1,5 +1,6 @@
 package com.example.foursquare
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -28,27 +29,64 @@ class AddReviewActivity : AppCompatActivity() {
         topAppbar.setNavigationOnClickListener {
             onBackPressed()
         }
-
-        loadPlaceData()
 //        Log.d("r11","r11")
 
         submit_btn_addreview.setOnClickListener {
-            Toast.makeText(this,"success",Toast.LENGTH_LONG).show()
+            Addreview()
+           // Toast.makeText(this,"success",Toast.LENGTH_LONG).show()
         }
     }
 
-    private fun loadPlaceData() {
+/*    private fun loadPlaceData() {
 
-        var Token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ2YWliaGF2aUBnbWFpbC5jb20iLCJleHAiOjE2MjA5MDUyMTIsImlhdCI6MTYyMDg4NzIxMn0.tdfvDyW2-RAWvraegZVaLXgPFRatDHJD6DfYh4g9iPftuICADfScIo_e9j7cTJ0jtq_oVslt5zqzM_xTmgdNNw"
-        var reviewText = "The food is delicious and the atmosphere is brilliant"
+        var Token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0MUBnbWFpbC5jb20iLCJleHAiOjE2MjA5MDQxMTUsImlhdCI6MTYyMDg4NjExNX0.cEP7tyg3RXq3Mf5yi3mVUGCE85STexidTPUe9tvFIILi25SwaleNh6ndqhPJ5xHG29gA8OttPXqIdrQIPMJxOA"
+        //var reviewText = "The food is delicious and the atmosphere is brilliant"
+        var reviewText=reviewTextInput.text.toString()
 
-        reviewViewModel.addReviews(Token,129,12,reviewText)
+        reviewViewModel.addReviews(Token,110,11,reviewText)
             ?.observe(this, {
-                Log.d("res", "re")
-                val msg = it.message
+                Log.d("res", "it")
+                val msg = it.data
 
-                Toast.makeText(this, "msg", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "${msg}", Toast.LENGTH_SHORT).show()
 
             })
+    }*/
+
+    private fun Addreview() {
+        val userId = 110
+        val placeId = 11
+        var Token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0MUBnbWFpbC5jb20iLCJleHAiOjE2MjA5MDQxMTUsImlhdCI6MTYyMDg4NjExNX0.cEP7tyg3RXq3Mf5yi3mVUGCE85STexidTPUe9tvFIILi25SwaleNh6ndqhPJ5xHG29gA8OttPXqIdrQIPMJxOA"
+
+        val review=reviewTextInput.text.toString()
+        if (review.isEmpty()){
+            startActivity(Intent(this, DetailsScreenActivity::class.java))
+        }
+        else {
+
+            if (Token != null) {
+                val newtoken = "Bearer $Token"
+
+                val userReview = hashMapOf(
+                    "userId" to userId.toString(),
+                    "placeId" to placeId.toString(),
+                    "review" to review
+                )
+
+                reviewViewModel.addReview(newtoken, userReview).observe(this, {
+                    if (it != null) {
+                        println(it)
+                        if (it.getStatus() == 200) {
+                                Toast.makeText(applicationContext,"Review Added",Toast.LENGTH_LONG).show()
+                                onBackPressed()
+                        } else {
+                            Toast.makeText(applicationContext, it.getMessage(), Toast.LENGTH_SHORT)
+                                .show()
+                        }
+                    }
+                })
+            }
+        }
+
     }
 }
