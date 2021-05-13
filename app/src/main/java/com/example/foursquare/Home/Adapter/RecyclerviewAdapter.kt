@@ -38,7 +38,7 @@ class RecyclerviewAdapter(private var arrayList: List<Datum>, private val clickL
         }
 
         override fun onClick(p0: View?) {
-            onClickListener.onSiteClick(adapterPosition)
+            onClickListener.onSiteClick(arrayList[adapterPosition].place.id)
         }
 
     }
@@ -75,7 +75,7 @@ class RecyclerviewAdapter(private var arrayList: List<Datum>, private val clickL
     }
 
     interface OnSiteItemClickListener {
-        fun onSiteClick(position: Int)
+        fun onSiteClick(PlaceId: Long)
     }
 
 }
