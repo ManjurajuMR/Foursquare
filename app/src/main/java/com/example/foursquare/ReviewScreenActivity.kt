@@ -2,6 +2,9 @@ package com.example.foursquare
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.lifecycle.ViewModelProvider
+import com.example.foursquare.viewmodel.HomeViewModel
+import com.example.foursquare.viewmodel.ReviewViewModel
 
 class ReviewScreenActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

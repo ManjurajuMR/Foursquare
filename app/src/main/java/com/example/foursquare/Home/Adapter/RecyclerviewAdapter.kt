@@ -26,19 +26,19 @@ class RecyclerviewAdapter(private var arrayList: List<Datum>,private val myconta
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
             val arrayList = arrayList[position]
             if (arrayList!=null) {
-                holder.restname.text = arrayList.place.name
-                Glide.with(mycontaxt).load(arrayList.place.image).placeholder(R.drawable.loading)
-                    .into(holder.restimage)
-                val rating = arrayList.place.overallRating
-                holder.address.text = arrayList.place.landmark
-                holder.resType.text=arrayList.place.placeType[0].name
-                val cost=arrayList.place.cost
-                val priceRange=PriceRange().getRupeeIcon(cost)
-                holder.priceRange.text=priceRange
-                holder.distance.text=String.format("%.1f km", arrayList.distance)
-                holder.rating.text = arrayList.place.overallRating.toString()
-                val ratingBackground = RatingBackground().getRatingColor(rating)
-                holder.ratingBackground.background.setTint(ratingBackground)
+//                holder.restname.text = arrayList.place.name
+//                Glide.with(mycontaxt).load(arrayList.place.image).placeholder(R.drawable.loading)
+//                    .into(holder.restimage)
+//                val rating = arrayList.place.overallRating
+//                holder.address.text = arrayList.place.landmark
+//                holder.resType.text=arrayList.place.placeType[0].name
+//                val cost=arrayList.place.cost
+//                val priceRange=PriceRange().getRupeeIcon(cost)
+//                holder.priceRange.text=priceRange
+//                holder.distance.text=String.format("%.1f km", arrayList.distance)
+//                holder.rating.text = arrayList.place.overallRating.toString()
+//                val ratingBackground = RatingBackground().getRatingColor(rating)
+//                holder.ratingBackground.background.setTint(ratingBackground)
             }else{
                 Toast.makeText(mycontaxt, "Item is null", Toast.LENGTH_LONG).show()
             }
