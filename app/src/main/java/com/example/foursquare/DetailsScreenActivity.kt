@@ -36,6 +36,7 @@ class DetailsScreenActivity : AppCompatActivity() {
     private var lati : Double = 0.0
     private var long : Double = 0.0
     private var pid : Long = 0
+    private var pname : String = ""
     private var pno : Long = 0
     private var psize : Long = 0
 
@@ -51,7 +52,7 @@ class DetailsScreenActivity : AppCompatActivity() {
         }*/
         myDialog = Dialog(this)
 
-        homeViewModel.getPlaceDetailsByPlaceId(12)
+        homeViewModel.getPlaceDetailsByPlaceId(11)
         setlivedata()
 
         locnManager = this.let { LocationServices.getFusedLocationProviderClient(it) }!!
@@ -69,12 +70,14 @@ class DetailsScreenActivity : AppCompatActivity() {
         add_review.setOnClickListener {
             val intent = Intent(this,AddReviewActivity::class.java)
             intent.putExtra("pid",pid)
+            intent.putExtra("pname",pname)
             startActivity(intent)
         }
 
         check_photos.setOnClickListener {
             val intent = Intent(this,PhotosActivity::class.java)
             intent.putExtra("pid",pid)
+            intent.putExtra("pname",pname)
             startActivity(intent)
         }
 
@@ -112,6 +115,7 @@ class DetailsScreenActivity : AppCompatActivity() {
             val latitude = it.data.latitude
             val longitude = it.data.longitude
             pid = it.data.id
+            pname = it.data.name
             pno = it.pageNo
             psize = it.pageSize
 
@@ -141,6 +145,19 @@ class DetailsScreenActivity : AppCompatActivity() {
         res_address.setText(address)
         res_phno.setText(phone_num.toString())
         Glide.with(this).load(place_image).override(500,350).into(res_img)
+
+        when (overall_rating.toInt()){
+            1 -> show_rating.rating= 0.5F
+            2 -> show_rating.rating= 1F
+            3 -> show_rating.rating= 1.5F
+            4 -> show_rating.rating= 2F
+            5 -> show_rating.rating= 2.5F
+            6 -> show_rating.rating= 3F
+            7 -> show_rating.rating= 3.5F
+            8 -> show_rating.rating= 4F
+            9 -> show_rating.rating= 4.5F
+            10 -> show_rating.rating= 5F
+        }
 
     }
 

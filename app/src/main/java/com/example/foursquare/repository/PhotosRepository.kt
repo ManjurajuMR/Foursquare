@@ -20,7 +20,7 @@ class PhotosRepository(private val application: Application) {
     fun getPhotos(placeId:Int): LiveData<Photos> {
         Log.d("rep", "rp")
         val getphotosData: MutableLiveData<Photos> = MutableLiveData()
-        val photos = photosApi.getPhotos(placeId, 0, 5)
+        val photos = photosApi.getPhotos(placeId, 0, 50)
         photos.enqueue(object : Callback<Photos> {
             override fun onResponse(call: Call<Photos>, response: Response<Photos>) {
                 Log.d("uservalue", response.body().toString())
