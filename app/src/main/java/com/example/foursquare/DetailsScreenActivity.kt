@@ -1,24 +1,44 @@
 package com.example.foursquare
 
 import android.app.Dialog
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.bumptech.glide.Glide
 import com.example.foursquare.repository.HomeScreenRepository
 import com.example.foursquare.viewmodel.AuthenticationViewModel
 import com.example.foursquare.viewmodel.HomeViewModel
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.*
 import kotlinx.android.synthetic.main.activity_details_screen.*
 
 class DetailsScreenActivity : AppCompatActivity() {
     lateinit var myDialog : Dialog
     private lateinit var homeViewModel : HomeViewModel
-    //private lateinit var repmodel : HomeScreenRepository
+    lateinit var locnManager: FusedLocationProviderClient
+    private  var googleMap : GoogleMap? = null
+    private var mapReady : Boolean = false
+    private var lati : Double = 0.0
+    private var long : Double = 0.0
+    private var pid : Long = 0
+    private var pno : Long = 0
+    private var psize : Long = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details_screen)
@@ -30,11 +50,40 @@ class DetailsScreenActivity : AppCompatActivity() {
             onBackPressed()
         }*/
         myDialog = Dialog(this)
-        homeViewModel.getPlaceDetailsByPlaceId(10)
+
+        homeViewModel.getPlaceDetailsByPlaceId(12)
         setlivedata()
 
+        locnManager = this.let { LocationServices.getFusedLocationProviderClient(it) }!!
+        val supportMapFragment = SupportMapFragment.newInstance()
+        supportFragmentManager.beginTransaction().replace(R.id.reslocn_img, supportMapFragment).commit()
+        supportMapFragment.getMapAsync{
+            googleMap = it
+            mapReady = true
+            if(mapReady){
+                googleMap?.animateCamera(CameraUpdateFactory.newLatLngZoom(LatLng(lati, long), 15.0f))
+                googleMap?.addMarker(MarkerOptions().position(LatLng(lati,long)).title("Me"))
+            }
+        }
+
         add_review.setOnClickListener {
-            Toast.makeText(this,"hii",Toast.LENGTH_LONG).show()
+            val intent = Intent(this,AddReviewActivity::class.java)
+            intent.putExtra("pid",pid)
+            startActivity(intent)
+        }
+
+        check_photos.setOnClickListener {
+            val intent = Intent(this,PhotosActivity::class.java)
+            intent.putExtra("pid",pid)
+            startActivity(intent)
+        }
+
+        check_reviews.setOnClickListener {
+            val intent = Intent(this,ReviewScreenActivity::class.java)
+            intent.putExtra("pid",pid)
+            //intent.putExtra("pno",pno)
+            //intent.putExtra("psize",psize)
+            startActivity(intent)
         }
 
     }
@@ -62,6 +111,9 @@ class DetailsScreenActivity : AppCompatActivity() {
             val phone_num = it.data.phone
             val latitude = it.data.latitude
             val longitude = it.data.longitude
+            pid = it.data.id
+            pno = it.pageNo
+            psize = it.pageSize
 
             setDataToLayout(place_name,place_image,place_type,overall_rating,overview,address,phone_num,latitude,longitude)
         })
@@ -80,11 +132,15 @@ class DetailsScreenActivity : AppCompatActivity() {
         latitude: Double,
         longitude: Double
     ) {
+        lati = latitude
+        long = longitude
+        val res_img = findViewById<ImageView>(R.id.rest_img)
         detscreentoolbar_title.setText(place_name)
         res_type.setText(place_type)
         res_overview.setText(overview)
         res_address.setText(address)
         res_phno.setText(phone_num.toString())
+        Glide.with(this).load(place_image).override(500,350).into(res_img)
 
     }
 

@@ -66,7 +66,7 @@ data class PlaceType(
 
 private val klaxon = Klaxon()
 
-data class Place (
+data class Rplace (
     val status: Long,
     val error: String,
     val message: String,
@@ -85,7 +85,7 @@ data class Place (
 data class Pdata (
     val id: Long,
     val name: String,
-    val placeType: List<PlaceType>,
+    val placeType: List<RplaceType>,
     val overallRating: Double,
     val latitude: Double,
     val longitude: Double,
@@ -97,7 +97,7 @@ data class Pdata (
     val image: String
 )
 
-data class PlaceType (
+data class RplaceType (
     val id: Long,
     val name: String
 )
