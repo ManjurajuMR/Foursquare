@@ -1,7 +1,6 @@
 package com.example.foursquare.Home.Adapter
 
 import android.content.Context
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,7 +15,7 @@ import com.example.foursquare.Home.Adapter.tools.RatingBackground
 import com.example.foursquare.R
 import com.example.foursquare.model.Datum
 
-class RecyclerviewAdapter(private var arrayList: List<Datum>,private val mycontaxt:Context): RecyclerView.Adapter<RecyclerviewAdapter.ViewHolder>() {
+class RecyclerviewAdapter(private var arrayList: List<Datum>,private val mycontaxt:Context,private val listener: RecyclerviewAdapter.OnItemClickListener): RecyclerView.Adapter<RecyclerviewAdapter.ViewHolder>() {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
             val itemView = LayoutInflater.from(parent.context).inflate(R.layout.homerecyclerview_item, parent, false)
@@ -42,13 +41,18 @@ class RecyclerviewAdapter(private var arrayList: List<Datum>,private val myconta
             }else{
                 Toast.makeText(mycontaxt, "Item is null", Toast.LENGTH_LONG).show()
             }
+
+         /*   holder.itemView.setOnClickListener {
+               // arrayList.place.id
+                Toast.makeText(mycontaxt, "Item is clicked ${arrayList.place.id}", Toast.LENGTH_LONG).show()
+            }*/
         }
 
         override fun getItemCount(): Int {
             return arrayList.size
         }
 
-        inner class ViewHolder(view : View) : RecyclerView.ViewHolder(view){
+        inner class ViewHolder(view : View) : RecyclerView.ViewHolder(view),View.OnClickListener{
             val restimage: ImageView = view.findViewById(R.id.restimage)
             val restname: TextView = view.findViewById(R.id.restname)
             val rating: TextView = view.findViewById(R.id.rating)
@@ -58,13 +62,28 @@ class RecyclerviewAdapter(private var arrayList: List<Datum>,private val myconta
             val priceRange: TextView =view.findViewById(R.id.price_range)
             val distance: TextView =view.findViewById(R.id.distance)
 
-       /*     init {
-                fav_button.setOnClickListener {
-                    MainActivity.myweatherdatabase?.myDao()?.delete(arrayList[adapterPosition].PlaceName)
-                    //arrayList.remove(arrayList[adapterPosition])
-                    // notifyDataSetChanged()
-                    view.findNavController().navigate(R.id.nav_favourite)
+
+            init {
+                itemView.setOnClickListener(this)
+            }
+            override fun onClick(v: View?) {
+                val position=adapterPosition
+                if (position!=RecyclerView.NO_POSITION) {
+                    listener.onItemClick(position)
                 }
-            }*/
+            }
+
+
+            /*     init {
+                     fav_button.setOnClickListener {
+                         MainActivity.myweatherdatabase?.myDao()?.delete(arrayList[adapterPosition].PlaceName)
+                         //arrayList.remove(arrayList[adapterPosition])
+                         // notifyDataSetChanged()
+                         view.findNavController().navigate(R.id.nav_favourite)
+                     }
+                 }*/
         }
+    interface OnItemClickListener{
+        fun onItemClick(position: Int)
+    }
 }

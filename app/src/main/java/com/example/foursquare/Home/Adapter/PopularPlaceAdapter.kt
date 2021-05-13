@@ -16,7 +16,7 @@ import com.example.foursquare.R
 import com.example.foursquare.model.Datum
 import com.example.foursquare.model.Datum1
 
-class PopularPlaceAdapter(private var arrayList: List<Datum1>, private val mycontaxt: Context): RecyclerView.Adapter<PopularPlaceAdapter.ViewHolder>() {
+class PopularPlaceAdapter(private var arrayList: List<Datum1>, private val mycontaxt: Context,private val listener: PopularPlaceAdapter.OnItemClickListener): RecyclerView.Adapter<PopularPlaceAdapter.ViewHolder>() {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
             val itemView = LayoutInflater.from(parent.context).inflate(R.layout.homerecyclerview_item, parent, false)
@@ -27,8 +27,7 @@ class PopularPlaceAdapter(private var arrayList: List<Datum1>, private val mycon
             val arrayList = arrayList[position]
             if (arrayList!=null) {
                 holder.restname.text = arrayList.name
-                Glide.with(mycontaxt).load(arrayList.image).placeholder(R.drawable.loading)
-                    .into(holder.restimage)
+                Glide.with(mycontaxt).load(arrayList.image).placeholder(R.drawable.loading).into(holder.restimage)
                 val rating = arrayList.overallRating
                 holder.address.text = arrayList.landmark
                 holder.resType.text=arrayList.placeType[0].name
@@ -48,7 +47,7 @@ class PopularPlaceAdapter(private var arrayList: List<Datum1>, private val mycon
             return arrayList.size
         }
 
-        inner class ViewHolder(view : View) : RecyclerView.ViewHolder(view){
+        inner class ViewHolder(view : View) : RecyclerView.ViewHolder(view),View.OnClickListener{
             val restimage: ImageView = view.findViewById(R.id.restimage)
             val restname: TextView = view.findViewById(R.id.restname)
             val rating: TextView = view.findViewById(R.id.rating)
@@ -57,6 +56,16 @@ class PopularPlaceAdapter(private var arrayList: List<Datum1>, private val mycon
             val resType: TextView =view.findViewById(R.id.type)
             val priceRange: TextView =view.findViewById(R.id.price_range)
             val distance: TextView =view.findViewById(R.id.distance)
+
+            init {
+                itemView.setOnClickListener(this)
+            }
+            override fun onClick(v: View?) {
+                val position=adapterPosition
+                if (position!=RecyclerView.NO_POSITION) {
+                    listener.onItemClick(position)
+                }
+            }
 
             /*     init {
                      fav_button.setOnClickListener {
@@ -67,5 +76,8 @@ class PopularPlaceAdapter(private var arrayList: List<Datum1>, private val mycon
                      }
                  }*/
         }
+    interface OnItemClickListener{
+        fun onItemClick(position:Int)
+    }
 }
 
