@@ -38,7 +38,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:text="Attil"
                 android:fontFamily="@font/avenir_medium"
                 android:textSize="24sp"/>
@@ -50,11 +50,11 @@
     <TextView
         android:id="@+id/res_type"
         android:layout_width="350dp"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:text="heollo this is walter white"
         android:textAlignment="center"
-        android:layout_marginTop="230dp"
-        android:textColor="@color/black"
+        android:layout_marginTop="255dp"
+        android:textColor="@color/white"
         android:layout_centerHorizontal="true"
         android:textSize="23sp"
         android:fontFamily="@font/avenir_book"/>
@@ -66,7 +66,8 @@
         android:numStars="5"
         android:stepSize="0.5"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="290dp"/>
+        android:layout_below="@+id/res_type"
+        android:layout_marginTop="5dp"/>
 
     <!--<LinearLayout
         android:layout_width="match_parent"
@@ -179,7 +180,9 @@
         android:layout_toEndOf="@+id/give_rating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/photos_icon"/>
+        android:src="@drawable/photos_icon"
+        android:clickable="true"
+        android:focusable="true"/>
 
     <TextView
         android:id="@+id/text_photo"
@@ -200,7 +203,9 @@
         android:layout_toEndOf="@+id/check_photos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/review_icon"/>
+        android:src="@drawable/review_icon"
+        android:clickable="true"
+        android:focusable="true" />
 
     <TextView
         android:layout_below="@id/check_reviews"
@@ -238,13 +243,20 @@
         android:layout_marginTop="520dp"
         android:fontFamily="@font/avenir_book"/>
     
-    <ImageView
+    <!--<ImageView
         android:id="@+id/reslocn_img"
         android:layout_width="match_parent"
         android:layout_below="@+id/res_overview"
         android:layout_height="170dp"
         android:layout_marginTop="20dp"
-        android:fontFamily="@font/avenir_book"/>
+        android:fontFamily="@font/avenir_book"/>-->
+
+    <FrameLayout
+        android:id="@+id/reslocn_img"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/res_overview"
+        android:layout_height="170dp"
+        android:layout_marginTop="20dp"/>
 
     <TextView
         android:layout_below="@+id/res_overview"
