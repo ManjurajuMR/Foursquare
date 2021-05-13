@@ -2,6 +2,7 @@ package com.example.foursquare.Home
 
 import android.Manifest
 import android.app.Activity
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
 import android.os.Bundle
@@ -17,6 +18,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.foursquare.Home.Adapter.RecyclerviewAdapter
+import com.example.foursquare.PhotosActivity
 import com.example.foursquare.R
 import com.example.foursquare.viewmodel.PlaceViewModel
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -28,7 +30,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 
 
-class NearyouFragment : Fragment() {
+class NearyouFragment : Fragment(),RecyclerviewAdapter.OnItemClickListener {
     lateinit var locationManager: FusedLocationProviderClient
     private lateinit var placeViewModel : PlaceViewModel
     private  var googleMap : GoogleMap? = null
@@ -96,7 +98,7 @@ class NearyouFragment : Fragment() {
                     Log.d("res","re")
                     if (it != null) {
                            // Toast.makeText(context, "$it", Toast.LENGTH_SHORT).show()
-                        val adapter = RecyclerviewAdapter(it.data,requireContext())
+                        val adapter = RecyclerviewAdapter(it.data,requireContext(),this)
                         val rv : RecyclerView = view?.findViewById(R.id.nearyou_recyclerView)!!
                         rv.adapter = adapter
                         rv.layoutManager = LinearLayoutManager(requireContext())
@@ -146,5 +148,10 @@ class NearyouFragment : Fragment() {
                 return
             }
         }
+    }
+
+    override fun onItemClick(position: Int) {
+        Log.d("position", "${position} got")
+        Toast.makeText(context, "Item is clicked ${position}", Toast.LENGTH_LONG).show()
     }
 }
