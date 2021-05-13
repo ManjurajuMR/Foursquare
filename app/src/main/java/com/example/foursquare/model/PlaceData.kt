@@ -29,23 +29,23 @@ data class Datum (
 }
 
 data class Place (
-    val id: Long,
-    val name: String,
-    val placeType: List<PlaceType>,
-    val overallRating: Double,
-    val latitude: Double,
-    val longitude: Double,
-    val cost: Long,
-    val phone: Long,
-    val landmark: String,
-    val address: String,
-    val overview: String,
+   val id: Long,
+   val name: String,
+   val placeType: List<PlaceType>,
+   val overallRating: Double,
+   val latitude: Double,
+   val longitude: Double,
+   val cost: Long,
+   val phone: Long,
+   val landmark: String,
+   val address: String,
+   val overview: String,
     val image: String
 )
 
 data class PlaceType (
     val id: Long,
-    val name: String
+   val name: String
 ) {
 
 }
