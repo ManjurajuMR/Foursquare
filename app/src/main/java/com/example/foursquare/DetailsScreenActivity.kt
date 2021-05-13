@@ -45,10 +45,10 @@ class DetailsScreenActivity : AppCompatActivity() {
         supportActionBar?.hide()
         homeViewModel = ViewModelProvider.AndroidViewModelFactory(application).create(HomeViewModel::class.java)
 
-        val detscreen_tb=findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar1)
-        /*detscreen_tb.setNavigationOnClickListener {
+        val detscreen_tb=findViewById<androidx.appcompat.widget.Toolbar>(R.id.detailscreen_toolbar)
+        detscreen_tb.setNavigationOnClickListener {
             onBackPressed()
-        }*/
+        }
         myDialog = Dialog(this)
 
         homeViewModel.getPlaceDetailsByPlaceId(12)

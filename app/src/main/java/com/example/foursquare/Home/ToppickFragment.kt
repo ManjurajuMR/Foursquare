@@ -14,7 +14,7 @@ import com.example.foursquare.Home.Adapter.RecyclerviewAdapter
 import com.example.foursquare.R
 import com.example.foursquare.viewmodel.PlaceViewModel
 
-class ToppickFragment : Fragment(),RecyclerviewAdapter.OnItemClickListener {
+class ToppickFragment : Fragment(),RecyclerviewAdapter.OnSiteItemClickListener {
     private lateinit var placeViewModel : PlaceViewModel
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         placeViewModel= ViewModelProvider.AndroidViewModelFactory(requireActivity().application).create(PlaceViewModel::class.java)
@@ -34,7 +34,7 @@ class ToppickFragment : Fragment(),RecyclerviewAdapter.OnItemClickListener {
                 Log.d("res","re")
                 if (it != null) {
                     // Toast.makeText(context, "$it", Toast.LENGTH_SHORT).show()
-                    val adapter = RecyclerviewAdapter(it.data,requireContext(),this)
+                    val adapter = RecyclerviewAdapter(it.data/*,requireContext()*/,this)
                     val rv : RecyclerView = view?.findViewById(R.id.toppick_recyclerView)!!
                     rv.adapter = adapter
                     rv.layoutManager = LinearLayoutManager(requireContext())
@@ -43,7 +43,7 @@ class ToppickFragment : Fragment(),RecyclerviewAdapter.OnItemClickListener {
             })
     }
 
-    override fun onItemClick(position: Int) {
+    override fun onSiteClick(position: Int) {
         Toast.makeText(context, "Item is clicked ${position}", Toast.LENGTH_LONG).show()
     }
 

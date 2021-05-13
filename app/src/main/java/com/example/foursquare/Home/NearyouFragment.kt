@@ -30,7 +30,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 
 
-class NearyouFragment : Fragment(),RecyclerviewAdapter.OnItemClickListener {
+class NearyouFragment : Fragment(),RecyclerviewAdapter.OnSiteItemClickListener {
     lateinit var locationManager: FusedLocationProviderClient
     private lateinit var placeViewModel : PlaceViewModel
     private  var googleMap : GoogleMap? = null
@@ -98,7 +98,7 @@ class NearyouFragment : Fragment(),RecyclerviewAdapter.OnItemClickListener {
                     Log.d("res","re")
                     if (it != null) {
                            // Toast.makeText(context, "$it", Toast.LENGTH_SHORT).show()
-                        val adapter = RecyclerviewAdapter(it.data,requireContext(),this)
+                        val adapter = RecyclerviewAdapter(it.data,/*requireContext(),*/this)
                         val rv : RecyclerView = view?.findViewById(R.id.nearyou_recyclerView)!!
                         rv.adapter = adapter
                         rv.layoutManager = LinearLayoutManager(requireContext())
@@ -150,7 +150,7 @@ class NearyouFragment : Fragment(),RecyclerviewAdapter.OnItemClickListener {
         }
     }
 
-    override fun onItemClick(position: Int) {
+    override fun onSiteClick(position: Int) {
         Log.d("position", "${position} got")
         Toast.makeText(context, "Item is clicked ${position}", Toast.LENGTH_LONG).show()
     }
