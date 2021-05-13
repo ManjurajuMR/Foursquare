@@ -16,11 +16,11 @@ import com.example.foursquare.R
 import com.example.foursquare.model.Datum
 import com.example.foursquare.model.Datum1
 
-class PopularPlaceAdapter(private var arrayList: List<Datum1>, private val mycontaxt: Context,private val listener: PopularPlaceAdapter.OnItemClickListener): RecyclerView.Adapter<PopularPlaceAdapter.ViewHolder>() {
+class PopularPlaceAdapter(private var arrayList: List<Datum1>, private val mycontaxt: Context,private val listener: OnItemClickListener): RecyclerView.Adapter<PopularPlaceAdapter.ViewHolder>() {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
             val itemView = LayoutInflater.from(parent.context).inflate(R.layout.homerecyclerview_item, parent, false)
-            return ViewHolder(itemView)
+            return ViewHolder(itemView, listener)
         }
 
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -47,7 +47,7 @@ class PopularPlaceAdapter(private var arrayList: List<Datum1>, private val mycon
             return arrayList.size
         }
 
-        inner class ViewHolder(view : View) : RecyclerView.ViewHolder(view),View.OnClickListener{
+        inner class ViewHolder(view : View, private val onclicklistener: OnItemClickListener) : RecyclerView.ViewHolder(view),View.OnClickListener{
             val restimage: ImageView = view.findViewById(R.id.restimage)
             val restname: TextView = view.findViewById(R.id.restname)
             val rating: TextView = view.findViewById(R.id.rating)
@@ -61,10 +61,11 @@ class PopularPlaceAdapter(private var arrayList: List<Datum1>, private val mycon
                 itemView.setOnClickListener(this)
             }
             override fun onClick(v: View?) {
-                val position=adapterPosition
+                /*val position=adapterPosition
                 if (position!=RecyclerView.NO_POSITION) {
                     listener.onItemClick(position)
-                }
+                }*/
+                onclicklistener.onItemClick(adapterPosition)
             }
 
             /*     init {
