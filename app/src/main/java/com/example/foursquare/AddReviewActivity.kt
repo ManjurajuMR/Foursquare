@@ -55,7 +55,8 @@ class AddReviewActivity : AppCompatActivity() {
 
     private fun Addreview() {
         val userId = 110
-        val placeId = intent.getIntExtra("pid",0)
+        //val placeId = intent.getIntExtra("pid",0)
+        val placeId = intent.extras?.getInt("pid")
        // val placeId =23
         Log.d("placeid", "${placeId}")
         var Token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0MUBnbWFpbC5jb20iLCJleHAiOjE2MjA5MjU5MjUsImlhdCI6MTYyMDkwNzkyNX0.ZzTN92UMvhSSwS6ydFBHOMZ3KhP8MA9Xbv8QYzif3m07o4p_0CvTXgeukTKB0EnJt0NtSRXVnaXHcYjCwyVaeQ"

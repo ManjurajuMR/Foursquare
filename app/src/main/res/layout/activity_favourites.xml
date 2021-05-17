@@ -79,7 +79,7 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/frecyclerView"
         tools:listitem="@layout/favrecyclerview_item"
         android:layout_width="match_parent"
         android:layout_height="0dp"

@@ -1,7 +1,12 @@
 package com.example.foursquare
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -16,8 +21,8 @@ class ReviewScreenActivity : AppCompatActivity() {
         setContentView(R.layout.activity_review_screen)
 
         reviewsViewModel = ViewModelProvider.AndroidViewModelFactory(application).create(ReviewsViewModel::class.java)
-        val plc_id = intent.extras?.getLong("pid")?.toInt()
-        val placeName= intent.getStringExtra("pname")
+        val plc_id = intent.extras?.getInt("pid")
+        val placeName= intent.extras?.getString("pname")
 
         //val page_no = intent.extras?.getLong("pno")?.toInt()
         //val page_size = intent.extras?.getLong("psize")?.toInt()
@@ -41,6 +46,36 @@ class ReviewScreenActivity : AppCompatActivity() {
                     })
         }
 
-
+        add_rev.setOnClickListener {
+            val intent = Intent(this,AddReviewActivity::class.java)
+            intent.putExtra("pid",plc_id)
+            intent.putExtra("pname",placeName)
+            startActivity(intent)
+        }
     }
+
+    /*override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        *//*val inflater = menuInflater
+        inflater.inflate(R.menu.rvscreen_menu,menu)*//*
+        menuInflater.inflate(R.menu.rvscreen_menu,menu)
+        Log.d("zzz","abc")
+        return true
+        //return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId){
+            R.id.add_rv ->{
+                *//*val intent = Intent(this,AddReviewActivity::class.java)
+                intent.putExtra("pid",placeID)
+                intent.putExtra("pname",pname)
+                startActivity(intent)*//*
+                Toast.makeText(this,"click",Toast.LENGTH_LONG).show()
+                Log.d("bye","bye")
+            }
+        }
+        Log.d("xxx","def")
+        return super.onOptionsItemSelected(item)
+    }*/
+
 }

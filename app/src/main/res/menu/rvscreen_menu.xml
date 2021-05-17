@@ -7,7 +7,7 @@
         android:visible="true"
         android:title="Add Review"
         android:icon="@drawable/add_review"
-        app:showAsAction="ifRoom|collapseActionView"
+        app:showAsAction="ifRoom"
         android:clickable="true" />
 
 </menu>
