@@ -60,6 +60,7 @@ class NearyouFragment : Fragment(),RecyclerviewAdapter.OnItemClickListener {
 
     //
     fun Location(){
+
         val Currentlocation=locationManager.lastLocation
 
         if (context?.let { ActivityCompat.checkSelfPermission(
