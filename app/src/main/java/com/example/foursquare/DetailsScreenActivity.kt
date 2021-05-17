@@ -7,8 +7,14 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+
+import android.widget.*
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.Fragment
+
 import android.widget.ImageView
 import android.widget.TextView
+
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.example.foursquare.authentication.Constents
@@ -83,7 +89,10 @@ class DetailsScreenActivity : AppCompatActivity() {
 
         check_reviews.setOnClickListener {
             val intent = Intent(this,ReviewScreenActivity::class.java)
+
+            intent.putExtra("pname",pname)
             //intent.putExtra("pid",pid)
+
             //intent.putExtra("pno",pno)
             //intent.putExtra("psize",psize)
             startActivity(intent)
@@ -127,12 +136,24 @@ class DetailsScreenActivity : AppCompatActivity() {
 
     fun ShowPopup(v : View?){
         myDialog.setContentView(R.layout.rating_popup)
+        var rate : String = ""
         val close : TextView = myDialog.findViewById(R.id.close_popup)
         close.setOnClickListener(object : View.OnClickListener {
             override fun onClick(p0: View?) {
                 myDialog.dismiss()
             }
         })
+        val ratingBar : RatingBar = myDialog.findViewById(R.id.ratbar_popup)
+        ratingBar.setOnRatingBarChangeListener { ratingBar, rating, b ->
+            //Toast.makeText(this,"$rating", Toast.LENGTH_LONG).show()
+            rate = rating.toString()
+        }
+        val submit : Button = myDialog.findViewById(R.id.submit_rating_popup)
+        submit.setOnClickListener {
+            Toast.makeText(this,"$rate", Toast.LENGTH_LONG).show()
+            myDialog.dismiss()
+        }
+
         //myDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         myDialog.show()
     }

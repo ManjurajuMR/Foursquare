@@ -16,18 +16,29 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="#370F24"
-            app:navigationIcon="@drawable/back_icon"
-            app:menu="@menu/rvscreen_menu">
+            app:navigationIcon="@drawable/back_icon">
+
+
 
             <TextView
                 android:id="@+id/reviewscreentoolbar_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_marginStart="100dp"
                 android:textColor="@color/white"
                 android:text="Attil"
                 android:textSize="24sp"
                 android:fontFamily="@font/avenir_medium"/>
+
+            <ImageView
+                android:id="@+id/add_rev"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/add_review"
+                tools:ignore="ContentDescription"
+                android:clickable="true"
+                android:layout_marginStart="120dp"
+                android:focusable="true" />
 
         </androidx.appcompat.widget.Toolbar>
 
