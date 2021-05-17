@@ -6,6 +6,7 @@ import android.util.Log
 import android.widget.GridView
 import androidx.lifecycle.ViewModelProvider
 import com.example.foursquare.adapters.PhotosAdapter
+import com.example.foursquare.authentication.Constents
 import com.example.foursquare.viewmodel.PhotosViewModel
 import kotlinx.android.synthetic.main.activity_photos.*
 
@@ -34,7 +35,9 @@ class PhotosActivity : AppCompatActivity() {
     }
 
     private fun loadPhotosData() {
-        val placeID= intent.getLongExtra("pid",0).toInt()
+        val sharedPreferences = getSharedPreferences(Constents.Shared_pref, MODE_PRIVATE)
+        val placeID=sharedPreferences.getInt(Constents.PLACE_ID,1)
+        //val placeID= intent.getLongExtra("pid",0).toInt()
         val placeName= intent.getStringExtra("pname")
         if (placeID!=null) {
             toolbar_title.setText(placeName)

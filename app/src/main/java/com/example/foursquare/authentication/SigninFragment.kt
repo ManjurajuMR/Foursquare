@@ -1,5 +1,6 @@
 package com.example.foursquare.authentication
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -8,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.foursquare.Home.HomeActivity
@@ -53,10 +55,18 @@ class SigninFragment : Fragment() {
                 Log.d("user", "login")
                 if (it != null) {
                     if (it.getStatus() == 200) {
+                        //
+                        val sharedPreferences = requireContext().getSharedPreferences(Constents.Shared_pref,Context.MODE_PRIVATE)
+                        val sharedEditor = sharedPreferences.edit()
                         val userId = it.getData().getUserData().getUserId().toString()
                         val token = it.getData().getToken()
+                        Log.d("userids","${userId}+${token}")
+                        sharedEditor.putString(Constents.USER_ID, userId)
+                        sharedEditor.putString(Constents.USER_TOKEN, token)
+                        sharedEditor.apply()
                         val intent=Intent(activity,HomeActivity::class.java)
                         activity?.startActivity(intent)
+                        activity?.finish()
                     } else {
                         Toast.makeText(activity, it.getMessage(), Toast.LENGTH_SHORT).show()
                     }
