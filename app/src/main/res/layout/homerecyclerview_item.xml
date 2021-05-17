@@ -148,7 +148,7 @@
                         android:fontFamily="@font/avenir_book"
                         android:text="place"
                         android:textColor="#000000"
-                        android:textSize="14dp" />-->
+                        android:textSize="14dp" />&ndash;&gt;
 
                     <TextView
                         android:id="@+id/address"
@@ -169,7 +169,7 @@
 
 
 
-<!--
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"

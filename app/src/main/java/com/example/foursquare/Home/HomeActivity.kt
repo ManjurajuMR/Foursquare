@@ -14,13 +14,19 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager.widget.ViewPager
 import com.example.foursquare.*
 import com.example.foursquare.Home.Adapter.HomeAdapter
+
+import com.example.foursquare.search.Search_homeActivity
+
 import com.example.foursquare.authentication.AuthenticationActivity
 import com.example.foursquare.authentication.Constents
+
 
 import com.example.foursquare.viewmodel.PlaceViewModel
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.tabs.TabItem
 import com.google.android.material.tabs.TabLayout
+import kotlinx.android.synthetic.main.activity_details_screen.*
+import kotlinx.android.synthetic.main.content_main.*
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var placeViewModel : PlaceViewModel
@@ -104,6 +110,7 @@ class HomeActivity : AppCompatActivity() {
                 startActivity(Intent(this, FeedbackActivity::class.java))
             }else if (id == R.id.nav_aboutus) {
                 startActivity(Intent(this, AboutusActivity::class.java))
+
             }else if (id == R.id.nav_logout) {
                 val sharedPreferences = getSharedPreferences(Constents.Shared_pref, MODE_PRIVATE)
                 val editor = sharedPreferences.edit()
@@ -112,15 +119,29 @@ class HomeActivity : AppCompatActivity() {
                 Toast.makeText(this,"loged_out",Toast.LENGTH_SHORT).show()
                 startActivity(Intent(this, AuthenticationActivity::class.java))
                 finish()
+
             }
             drawerLayout.closeDrawer(GravityCompat.START)
             true
         }
 
+
+        filter_icon.setOnClickListener {
+            val intent = Intent(this,FilterActivity::class.java)
+            startActivity(intent)
+        }
+        search_icon.setOnClickListener {
+            val intent = Intent(this,Search_homeActivity::class.java)
+            startActivity(intent)
+        }
+
+
     }
 
-    fun onFilterClick(){
-        val intent = Intent(this,FilterActivity::class.java)
-        startActivity(intent)
+  //  fun onFilterClick(){
+    //    val intent = Intent(this,FilterActivity::class.java)
+      //  startActivity(intent)
+
     }
+    
 }
