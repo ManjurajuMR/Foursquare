@@ -2,22 +2,13 @@ package com.example.foursquare.repository
 
 import android.app.Application
 import android.util.Log
-import android.widget.Toast
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.foursquare.model.Place
 import com.example.foursquare.model.Rplace
-import com.example.foursquare.model.User
 import com.example.foursquare.services.HomescreenApi
 import com.example.foursquare.services.RetrofitApiInstance
-import okhttp3.Cache
-import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-import okhttp3.OkHttpClient.Builder as Builder1
 
 class HomeScreenRepository(val application: Application) {
     private val homeApi = RetrofitApiInstance.getApiInstance(HomescreenApi::class.java)

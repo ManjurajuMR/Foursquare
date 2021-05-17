@@ -2,20 +2,14 @@ package com.example.foursquare
 
 import android.app.Dialog
 import android.content.Intent
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
-import com.example.foursquare.repository.HomeScreenRepository
-import com.example.foursquare.viewmodel.AuthenticationViewModel
+import com.example.foursquare.authentication.Constents
 import com.example.foursquare.viewmodel.HomeViewModel
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -24,7 +18,6 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
-import kotlinx.android.synthetic.*
 import kotlinx.android.synthetic.main.activity_details_screen.*
 
 class DetailsScreenActivity : AppCompatActivity() {
@@ -52,7 +45,9 @@ class DetailsScreenActivity : AppCompatActivity() {
         }
         myDialog = Dialog(this)
 
-        val placeID= intent.getIntExtra("placeId",0)
+        val sharedPreferences = getSharedPreferences(Constents.Shared_pref, MODE_PRIVATE)
+        val placeID = sharedPreferences.getInt(Constents.PLACE_ID,1)
+        //val placeID= intent.getIntExtra("placeId",0)
         if (placeID!=null){
             homeViewModel.getPlaceDetailsByPlaceId(placeID)
             setlivedata()
@@ -72,21 +67,21 @@ class DetailsScreenActivity : AppCompatActivity() {
 
         add_review.setOnClickListener {
             val intent = Intent(this,AddReviewActivity::class.java)
-            intent.putExtra("pid",placeID)
+            //intent.putExtra("pid",placeID)
             intent.putExtra("pname",pname)
             startActivity(intent)
         }
 
         check_photos.setOnClickListener {
             val intent = Intent(this,PhotosActivity::class.java)
-            intent.putExtra("pid",pid)
+            //intent.putExtra("pid",pid)
             intent.putExtra("pname",pname)
             startActivity(intent)
         }
 
         check_reviews.setOnClickListener {
             val intent = Intent(this,ReviewScreenActivity::class.java)
-            intent.putExtra("pid",pid)
+            //intent.putExtra("pid",pid)
             //intent.putExtra("pno",pno)
             //intent.putExtra("psize",psize)
             startActivity(intent)

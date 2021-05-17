@@ -1,5 +1,6 @@
 package com.example.foursquare.authentication
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -48,8 +49,17 @@ class SignupFragment : Fragment(){
                         authenticationViewModel.authenticateUser(loginUser).observe(viewLifecycleOwner, {
                             if (it != null) {
                                 if (it.getStatus() == 200) {
+                                    val sharedPreferences = requireContext().getSharedPreferences(Constents.Shared_pref,
+                                        Context.MODE_PRIVATE)
+                                    val sharedEditor = sharedPreferences.edit()
+                                    val userId = it.getData().getUserData().getUserId().toString()
+                                    val token = it.getData().getToken()
+                                    sharedEditor.putString(Constents.USER_ID, userId)
+                                    sharedEditor.putString(Constents.USER_TOKEN, token)
+                                    sharedEditor.apply()
                                     val intent = Intent(activity, HomeActivity::class.java)
                                     activity?.startActivity(intent)
+                                    activity?.finish()
                                 }
                                 else
                                     Toast.makeText(activity, it.getMessage(), Toast.LENGTH_SHORT).show()

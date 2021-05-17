@@ -27,7 +27,6 @@ class PhotoDetaisActivity : AppCompatActivity() {
         topAppbar.setNavigationOnClickListener {
             onBackPressed()
         }
-
         loadPhotoDetailsData()
     }
 
