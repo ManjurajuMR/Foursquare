@@ -5,6 +5,7 @@ import com.beust.klaxon.*
 
 private val klaxon = Klaxon()
 
+
 data class PlaceData (
     val status: Long,
     val error: String,
@@ -49,4 +50,3 @@ data class PlaceType (
 ) {
 
 }
-

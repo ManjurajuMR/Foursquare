@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.foursquare.adapters.ReviewScreenAdapter
+import com.example.foursquare.authentication.Constents
 import com.example.foursquare.viewmodel.ReviewsViewModel
 import kotlinx.android.synthetic.main.activity_review_screen.*
 
@@ -21,8 +22,11 @@ class ReviewScreenActivity : AppCompatActivity() {
         setContentView(R.layout.activity_review_screen)
 
         reviewsViewModel = ViewModelProvider.AndroidViewModelFactory(application).create(ReviewsViewModel::class.java)
-        val plc_id = intent.extras?.getInt("pid")
-        val placeName= intent.extras?.getString("pname")
+
+        //val plc_id = intent.extras?.getLong("pid")?.toInt()
+        val placeName= intent.getStringExtra("pname")
+        val sharedPreferences = getSharedPreferences(Constents.Shared_pref, MODE_PRIVATE)
+        val plc_id=sharedPreferences.getInt(Constents.PLACE_ID,1)
 
         //val page_no = intent.extras?.getLong("pno")?.toInt()
         //val page_size = intent.extras?.getLong("psize")?.toInt()

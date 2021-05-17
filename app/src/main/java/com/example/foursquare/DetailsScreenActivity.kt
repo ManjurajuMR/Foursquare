@@ -2,18 +2,22 @@ package com.example.foursquare
 
 import android.app.Dialog
 import android.content.Intent
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
+
 import android.widget.*
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.Fragment
+
+import android.widget.ImageView
+import android.widget.TextView
+
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
-import com.example.foursquare.repository.HomeScreenRepository
-import com.example.foursquare.viewmodel.AuthenticationViewModel
+import com.example.foursquare.authentication.Constents
 import com.example.foursquare.viewmodel.HomeViewModel
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -22,7 +26,6 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
-import kotlinx.android.synthetic.*
 import kotlinx.android.synthetic.main.activity_details_screen.*
 
 class DetailsScreenActivity : AppCompatActivity() {
@@ -41,7 +44,7 @@ class DetailsScreenActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details_screen)
-        supportActionBar?.hide()
+        //supportActionBar?.hide()
         homeViewModel = ViewModelProvider.AndroidViewModelFactory(application).create(HomeViewModel::class.java)
 
         val detscreen_tb=findViewById<androidx.appcompat.widget.Toolbar>(R.id.detailscreen_toolbar)
@@ -50,7 +53,9 @@ class DetailsScreenActivity : AppCompatActivity() {
         }
         myDialog = Dialog(this)
 
-        val placeID= intent.getIntExtra("placeId",0)
+        val sharedPreferences = getSharedPreferences(Constents.Shared_pref, MODE_PRIVATE)
+        val placeID = sharedPreferences.getInt(Constents.PLACE_ID,1)
+        //val placeID= intent.getIntExtra("placeId",0)
         if (placeID!=null){
             homeViewModel.getPlaceDetailsByPlaceId(placeID)
             setlivedata()
@@ -70,28 +75,64 @@ class DetailsScreenActivity : AppCompatActivity() {
 
         add_review.setOnClickListener {
             val intent = Intent(this,AddReviewActivity::class.java)
-            intent.putExtra("pid",placeID)
+            //intent.putExtra("pid",placeID)
             intent.putExtra("pname",pname)
             startActivity(intent)
         }
 
         check_photos.setOnClickListener {
             val intent = Intent(this,PhotosActivity::class.java)
-            intent.putExtra("pid",pid)
+            //intent.putExtra("pid",pid)
             intent.putExtra("pname",pname)
             startActivity(intent)
         }
 
         check_reviews.setOnClickListener {
             val intent = Intent(this,ReviewScreenActivity::class.java)
-            intent.putExtra("pid",placeID)
+
             intent.putExtra("pname",pname)
+            //intent.putExtra("pid",pid)
+
             //intent.putExtra("pno",pno)
             //intent.putExtra("psize",psize)
             startActivity(intent)
         }
 
+        detscreen_tb.setOnMenuItemClickListener { item ->
+            val id = item?.itemId
+            if (id == R.id.share_det) {
+                var intent = Intent().apply {
+                    this.action = Intent.ACTION_SEND
+                    this.putExtra(Intent.EXTRA_TEXT, "share")
+                    this.type = "image"
+                }
+                startActivity(intent)
+
+            }
+            super.onOptionsItemSelected(item)
+        }
     }
+
+//    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+//        menuInflater.inflate(R.menu.detscreen_menu,menu)
+//        return super.onCreateOptionsMenu(menu)
+//    }
+//
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        val id = item?.itemId
+//        if (id == R.id.share_det) {
+//            var intent = Intent().apply {
+//                this.action = Intent.ACTION_SEND
+//                this.putExtra(Intent.EXTRA_TEXT,"We are sharing data between 2 apps")
+//                this.type = "plain/text"
+//            }
+//            startActivity(intent)
+//
+//        }
+//            return super.onOptionsItemSelected(item)
+//    }
+
+
 
     fun ShowPopup(v : View?){
         myDialog.setContentView(R.layout.rating_popup)
