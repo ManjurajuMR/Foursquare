@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -17,6 +18,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.example.foursquare.repository.HomeScreenRepository
+import com.example.foursquare.viewmodel.AddFavouriteViewModel
 import com.example.foursquare.viewmodel.AuthenticationViewModel
 import com.example.foursquare.viewmodel.HomeViewModel
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -32,6 +34,7 @@ import kotlinx.android.synthetic.main.activity_details_screen.*
 class DetailsScreenActivity : AppCompatActivity() {
     lateinit var myDialog : Dialog
     private lateinit var homeViewModel : HomeViewModel
+    private lateinit var addfavViewModel : AddFavouriteViewModel
     lateinit var locnManager: FusedLocationProviderClient
     private  var googleMap : GoogleMap? = null
     private var mapReady : Boolean = false
@@ -46,6 +49,8 @@ class DetailsScreenActivity : AppCompatActivity() {
         setContentView(R.layout.activity_details_screen)
         //supportActionBar?.hide()
         homeViewModel = ViewModelProvider.AndroidViewModelFactory(application).create(HomeViewModel::class.java)
+
+        addfavViewModel = ViewModelProvider.AndroidViewModelFactory(application).create(AddFavouriteViewModel::class.java)
 
         val detscreen_tb=findViewById<androidx.appcompat.widget.Toolbar>(R.id.detailscreen_toolbar)
         detscreen_tb.setNavigationOnClickListener {
@@ -101,6 +106,8 @@ class DetailsScreenActivity : AppCompatActivity() {
             }
             super.onOptionsItemSelected(item)
         }
+
+        loadPlaceData()
     }
 
 //    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -178,6 +185,25 @@ class DetailsScreenActivity : AppCompatActivity() {
         res_phno.setText(phone_num.toString())
         Glide.with(this).load(place_image).override(500,350).into(res_img)
 
+    }
+
+    private fun loadPlaceData() {
+
+        var Token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ2YWliaGF2aUBnbWFpbC5jb20iLCJleHAiOjE2MjA5MDUyMTIsImlhdCI6MTYyMDg4NzIxMn0.tdfvDyW2-RAWvraegZVaLXgPFRatDHJD6DfYh4g9iPftuICADfScIo_e9j7cTJ0jtq_oVslt5zqzM_xTmgdNNw"
+
+        addfavViewModel.addfav(Token,129,12)
+            ?.observe(this, {
+//                Log.d("res", "re")
+                if(it!= null){
+                    if (it.getStatus() == 200)
+                        Toast.makeText(applicationContext, "Added to favourite", Toast.LENGTH_SHORT).show()
+                    else {
+                        val msg = it.getMessage()
+
+                        Toast.makeText(applicationContext, "msg", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            })
     }
 
 }

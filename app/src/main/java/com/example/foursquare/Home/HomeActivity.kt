@@ -14,11 +14,14 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager.widget.ViewPager
 import com.example.foursquare.*
 import com.example.foursquare.Home.Adapter.HomeAdapter
+import com.example.foursquare.search.Search_homeActivity
 
 import com.example.foursquare.viewmodel.PlaceViewModel
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.tabs.TabItem
 import com.google.android.material.tabs.TabLayout
+import kotlinx.android.synthetic.main.activity_details_screen.*
+import kotlinx.android.synthetic.main.content_main.*
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var placeViewModel : PlaceViewModel
@@ -102,18 +105,22 @@ class HomeActivity : AppCompatActivity() {
                 startActivity(Intent(this, FeedbackActivity::class.java))
             }else if (id == R.id.nav_aboutus) {
                 startActivity(Intent(this, AboutusActivity::class.java))
-            }else if (id == R.id.nav_feedback) {
+            }else if (id == R.id.nav_logout){
                 Toast.makeText(this,"logout",Toast.LENGTH_SHORT).show()
             }
             drawerLayout.closeDrawer(GravityCompat.START)
             true
         }
 
-    }
+        filter_icon.setOnClickListener {
+            val intent = Intent(this,FilterActivity::class.java)
+            startActivity(intent)
+        }
+        search_icon.setOnClickListener {
+            val intent = Intent(this,Search_homeActivity::class.java)
+            startActivity(intent)
+        }
 
-
-    fun onFilterClick(){
-        val intent = Intent(this,FilterActivity::class.java)
-        startActivity(intent)
     }
+    
 }

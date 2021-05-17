@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         val check_btn=findViewById<TextView>(R.id.hellowold)
         check_btn.setOnClickListener {
 
-            val intent=Intent(this,DetailsScreenActivity::class.java)
+            val intent=Intent(this,HomeActivity::class.java)
 
             startActivity(intent)
         }
