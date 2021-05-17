@@ -136,7 +136,7 @@ class DetailsScreenActivity : AppCompatActivity() {
 
     fun ShowPopup(v : View?){
         myDialog.setContentView(R.layout.rating_popup)
-        var rate : String = ""
+        var rate : Int = 1
         val close : TextView = myDialog.findViewById(R.id.close_popup)
         close.setOnClickListener(object : View.OnClickListener {
             override fun onClick(p0: View?) {
@@ -146,11 +146,12 @@ class DetailsScreenActivity : AppCompatActivity() {
         val ratingBar : RatingBar = myDialog.findViewById(R.id.ratbar_popup)
         ratingBar.setOnRatingBarChangeListener { ratingBar, rating, b ->
             //Toast.makeText(this,"$rating", Toast.LENGTH_LONG).show()
-            rate = rating.toString()
+            rate = rating.toInt()
         }
         val submit : Button = myDialog.findViewById(R.id.submit_rating_popup)
         submit.setOnClickListener {
-            Toast.makeText(this,"$rate", Toast.LENGTH_LONG).show()
+            //Toast.makeText(this,"$rate", Toast.LENGTH_LONG).show()
+             submitUserRating(rate)
             myDialog.dismiss()
         }
 
@@ -178,6 +179,32 @@ class DetailsScreenActivity : AppCompatActivity() {
         })
         /*homeViewModel.getPlaceDetailsByPlaceId(10).observe(this,{
         })*/
+    }
+
+    private fun submitUserRating(userRating: Int) {
+        if (userRating > 0) {
+            val sharedPreferences =
+                getSharedPreferences(Constents.Shared_pref, MODE_PRIVATE)
+            val userId = sharedPreferences.getString(Constents.USER_ID, "")
+            val token = "Bearer ${sharedPreferences.getString(Constents.USER_TOKEN, "")}"
+            val placeId = sharedPreferences.getInt(Constents.PLACE_ID,1)
+            val rating = hashMapOf<String, String>(
+                "userId" to userId.toString(),
+                "placeId" to placeId.toString(),
+                "rating" to userRating.toString()
+            )
+            homeViewModel.addRating(token, rating).observe(this, {
+                if (it.getStatus() == 200)
+                    Toast.makeText(
+                        applicationContext,
+                        "Thank you for your Rating!",
+                        Toast.LENGTH_LONG
+                    ).show()
+                else
+                    Toast.makeText(applicationContext, it.getMessage(), Toast.LENGTH_LONG)
+                        .show()
+            })
+        }
     }
 
     fun setDataToLayout(

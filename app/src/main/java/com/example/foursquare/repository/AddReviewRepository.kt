@@ -65,23 +65,5 @@ class AddReviewRepository(private val application: Application) {
         return addReviewUser
     }
 
-    fun addRating(token: String, rating: HashMap<String, String>): LiveData<Rating> {
-        var ratingData = MutableLiveData<Rating>()
-        val addRatingCall = reviewApi.addRating(token, rating)
-        addRatingCall.enqueue(object : Callback<Rating> {
-            override fun onResponse(call: Call<Rating>, response: Response<Rating>) {
-                if (response.isSuccessful) {
-                    ratingData.value = response.body()
-                } else {
-                    Toast.makeText(application, response.raw().toString(), Toast.LENGTH_SHORT).show()
-                }
-            }
 
-            override fun onFailure(call: Call<Rating>, t: Throwable) {
-                Toast.makeText(application, t.message, Toast.LENGTH_SHORT).show()
-            }
-
-        })
-        return ratingData
-    }
 }

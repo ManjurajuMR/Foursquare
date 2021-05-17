@@ -23,7 +23,5 @@ class AddReviewViewModel(application: Application): AndroidViewModel(application
         return mainRepository.addUserReview(token,user)
     }
 
-    fun addRating(token : String,rating : HashMap<String,String>) : LiveData<Rating>{
-        return mainRepository.addRating(token,rating)
-    }
+
 }

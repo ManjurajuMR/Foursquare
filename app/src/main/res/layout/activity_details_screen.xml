@@ -42,7 +42,7 @@
                 android:textColor="@color/white"
                 android:text="Attil"
                 android:fontFamily="@font/avenir_medium"
-                android:textSize="24sp"/>
+                android:textSize="20sp"/>
 
         </androidx.appcompat.widget.Toolbar>
 

@@ -193,7 +193,6 @@ class AddReviewActivity : AppCompatActivity() {
 
                 reviewViewModel.addReview(newtoken, userReview).observe(this, {
                     if (it != null) {
-                        println(it)
                         if (it.getStatus() == 200) {
                                 Toast.makeText(applicationContext,"Review Added",Toast.LENGTH_LONG).show()
                                 onBackPressed()
@@ -205,6 +204,5 @@ class AddReviewActivity : AppCompatActivity() {
                 })
             }
         }
-
     }
 }
