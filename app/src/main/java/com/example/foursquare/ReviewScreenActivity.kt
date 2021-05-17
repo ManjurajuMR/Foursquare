@@ -5,11 +5,9 @@ import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.foursquare.Home.Adapter.RecyclerviewAdapter
-import com.example.foursquare.Home.Adapter.ReviewScreenAdapter
-import com.example.foursquare.viewmodel.HomeViewModel
-import com.example.foursquare.viewmodel.PlaceViewModel
+import com.example.foursquare.adapters.ReviewScreenAdapter
 import com.example.foursquare.viewmodel.ReviewsViewModel
+import kotlinx.android.synthetic.main.activity_review_screen.*
 
 class ReviewScreenActivity : AppCompatActivity() {
     private lateinit var reviewsViewModel : ReviewsViewModel
@@ -19,6 +17,8 @@ class ReviewScreenActivity : AppCompatActivity() {
 
         reviewsViewModel = ViewModelProvider.AndroidViewModelFactory(application).create(ReviewsViewModel::class.java)
         val plc_id = intent.extras?.getLong("pid")?.toInt()
+        val placeName= intent.getStringExtra("pname")
+
         //val page_no = intent.extras?.getLong("pno")?.toInt()
         //val page_size = intent.extras?.getLong("psize")?.toInt()
 
@@ -29,7 +29,8 @@ class ReviewScreenActivity : AppCompatActivity() {
         }
 
         if (plc_id != null) {
-                    reviewsViewModel.getPlaceDetailsByPlaceId(plc_id,0,5).observe(this,{
+                    reviewscreentoolbar_title.setText(placeName)
+                    reviewsViewModel.getPlaceDetailsByPlaceId(plc_id,0,50).observe(this,{
                         if(it != null){
                             val adapter = ReviewScreenAdapter(it.data,this)
                             val review_rv : RecyclerView = findViewById(R.id.rvscrn_rv)!!

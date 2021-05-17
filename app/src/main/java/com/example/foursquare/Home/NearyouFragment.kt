@@ -17,6 +17,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.foursquare.DetailsScreenActivity
 import com.example.foursquare.Home.Adapter.RecyclerviewAdapter
 import com.example.foursquare.PhotosActivity
 import com.example.foursquare.R
@@ -30,7 +31,7 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 
 
-class NearyouFragment : Fragment(),RecyclerviewAdapter.OnItemClickListener {
+class NearyouFragment : Fragment(),RecyclerviewAdapter.OnSiteItemClickListener {
     lateinit var locationManager: FusedLocationProviderClient
     private lateinit var placeViewModel : PlaceViewModel
     private  var googleMap : GoogleMap? = null
@@ -99,7 +100,7 @@ class NearyouFragment : Fragment(),RecyclerviewAdapter.OnItemClickListener {
                     Log.d("res","re")
                     if (it != null) {
                            // Toast.makeText(context, "$it", Toast.LENGTH_SHORT).show()
-                        val adapter = RecyclerviewAdapter(it.data,requireContext(),this)
+                        val adapter = RecyclerviewAdapter(it.data,/*requireContext(),*/this)
                         val rv : RecyclerView = view?.findViewById(R.id.nearyou_recyclerView)!!
                         rv.adapter = adapter
                         rv.layoutManager = LinearLayoutManager(requireContext())
@@ -151,8 +152,11 @@ class NearyouFragment : Fragment(),RecyclerviewAdapter.OnItemClickListener {
         }
     }
 
-    override fun onItemClick(position: Int) {
-        Log.d("position", "${position} got")
-        Toast.makeText(context, "Item is clicked ${position}", Toast.LENGTH_LONG).show()
+    override fun onSiteClick(placeId: Long) {
+        val placeID=placeId.toInt()
+        Log.d("position", "${placeId} got")
+        val intent = Intent(activity, DetailsScreenActivity::class.java)
+        intent.putExtra("placeId",placeID)
+        activity?.startActivity(intent)
     }
 }
