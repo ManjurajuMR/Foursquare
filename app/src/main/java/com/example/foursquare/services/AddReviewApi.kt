@@ -23,7 +23,6 @@ interface AddReviewApi {
     ) : Call<Review>
 
 
-    @POST("addRating")
-    fun addRating(@Header("Authorization") token : String, @Body rating : HashMap<String,String>) : Call<Rating>
+
 
 }

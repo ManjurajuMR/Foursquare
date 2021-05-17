@@ -21,7 +21,7 @@ class PlaceRepository (private val application: Application){
         val getplaceData: MutableLiveData<PlaceData> = MutableLiveData()
 
         if (type=="nearBy") {
-            val registerDetails = placeApi.getNearyouPlace(latitude, longitude, 0, 4)
+            val registerDetails = placeApi.getNearyouPlace(latitude, longitude, 0, 20)
             registerDetails.enqueue(object : Callback<PlaceData> {
                 override fun onResponse(call: Call<PlaceData>, response: Response<PlaceData>) {
                     Log.d("uservalue", response.body().toString())
@@ -38,11 +38,9 @@ class PlaceRepository (private val application: Application){
                     getplaceData.value = (null)
                     Toast.makeText(application, t.message, Toast.LENGTH_SHORT).show()
                 }
-
-
             })
         }else if (type=="topPic") {
-            val registerDetails = placeApi.getTopPicPlace(latitude, longitude, 0, 4)
+            val registerDetails = placeApi.getTopPicPlace(latitude, longitude, 0, 20)
             registerDetails.enqueue(object : Callback<PlaceData> {
                 override fun onResponse(call: Call<PlaceData>, response: Response<PlaceData>) {
                     Log.d("uservalue", response.body().toString())
@@ -90,7 +88,7 @@ class PlaceRepository (private val application: Application){
     fun getPopularPlaceDetails(type:String,latitude:Double,longitude:Double): LiveData<Popular_PlaceData> {
         Log.d("rep", "rp")
         val getplaceData: MutableLiveData<Popular_PlaceData> = MutableLiveData()
-        val registerDetails = placeApi.getPopularPlace(latitude, longitude, 0, 4)
+        val registerDetails = placeApi.getPopularPlace(latitude, longitude, 0, 20)
         registerDetails.enqueue(object : Callback<Popular_PlaceData> {
             override fun onResponse(call: Call<Popular_PlaceData>, response: Response<Popular_PlaceData>) {
                 Log.d("uservalue", response.body().toString())

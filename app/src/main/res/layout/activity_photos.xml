@@ -40,7 +40,7 @@
                 android:layout_gravity="center"
                 android:textColor="@color/white"
                 android:text="Attil"
-                android:textSize="24sp" />
+                android:textSize="20sp" />
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
