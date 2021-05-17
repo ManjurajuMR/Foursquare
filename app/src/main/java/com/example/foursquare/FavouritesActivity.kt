@@ -2,6 +2,7 @@ package com.example.foursquare
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -11,13 +12,14 @@ import com.example.foursquare.viewmodel.ReviewsViewModel
 
 class FavouritesActivity : AppCompatActivity(), FavouritesAdapter.OnFavItemClickListener {
     private lateinit var favouritesViewModel: FavouritesViewModel
+    val token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtYW5pc2gxMUBnbWFpbC5jb20iLCJleHAiOjE2MjEyNDk2NTAsImlhdCI6MTYyMTIzMTY1MH0.lvJd0_aIlLIYWhe5_Omq_ViSGWvYmBYAHs80AKMIpTUGpU0VhSi2org104T-93htzjH8CkQqE7RwIGQvcF7eKg"
+    val userid = 126
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_favourites)
 
         favouritesViewModel = ViewModelProvider.AndroidViewModelFactory(application).create(FavouritesViewModel::class.java)
 
-        val token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtYW5pc2gxMUBnbWFpbC5jb20iLCJleHAiOjE2MjEyNDk2NTAsImlhdCI6MTYyMTIzMTY1MH0.lvJd0_aIlLIYWhe5_Omq_ViSGWvYmBYAHs80AKMIpTUGpU0VhSi2org104T-93htzjH8CkQqE7RwIGQvcF7eKg"
         val userid = 126
         val pageno = 0
         val pagesize = 50
@@ -39,5 +41,23 @@ class FavouritesActivity : AppCompatActivity(), FavouritesAdapter.OnFavItemClick
 
     override fun onSiteClick(PlaceId: Long) {
         //TODO("Not yet implemented")
+    }
+
+    override fun delFav(PlaceId: Long) {
+        //TODO("Not yet implemented")
+        if (token != null && userid!=null) {
+            val ntoken = "Bearer $token"
+            favouritesViewModel.delFavourite(ntoken, userid, PlaceId.toInt()).observe(this, {
+                if (it != null){
+                    val stat : Int = it.gstatus().toInt()
+                    if (stat == 200){
+                        Toast.makeText(applicationContext,"Deleted from Favourites",Toast.LENGTH_LONG).show()
+                    }
+                    else{
+                        Toast.makeText(applicationContext, it.gMessage(), Toast.LENGTH_SHORT).show()
+                    }
+                }
+            })
+        }
     }
 }
