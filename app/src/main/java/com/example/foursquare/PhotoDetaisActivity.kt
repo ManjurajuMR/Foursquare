@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.example.foursquare.adapters.PhotosAdapter
 import com.example.foursquare.viewmodel.PhotosViewModel
+import kotlinx.android.synthetic.main.activity_photo_detais.*
 
 class PhotoDetaisActivity : AppCompatActivity() {
     private lateinit var photosViewModel : PhotosViewModel
@@ -33,21 +34,26 @@ class PhotoDetaisActivity : AppCompatActivity() {
     private fun loadPhotoDetailsData() {
         val photoID= intent.getIntExtra("photoId",0)
 
-        photosViewModel.getPhotoDetails(photoID)
-            ?.observe(this, {
-                Log.d("res","re")
-                if (it != null) {
-                   val photo=findViewById<ImageView>(R.id.photo_detail)
-                   val profilePhoto=findViewById<ImageView>(R.id.profile_photo)
-                   val userName=findViewById<TextView>(R.id.user_name)
-                   val addedDate=findViewById<TextView>(R.id.added_date)
-                    Glide.with(applicationContext).load(it.data.photoUrl).placeholder(R.drawable.loading).into(photo)
-                    Glide.with(applicationContext).load(it.data.userImage).placeholder(R.drawable.loading).into(profilePhoto)
-                    userName.setText(it.data.userName)
-                    addedDate.setText(it.data.date)
-                }
+        if (photoID!=null) {
+            photosViewModel.getPhotoDetails(photoID)
+                ?.observe(this, {
+                    Log.d("res", "re")
+                    if (it != null) {
+                        val photo = findViewById<ImageView>(R.id.photo_detail)
+                        val profilePhoto = findViewById<ImageView>(R.id.profile_photo)
+                        val userName = findViewById<TextView>(R.id.user_name)
+                        val addedDate = findViewById<TextView>(R.id.added_date)
+                        Glide.with(applicationContext).load(it.data.photoUrl)
+                            .placeholder(R.drawable.loading).into(photo)
+                        Glide.with(applicationContext).load(it.data.userImage)
+                            .placeholder(R.drawable.loading).into(profilePhoto)
+                        userName.setText(it.data.userName)
+                        addedDate.setText(it.data.date)
+                        toolbar_title.setText(it.data.placeName)
+                    }
 
-            })
+                })
+        }
     }
 
 }

@@ -1,25 +1,13 @@
 package com.example.foursquare
 
-import android.content.Context
-import android.content.Intent
-import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.BaseAdapter
 import android.widget.GridView
-import android.widget.ImageView
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.foursquare.Home.Adapter.RecyclerviewAdapter
 import com.example.foursquare.adapters.PhotosAdapter
 import com.example.foursquare.viewmodel.PhotosViewModel
-import com.example.foursquare.viewmodel.PlaceViewModel
-import java.util.ArrayList
+import kotlinx.android.synthetic.main.activity_photos.*
 
 class PhotosActivity : AppCompatActivity() {
     private lateinit var photosViewModel : PhotosViewModel
@@ -46,18 +34,22 @@ class PhotosActivity : AppCompatActivity() {
     }
 
     private fun loadPhotosData() {
+        val placeID= intent.getLongExtra("pid",0).toInt()
+        val placeName= intent.getStringExtra("pname")
+        if (placeID!=null) {
+            toolbar_title.setText(placeName)
+            photosViewModel.getPhotos(placeID)
+                ?.observe(this, {
+                    Log.d("res", "re")
+                    if (it != null) {
+                        // Toast.makeText(context, "$it", Toast.LENGTH_SHORT).show()
+                        val adapter = PhotosAdapter(it, this)
+                        var gridview = findViewById<GridView>(R.id.photos_gridview)
+                        gridview.adapter = adapter
+                    }
 
-        photosViewModel.getPhotos(10)
-            ?.observe(this, {
-                Log.d("res","re")
-                if (it != null) {
-                    // Toast.makeText(context, "$it", Toast.LENGTH_SHORT).show()
-                    val adapter = PhotosAdapter(it,this)
-                    var gridview=findViewById<GridView>(R.id.photos_gridview)
-                    gridview.adapter = adapter
-                }
-
-            })
+                })
+        }
     }
 
 

@@ -6,14 +6,12 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import com.example.foursquare.model.PhotoDetails
 import com.example.foursquare.model.Photos
-import com.example.foursquare.model.PlaceData
 import com.example.foursquare.repository.PhotosRepository
-import com.example.foursquare.repository.PlaceRepository
 
 class PhotosViewModel(application: Application): AndroidViewModel(application) {
     private val photosRepository = PhotosRepository(application)
 
-    fun getPhotos(placeId:Int): LiveData<Photos> {
+    fun getPhotos(placeId: Int): LiveData<Photos> {
         Log.d("vmod","vm")
         return photosRepository.getPhotos(placeId)
     }

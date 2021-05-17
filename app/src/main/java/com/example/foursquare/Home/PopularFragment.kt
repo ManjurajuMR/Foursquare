@@ -1,5 +1,6 @@
 package com.example.foursquare.Home
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -10,6 +11,7 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.foursquare.DetailsScreenActivity
 import com.example.foursquare.Home.Adapter.PopularPlaceAdapter
 import com.example.foursquare.Home.Adapter.RecyclerviewAdapter
 import com.example.foursquare.R
@@ -43,7 +45,12 @@ class PopularFragment : Fragment(),PopularPlaceAdapter.OnItemClickListener {
             })
     }
 
-    override fun onItemClick(position: Int) {
-        Log.d("potss", "${position} got")
-        Toast.makeText(context, "Item is clicked ${position}", Toast.LENGTH_LONG).show()    }
+    override fun onItemClick(placeId: Long) {
+        val placeID=placeId.toInt()
+        Log.d("position", "${placeId} got")
+        val intent = Intent(activity, DetailsScreenActivity::class.java)
+        intent.putExtra("placeId",placeID)
+        activity?.startActivity(intent)
+
+           }
 }

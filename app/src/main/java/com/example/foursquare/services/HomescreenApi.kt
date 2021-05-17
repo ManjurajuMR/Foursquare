@@ -1,6 +1,6 @@
 package com.example.foursquare.services
 
-import com.example.foursquare.model.Place
+
 import com.example.foursquare.model.Rplace
 import com.example.foursquare.model.User
 import retrofit2.Call
