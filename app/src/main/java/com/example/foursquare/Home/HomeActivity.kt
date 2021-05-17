@@ -138,10 +138,10 @@ class HomeActivity : AppCompatActivity() {
 
     }
 
-  //  fun onFilterClick(){
-    //    val intent = Intent(this,FilterActivity::class.java)
-      //  startActivity(intent)
+   /* fun onFilterClick(){
+        val intent = Intent(this,FilterActivity::class.java)
+        startActivity(intent)
 
-    }
+    }*/
     
 }
