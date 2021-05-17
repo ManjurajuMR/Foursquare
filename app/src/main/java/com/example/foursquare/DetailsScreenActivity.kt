@@ -4,6 +4,8 @@ import android.app.Dialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -36,7 +38,7 @@ class DetailsScreenActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details_screen)
-        supportActionBar?.hide()
+        //supportActionBar?.hide()
         homeViewModel = ViewModelProvider.AndroidViewModelFactory(application).create(HomeViewModel::class.java)
 
         val detscreen_tb=findViewById<androidx.appcompat.widget.Toolbar>(R.id.detailscreen_toolbar)
@@ -87,7 +89,41 @@ class DetailsScreenActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        detscreen_tb.setOnMenuItemClickListener { item ->
+            val id = item?.itemId
+            if (id == R.id.share_det) {
+                var intent = Intent().apply {
+                    this.action = Intent.ACTION_SEND
+                    this.putExtra(Intent.EXTRA_TEXT, "share")
+                    this.type = "image"
+                }
+                startActivity(intent)
+
+            }
+            super.onOptionsItemSelected(item)
+        }
     }
+
+//    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+//        menuInflater.inflate(R.menu.detscreen_menu,menu)
+//        return super.onCreateOptionsMenu(menu)
+//    }
+//
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        val id = item?.itemId
+//        if (id == R.id.share_det) {
+//            var intent = Intent().apply {
+//                this.action = Intent.ACTION_SEND
+//                this.putExtra(Intent.EXTRA_TEXT,"We are sharing data between 2 apps")
+//                this.type = "plain/text"
+//            }
+//            startActivity(intent)
+//
+//        }
+//            return super.onOptionsItemSelected(item)
+//    }
+
+
 
     fun ShowPopup(v : View?){
         myDialog.setContentView(R.layout.rating_popup)
