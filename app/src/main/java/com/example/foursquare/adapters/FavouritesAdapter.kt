@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.ToggleButton
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -26,9 +27,13 @@ class FavouritesAdapter(private var arrayList: List<FavPdata>, private val click
         val textView6: TextView = view.findViewById(R.id.fdistance)
         val imageView : ImageView = view.findViewById(R.id.fresimage)
         val cardView : CardView = view.findViewById(R.id.fratingBackground)
+        val toggleButton : ToggleButton = view.findViewById(R.id.toggle1)
 
         init {
             itemView.setOnClickListener(this)
+            toggleButton.setOnClickListener {
+                onClickListener.delFav(arrayList[adapterPosition].id)
+            }
         }
 
         override fun onClick(p0: View?) {
@@ -70,6 +75,7 @@ class FavouritesAdapter(private var arrayList: List<FavPdata>, private val click
 
     interface OnFavItemClickListener {
         fun onSiteClick(PlaceId: Long)
+        fun delFav(PlaceId: Long)
     }
 
 }
