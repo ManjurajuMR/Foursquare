@@ -3,6 +3,7 @@ package com.example.foursquare.viewmodel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import com.example.foursquare.model.Rating
 import com.example.foursquare.model.Review
 import com.example.foursquare.model.ReviewData
 import com.example.foursquare.repository.AddReviewRepository
@@ -21,4 +22,6 @@ class AddReviewViewModel(application: Application): AndroidViewModel(application
 
         return mainRepository.addUserReview(token,user)
     }
+
+
 }

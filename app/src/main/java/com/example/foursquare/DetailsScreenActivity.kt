@@ -2,24 +2,29 @@ package com.example.foursquare
 
 import android.app.Dialog
 import android.content.Intent
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
+
+import android.widget.*
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.Fragment
+
+import android.widget.ImageView
+import android.widget.TextView
+
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
+
 import com.example.foursquare.repository.HomeScreenRepository
 import com.example.foursquare.viewmodel.AddFavouriteViewModel
 import com.example.foursquare.viewmodel.AuthenticationViewModel
+
+import com.example.foursquare.authentication.Constents
+
 import com.example.foursquare.viewmodel.HomeViewModel
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -28,7 +33,6 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
-import kotlinx.android.synthetic.*
 import kotlinx.android.synthetic.main.activity_details_screen.*
 
 class DetailsScreenActivity : AppCompatActivity() {
@@ -62,8 +66,12 @@ class DetailsScreenActivity : AppCompatActivity() {
         }
         myDialog = Dialog(this)
 
-        val placeID = intent.getIntExtra("placeId", 0)
-        if (placeID != null) {
+
+        val sharedPreferences = getSharedPreferences(Constents.Shared_pref, MODE_PRIVATE)
+        val placeID = sharedPreferences.getInt(Constents.PLACE_ID,1)
+        //val placeID= intent.getIntExtra("placeId",0)
+        if (placeID!=null){
+
             homeViewModel.getPlaceDetailsByPlaceId(placeID)
             setlivedata()
         }
@@ -87,22 +95,28 @@ class DetailsScreenActivity : AppCompatActivity() {
         }
 
         add_review.setOnClickListener {
-            val intent = Intent(this, AddReviewActivity::class.java)
-            intent.putExtra("pid", placeID)
-            intent.putExtra("pname", pname)
+
+            val intent = Intent(this,AddReviewActivity::class.java)
+            //intent.putExtra("pid",placeID)
+            intent.putExtra("pname",pname)
             startActivity(intent)
         }
 
         check_photos.setOnClickListener {
-            val intent = Intent(this, PhotosActivity::class.java)
-            intent.putExtra("pid", pid)
-            intent.putExtra("pname", pname)
+            val intent = Intent(this,PhotosActivity::class.java)
+            //intent.putExtra("pid",pid)
+            intent.putExtra("pname",pname)
+
             startActivity(intent)
         }
 
         check_reviews.setOnClickListener {
-            val intent = Intent(this, ReviewScreenActivity::class.java)
-            intent.putExtra("pid", pid)
+
+            val intent = Intent(this,ReviewScreenActivity::class.java)
+
+            intent.putExtra("pname",pname)
+            //intent.putExtra("pid",pid)
+
             //intent.putExtra("pno",pno)
             //intent.putExtra("psize",psize)
             startActivity(intent)
@@ -147,12 +161,27 @@ class DetailsScreenActivity : AppCompatActivity() {
 
     fun ShowPopup(v: View?) {
         myDialog.setContentView(R.layout.rating_popup)
-        val close: TextView = myDialog.findViewById(R.id.close_popup)
+
+        var rate : Int = 1
+        val close : TextView = myDialog.findViewById(R.id.close_popup)
+
         close.setOnClickListener(object : View.OnClickListener {
             override fun onClick(p0: View?) {
                 myDialog.dismiss()
             }
         })
+        val ratingBar : RatingBar = myDialog.findViewById(R.id.ratbar_popup)
+        ratingBar.setOnRatingBarChangeListener { ratingBar, rating, b ->
+            //Toast.makeText(this,"$rating", Toast.LENGTH_LONG).show()
+            rate = rating.toInt()
+        }
+        val submit : Button = myDialog.findViewById(R.id.submit_rating_popup)
+        submit.setOnClickListener {
+            //Toast.makeText(this,"$rate", Toast.LENGTH_LONG).show()
+             submitUserRating(rate)
+            myDialog.dismiss()
+        }
+
         //myDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         myDialog.show()
     }
@@ -187,6 +216,32 @@ class DetailsScreenActivity : AppCompatActivity() {
         })
         /*homeViewModel.getPlaceDetailsByPlaceId(10).observe(this,{
         })*/
+    }
+
+    private fun submitUserRating(userRating: Int) {
+        if (userRating > 0) {
+            val sharedPreferences =
+                getSharedPreferences(Constents.Shared_pref, MODE_PRIVATE)
+            val userId = sharedPreferences.getString(Constents.USER_ID, "")
+            val token = "Bearer ${sharedPreferences.getString(Constents.USER_TOKEN, "")}"
+            val placeId = sharedPreferences.getInt(Constents.PLACE_ID,1)
+            val rating = hashMapOf<String, String>(
+                "userId" to userId.toString(),
+                "placeId" to placeId.toString(),
+                "rating" to userRating.toString()
+            )
+            homeViewModel.addRating(token, rating).observe(this, {
+                if (it.getStatus() == 200)
+                    Toast.makeText(
+                        applicationContext,
+                        "Thank you for your Rating!",
+                        Toast.LENGTH_LONG
+                    ).show()
+                else
+                    Toast.makeText(applicationContext, it.getMessage(), Toast.LENGTH_LONG)
+                        .show()
+            })
+        }
     }
 
     fun setDataToLayout(

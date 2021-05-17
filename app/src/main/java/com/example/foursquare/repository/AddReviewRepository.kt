@@ -5,6 +5,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.foursquare.model.Rating
 import com.example.foursquare.model.Review
 import com.example.foursquare.model.ReviewData
 import com.example.foursquare.services.RetrofitApiInstance
@@ -63,4 +64,6 @@ class AddReviewRepository(private val application: Application) {
         })
         return addReviewUser
     }
+
+
 }

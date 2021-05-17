@@ -1,5 +1,6 @@
 package com.example.foursquare.services
 
+import com.example.foursquare.model.Rating
 import com.example.foursquare.model.Review
 import com.example.foursquare.model.ReviewData
 import retrofit2.Call
@@ -20,5 +21,8 @@ interface AddReviewApi {
         @Header("Authorization") token:String,
         @Body review : HashMap<String,String>
     ) : Call<Review>
+
+
+
 
 }

@@ -14,7 +14,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager.widget.ViewPager
 import com.example.foursquare.*
 import com.example.foursquare.Home.Adapter.HomeAdapter
+
 import com.example.foursquare.search.Search_homeActivity
+
+import com.example.foursquare.authentication.AuthenticationActivity
+import com.example.foursquare.authentication.Constents
+
 
 import com.example.foursquare.viewmodel.PlaceViewModel
 import com.google.android.material.navigation.NavigationView
@@ -105,12 +110,21 @@ class HomeActivity : AppCompatActivity() {
                 startActivity(Intent(this, FeedbackActivity::class.java))
             }else if (id == R.id.nav_aboutus) {
                 startActivity(Intent(this, AboutusActivity::class.java))
-            }else if (id == R.id.nav_logout){
-                Toast.makeText(this,"logout",Toast.LENGTH_SHORT).show()
+
+            }else if (id == R.id.nav_logout) {
+                val sharedPreferences = getSharedPreferences(Constents.Shared_pref, MODE_PRIVATE)
+                val editor = sharedPreferences.edit()
+                editor.remove(Constents.USER_ID)
+                editor.apply()
+                Toast.makeText(this,"loged_out",Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this, AuthenticationActivity::class.java))
+                finish()
+
             }
             drawerLayout.closeDrawer(GravityCompat.START)
             true
         }
+
 
         filter_icon.setOnClickListener {
             val intent = Intent(this,FilterActivity::class.java)
@@ -120,6 +134,13 @@ class HomeActivity : AppCompatActivity() {
             val intent = Intent(this,Search_homeActivity::class.java)
             startActivity(intent)
         }
+
+
+    }
+
+  //  fun onFilterClick(){
+    //    val intent = Intent(this,FilterActivity::class.java)
+      //  startActivity(intent)
 
     }
     

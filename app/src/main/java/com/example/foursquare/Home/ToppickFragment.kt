@@ -1,5 +1,6 @@
 package com.example.foursquare.Home
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.foursquare.DetailsScreenActivity
 import com.example.foursquare.Home.Adapter.RecyclerviewAdapter
 import com.example.foursquare.R
+import com.example.foursquare.authentication.Constents
 import com.example.foursquare.viewmodel.PlaceViewModel
 
 class ToppickFragment : Fragment(),RecyclerviewAdapter.OnSiteItemClickListener {
@@ -48,8 +50,12 @@ class ToppickFragment : Fragment(),RecyclerviewAdapter.OnSiteItemClickListener {
     override fun onSiteClick(placeId: Long) {
         val placeID=placeId.toInt()
         Log.d("position", "${placeId} got")
+        val sharedPreferences = requireContext().getSharedPreferences(Constents.Shared_pref, Context.MODE_PRIVATE)
+        val sharedEditor = sharedPreferences.edit()
+        sharedEditor.putInt(Constents.PLACE_ID, placeID)
+        sharedEditor.apply()
         val intent = Intent(activity, DetailsScreenActivity::class.java)
-        intent.putExtra("placeId",placeID)
+        //intent.putExtra("placeId",placeID)
         activity?.startActivity(intent)
     }
 

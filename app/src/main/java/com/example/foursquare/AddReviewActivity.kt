@@ -12,10 +12,15 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+
+import com.example.foursquare.authentication.Constents
+
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+
 import com.example.foursquare.viewmodel.AddReviewViewModel
 import kotlinx.android.synthetic.main.activity_add_review.*
+import kotlinx.android.synthetic.main.fragment_signin.view.*
 
 
 class AddReviewActivity : AppCompatActivity() {
@@ -149,47 +154,45 @@ class AddReviewActivity : AppCompatActivity() {
         }
     }
 
-/*    private fun loadPlaceData() {
 
-        var Token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0MUBnbWFpbC5jb20iLCJleHAiOjE2MjA5MDQxMTUsImlhdCI6MTYyMDg4NjExNX0.cEP7tyg3RXq3Mf5yi3mVUGCE85STexidTPUe9tvFIILi25SwaleNh6ndqhPJ5xHG29gA8OttPXqIdrQIPMJxOA"
-        //var reviewText = "The food is delicious and the atmosphere is brilliant"
-        var reviewText=reviewTextInput.text.toString()
-
-        reviewViewModel.addReviews(Token,110,11,reviewText)
-            ?.observe(this, {
-                Log.d("res", "it")
-                val msg = it.data
-
-                Toast.makeText(this, "${msg}", Toast.LENGTH_SHORT).show()
-
-            })
-    }*/
 
     private fun Addreview() {
-        val userId = 110
-        val placeId = intent.getIntExtra("pid",0)
+
+        //
+        val sharedPreferences = getSharedPreferences(
+            Constents.Shared_pref,
+            MODE_PRIVATE
+        )
+        val token = sharedPreferences.getString(Constents.USER_TOKEN, "")
+        val userId1 = sharedPreferences.getString(Constents.USER_ID,"")
+        val placeId=sharedPreferences.getInt(Constents.PLACE_ID,1)
+        Log.d("placeid", "${userId1}+${token}")
+        //
+       // val userId = 110
+        //val placeId = intent.getIntExtra("pid",0)
        // val placeId =23
-        Log.d("placeid", "${placeId}")
-        var Token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0MUBnbWFpbC5jb20iLCJleHAiOjE2MjA5MjU5MjUsImlhdCI6MTYyMDkwNzkyNX0.ZzTN92UMvhSSwS6ydFBHOMZ3KhP8MA9Xbv8QYzif3m07o4p_0CvTXgeukTKB0EnJt0NtSRXVnaXHcYjCwyVaeQ"
+
+        //var Token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0MUBnbWFpbC5jb20iLCJleHAiOjE2MjA5MjU5MjUsImlhdCI6MTYyMDkwNzkyNX0.ZzTN92UMvhSSwS6ydFBHOMZ3KhP8MA9Xbv8QYzif3m07o4p_0CvTXgeukTKB0EnJt0NtSRXVnaXHcYjCwyVaeQ"
 
         val review=reviewTextInput.text.toString()
         if (review.isEmpty()){
-            startActivity(Intent(this, DetailsScreenActivity::class.java))
+           // startActivity(Intent(this, DetailsScreenActivity::class.java))
+            Toast.makeText(this, "Enter Email Address", Toast.LENGTH_SHORT).show()
+
         }
         else {
 
-            if (Token != null && placeId!=null) {
-                val newtoken = "Bearer $Token"
+            if (token != null && placeId!=null && userId1!=null) {
+                val newtoken = "Bearer $token"
 
                 val userReview = hashMapOf(
-                    "userId" to userId.toString(),
+                    "userId" to userId1.toString(),
                     "placeId" to placeId.toString(),
                     "review" to review
                 )
 
                 reviewViewModel.addReview(newtoken, userReview).observe(this, {
                     if (it != null) {
-                        println(it)
                         if (it.getStatus() == 200) {
                                 Toast.makeText(applicationContext,"Review Added",Toast.LENGTH_LONG).show()
                                 onBackPressed()
@@ -201,6 +204,5 @@ class AddReviewActivity : AppCompatActivity() {
                 })
             }
         }
-
     }
 }
