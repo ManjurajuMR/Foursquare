@@ -28,7 +28,6 @@ data class Datum (
 ) {
 
 }
-
 data class Place (
    val id: Long,
    val name: String,
