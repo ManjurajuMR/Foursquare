@@ -12,9 +12,10 @@ interface FavouritesApi {
 
     @GET("getFavourite?")
     fun getFavourites(@Header("Authorization") token: String,
-                      @Query("userId") userId: Int?,
-                      @Query("pageNo") pageNo :Int,
-                      @Query("pageSize") pageSize :Int) : Call<Favourites>
+
+                      @Query("userId") userId: String?,
+                      @Query("pageNo") pageNo:Int,
+                      @Query("pageSize") pageSize:Int) : Call<Favourites>
 
     @DELETE("deleteFavourite")
     fun delFavourite(
@@ -22,4 +23,5 @@ interface FavouritesApi {
         @Query("userId") userId: Int?,
         @Query("placeId") placeId: Int
     ) : Call<DelFavourite>
+
 }

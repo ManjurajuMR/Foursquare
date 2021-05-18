@@ -16,12 +16,13 @@ class FavouritesRepository(private val application: Application) {
     private val favouritesApi = RetrofitApiInstance.getApiInstance(FavouritesApi::class.java)
     val getFavourites: MutableLiveData<Favourites> = MutableLiveData()
 
-    fun getFavourites(token: String, userId : Int, pageNo :Int, pageSize :Int): LiveData<Favourites> {
+    fun getFavourites(token: String, userId: String?, pageNo:Int, pageSize:Int): LiveData<Favourites> {
         val favDetails = favouritesApi.getFavourites(token, userId, pageNo, pageSize)
         favDetails.enqueue(object  : retrofit2.Callback<Favourites> {
             override fun onResponse(call: Call<Favourites>, response: Response<Favourites>) {
                 //TODO("Not yet implemented")
                 if (response.isSuccessful) {
+                    Log.d("favourites","${response.body()}")
                     getFavourites.value = response.body()
                 } else {
                     Toast.makeText(application, response.raw().toString(), Toast.LENGTH_SHORT).show()

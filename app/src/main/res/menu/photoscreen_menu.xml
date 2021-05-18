@@ -7,6 +7,6 @@
         android:orderInCategory="100"
         android:title="camera"
         app:showAsAction="always"
-        android:icon="@drawable/photos_icon"/>
+        android:icon="@drawable/ic_baseline_add_a_photo_24"/>
 
 </menu>

@@ -7,52 +7,48 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
+import androidx.navigation.findNavController
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.foursquare.Home.Adapter.RecyclerviewAdapter
 import com.example.foursquare.PhotoDetaisActivity
 import com.example.foursquare.R
 import com.example.foursquare.model.Photos
 
-class PhotosAdapter(
-        private var images:Photos,
-        var mycontext: Context
-    ): BaseAdapter(){
-        var layoutinflater=mycontext.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        override fun getCount(): Int {
-            return images.data.size
-        }
+class PhotosAdapter(private var images:Photos, var mycontext: Context): RecyclerView.Adapter<PhotosAdapter.ViewHolder>() {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.photos, parent, false)
+        return ViewHolder(itemView)
+    }
 
-        override fun getItem(position: Int): Any {
-            return images.data[position]
-        }
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        val image = images.data[position]
 
-        override fun getItemId(position: Int): Long {
-            return position.toLong()
-        }
+        if (image != null) {
+            Glide.with(mycontext).load(image.image).placeholder(R.drawable.loading).into(holder.photo)
 
-        override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-            var view=convertView
-            if (view==null){
-                view=layoutinflater.inflate(R.layout.photos,parent,false)
+            holder.photo.setOnClickListener {
+                val intent=Intent(it.context,PhotoDetaisActivity::class.java)
+                intent.putExtra("photoId",image.photoId)
+                it.context.startActivity(intent)
+                Toast.makeText(mycontext, "Item is clicked ${image.photoId}", Toast.LENGTH_LONG).show()
             }
-            val photo=images.data[position]
-            if (photo != null) {
-                var imageview:ImageView=view?.findViewById<ImageView>(R.id.photos)!!
-                Glide.with(mycontext).load(photo.image).placeholder(R.drawable.loading).into(imageview)
 
-                imageview.setOnClickListener {
-                    val intent=Intent(it.context,PhotoDetaisActivity::class.java)
-                    intent.putExtra("photoId",photo.photoId)
-                    it.context.startActivity(intent)
-                    Toast.makeText(mycontext, "Item is clicked ${photo.photoId}", Toast.LENGTH_LONG).show()
-                }
-
-            } else {
-                Toast.makeText(mycontext, "Item is null", Toast.LENGTH_LONG).show()
-            }
-            /* var imageview= view?.findViewById<ImageView>(R.id.photos)
-             imageview?.setImageResource(images[position])
- */
-            return view!!
+        } else {
+            Toast.makeText(mycontext, "Item is null", Toast.LENGTH_LONG).show()
         }
+
+
+    }
+
+    override fun getItemCount(): Int {
+        return images.data.size
+    }
+
+    inner class ViewHolder(view : View) : RecyclerView.ViewHolder(view){
+        val photo: ImageView = view.findViewById(R.id.photos)
+
+    }
 }

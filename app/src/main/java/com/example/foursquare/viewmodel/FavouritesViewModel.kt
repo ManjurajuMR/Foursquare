@@ -10,7 +10,7 @@ import com.example.foursquare.repository.FavouritesRepository
 class FavouritesViewModel(application: Application): AndroidViewModel(application) {
     var favouritesRepository = FavouritesRepository(application)
 
-    fun getFavouritesByUserId(token:String, userId : Int, pageNo :Int, pageSize :Int): LiveData<Favourites> {
+    fun getFavouritesByUserId(token:String, userId: String?, pageNo:Int, pageSize:Int): LiveData<Favourites> {
         return favouritesRepository.getFavourites(token,userId,pageNo,pageSize)
     }
 
