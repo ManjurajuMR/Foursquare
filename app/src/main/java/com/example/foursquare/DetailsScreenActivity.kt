@@ -48,6 +48,9 @@ class DetailsScreenActivity : AppCompatActivity() {
     private var pname: String = ""
     private var pno: Long = 0
     private var psize: Long = 0
+    var tkn : String = ""
+    var placeID : Int = 0
+    var userid : String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,9 +68,11 @@ class DetailsScreenActivity : AppCompatActivity() {
 
 
         val sharedPreferences = getSharedPreferences(Constents.Shared_pref, MODE_PRIVATE)
-        val placeID = sharedPreferences.getInt(Constents.PLACE_ID,1)
+        placeID = sharedPreferences.getInt(Constents.PLACE_ID,1)
+        tkn = sharedPreferences.getString(Constents.USER_TOKEN,"").toString()
+        userid = sharedPreferences.getString(Constents.USER_ID,"").toString()
         //val placeID= intent.getIntExtra("placeId",0)
-        if (placeID!=null){
+        if (placeID != null){
 
             homeViewModel.getPlaceDetailsByPlaceId(placeID)
             setlivedata()
@@ -124,12 +129,13 @@ class DetailsScreenActivity : AppCompatActivity() {
             if (id == R.id.share_det) {
 
                 var intent = Intent().apply {
+
                     this.action = Intent.ACTION_SEND
                     this.putExtra(Intent.EXTRA_TEXT, "share")
                     this.type = "image"
                 }
-                startActivity(intent)
-                //Toast.makeText(this,"share",Toast.LENGTH_LONG).show()
+                startActivity(intent)*/
+                Toast.makeText(this,"share",Toast.LENGTH_LONG).show()
             }
             
             if (id == R.id.addplace_tofav) {
@@ -274,54 +280,55 @@ class DetailsScreenActivity : AppCompatActivity() {
 
     }
 
-//    private fun loadPlaceData() {
-//
-//        var Token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ2YWliaGF2aUBnbWFpbC5jb20iLCJleHAiOjE2MjA5MDUyMTIsImlhdCI6MTYyMDg4NzIxMn0.tdfvDyW2-RAWvraegZVaLXgPFRatDHJD6DfYh4g9iPftuICADfScIo_e9j7cTJ0jtq_oVslt5zqzM_xTmgdNNw"
-//
-//        addfavViewModel.addfav(Token,129,12)
-//            ?.observe(this, {
-////                Log.d("res", "re")
-//                if(it!= null){
-//                    if (it.getStatus() == 200)
-//                        Toast.makeText(applicationContext, "Added to favourite", Toast.LENGTH_SHORT).show()
-//                    else {
-//                        val msg = it.getMessage()
-//
-//                        Toast.makeText(applicationContext, "msg", Toast.LENGTH_SHORT).show()
-//                    }
-//                }
-//            })
-//    }
+/*    private fun loadPlaceData() {
+
+        var Token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ2YWliaGF2aUBnbWFpbC5jb20iLCJleHAiOjE2MjA5MDUyMTIsImlhdCI6MTYyMDg4NzIxMn0.tdfvDyW2-RAWvraegZVaLXgPFRatDHJD6DfYh4g9iPftuICADfScIo_e9j7cTJ0jtq_oVslt5zqzM_xTmgdNNw"
+
+        addfavViewModel.addfav(Token,129,12)
+            ?.observe(this, {
+//                Log.d("res", "re")
+                if(it!= null){
+                    if (it.getStatus() == 200)
+                        Toast.makeText(applicationContext, "Added to favourite", Toast.LENGTH_SHORT).show()
+                    else {
+                        val msg = it.getMessage()
+
+                        Toast.makeText(applicationContext, "msg", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            })
+    }*/
 
     private fun addFavourites() {
-        val userId = 126
-        val placeId = intent.getIntExtra("pid", 0)
+        //val userId = 126
+        //val placeId = intent.getIntExtra("pid", 0)
         // val placeId =23
-        Log.d("placeid", "${placeId}")
-        var Token =
-            "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtYW5pc2gxMUBnbWFpbC5jb20iLCJleHAiOjE2MjEzMjk3NzksImlhdCI6MTYyMTMxMTc3OX0.xo_pnRwYeyio35ttJomKzwuH9yIbo33mIXRhTglDeEbTnKJbmLQvqXMB_R5qqRWVMtmRqw3WqHCJGOA3W-abhA"
+        //Log.d("placeid", "${placeId}")
+        //var Token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtYW5pc2gxMUBnbWFpbC5jb20iLCJleHAiOjE2MjEzMjk3NzksImlhdCI6MTYyMTMxMTc3OX0.xo_pnRwYeyio35ttJomKzwuH9yIbo33mIXRhTglDeEbTnKJbmLQvqXMB_R5qqRWVMtmRqw3WqHCJGOA3W-abhA"
 
-        if (Token != null && placeId != null) {
-            val newtoken = "Bearer $Token"
+        /*if (tkn != null && placeID != null) {
+            val newtoken = "Bearer $tkn"
 
             val user = hashMapOf(
-                "userId" to userId.toString(),
-                "placeId" to placeId.toString(),
+                "userId" to userid,
+                "placeId" to placeID.toString(),
                 //"review" to review
             )
 
             addfavViewModel.addfav(newtoken, user).observe(this, {
                 if (it != null) {
                     println(it)
-                    if (it.getStatus() == 200) {
+                    if (it.status.toInt() == 200) {
                         Toast.makeText(applicationContext, "Added to favourites", Toast.LENGTH_LONG).show()
                         onBackPressed()
                     } else {
-                        Toast.makeText(applicationContext, it.getMessage(), Toast.LENGTH_SHORT).show()
+                        Toast.makeText(applicationContext, it.message, Toast.LENGTH_SHORT).show()
                     }
                 }
             })
-        }
+        }*/
+
+        Toast.makeText(applicationContext, "$tkn", Toast.LENGTH_LONG).show()
 
     }
 
