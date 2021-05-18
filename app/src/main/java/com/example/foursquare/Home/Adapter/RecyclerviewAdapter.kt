@@ -60,7 +60,7 @@ class RecyclerviewAdapter(private var arrayList: List<Datum>, private val clickL
             val priceRange=PriceRange().getRupeeIcon(cost)
             holder.textView5.text=priceRange
             holder.textView6.text=String.format("%.1f km", arrayList.distance)
-            holder.textView2.text = arrayList.place.overallRating.toString()
+            holder.textView2.text = String.format("%.1f",rating)
             val ratingBackground = RatingBackground().getRatingColor(rating)
             holder.cardView.background.setTint(ratingBackground)
             Glide.with(holder.imageView).load(arrayList.place.image).diskCacheStrategy(DiskCacheStrategy.ALL).dontAnimate().into(holder.imageView)

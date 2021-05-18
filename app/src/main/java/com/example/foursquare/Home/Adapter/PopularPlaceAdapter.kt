@@ -35,7 +35,7 @@ class PopularPlaceAdapter(private var arrayList: List<Datum1>, private val mycon
                 val priceRange= PriceRange().getRupeeIcon(cost)
                 holder.priceRange.text=priceRange
                // holder.distance.text=String.format("%.1f km", arrayList.distance)
-                holder.rating.text = arrayList.overallRating.toString()
+                holder.rating.text = String.format("%.1f",rating)
                 val ratingBackground = RatingBackground().getRatingColor(rating)
                 holder.ratingBackground.background.setTint(ratingBackground)
             }else{

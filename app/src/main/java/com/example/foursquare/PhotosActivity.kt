@@ -5,6 +5,10 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.GridView
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.foursquare.Home.Adapter.RecyclerviewAdapter
 import com.example.foursquare.adapters.PhotosAdapter
 import com.example.foursquare.authentication.Constents
 import com.example.foursquare.viewmodel.PhotosViewModel
@@ -46,9 +50,14 @@ class PhotosActivity : AppCompatActivity() {
                     Log.d("res", "re")
                     if (it != null) {
                         // Toast.makeText(context, "$it", Toast.LENGTH_SHORT).show()
-                        val adapter = PhotosAdapter(it, this)
+                    /*    val adapter = PhotosAdapter(it, this)
                         var gridview = findViewById<GridView>(R.id.photos_gridview)
-                        gridview.adapter = adapter
+                        gridview.adapter = adapter*/
+                        val adapter = PhotosAdapter(it,/*requireContext(),*/this)
+                        val rv : RecyclerView =findViewById(R.id.photos_gridview)!!
+                        rv.adapter = adapter
+                        rv.layoutManager = GridLayoutManager(this,3,
+                            GridLayoutManager.VERTICAL,false)
                     }
 
                 })
