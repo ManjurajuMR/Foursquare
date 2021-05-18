@@ -96,8 +96,7 @@
      android:gravity="center"
      android:textColor="@color/white"
      android:textSize="24sp"
-     android:inputType="textPassword"
-     android:maxLength="6"
+     android:maxLength="8"
      android:backgroundTint="#b5abab"/>
 
  <TextView
