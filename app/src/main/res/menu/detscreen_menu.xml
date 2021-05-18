@@ -15,7 +15,7 @@
         android:id="@+id/addplace_tofav"
         android:visible="true"
         android:title="Add to Fav"
-        android:icon="@drawable/favourite_icon_copy"
+        android:icon="@drawable/favourite"
         android:orderInCategory="2"
         app:showAsAction="always"
         android:clickable="true"/>

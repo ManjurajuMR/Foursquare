@@ -12,7 +12,7 @@ import com.example.foursquare.viewmodel.ReviewsViewModel
 
 class FavouritesActivity : AppCompatActivity(), FavouritesAdapter.OnFavItemClickListener {
     private lateinit var favouritesViewModel: FavouritesViewModel
-    val token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtYW5pc2gxMUBnbWFpbC5jb20iLCJleHAiOjE2MjEyNDk2NTAsImlhdCI6MTYyMTIzMTY1MH0.lvJd0_aIlLIYWhe5_Omq_ViSGWvYmBYAHs80AKMIpTUGpU0VhSi2org104T-93htzjH8CkQqE7RwIGQvcF7eKg"
+    val token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtYW5pc2gxMUBnbWFpbC5jb20iLCJleHAiOjE2MjEzMjk3NzksImlhdCI6MTYyMTMxMTc3OX0.xo_pnRwYeyio35ttJomKzwuH9yIbo33mIXRhTglDeEbTnKJbmLQvqXMB_R5qqRWVMtmRqw3WqHCJGOA3W-abhA"
     val userid = 126
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,15 +49,18 @@ class FavouritesActivity : AppCompatActivity(), FavouritesAdapter.OnFavItemClick
             val ntoken = "Bearer $token"
             favouritesViewModel.delFavourite(ntoken, userid, PlaceId.toInt()).observe(this, {
                 if (it != null){
-                    val stat : Int = it.gstatus().toInt()
+                    val stat : Int = it.getStats()
                     if (stat == 200){
                         Toast.makeText(applicationContext,"Deleted from Favourites",Toast.LENGTH_LONG).show()
                     }
                     else{
-                        Toast.makeText(applicationContext, it.gMessage(), Toast.LENGTH_SHORT).show()
+                        Toast.makeText(applicationContext, it.getMesage(), Toast.LENGTH_SHORT).show()
                     }
                 }
+
+                //Toast.makeText(applicationContext,"${it.message}",Toast.LENGTH_LONG).show()
             })
         }
+
     }
 }
