@@ -20,6 +20,6 @@ interface FavouritesApi {
     fun delFavourite(
         @Header("Authorization") token:String,
         @Query("userId") userId: Int?,
-        @Query("placeId") placeId: Int?
+        @Query("placeId") placeId: Int
     ) : Call<DelFavourite>
 }

@@ -53,14 +53,11 @@ class DetailsScreenActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details_screen)
         //supportActionBar?.hide()
-        homeViewModel =
-            ViewModelProvider.AndroidViewModelFactory(application).create(HomeViewModel::class.java)
+        homeViewModel = ViewModelProvider.AndroidViewModelFactory(application).create(HomeViewModel::class.java)
 
-        addfavViewModel = ViewModelProvider.AndroidViewModelFactory(application)
-            .create(AddFavouriteViewModel::class.java)
+        addfavViewModel = ViewModelProvider.AndroidViewModelFactory(application).create(AddFavouriteViewModel::class.java)
 
-        val detscreen_tb =
-            findViewById<androidx.appcompat.widget.Toolbar>(R.id.detailscreen_toolbar)
+        val detscreen_tb = findViewById<androidx.appcompat.widget.Toolbar>(R.id.detailscreen_toolbar)
         detscreen_tb.setNavigationOnClickListener {
             onBackPressed()
         }
@@ -131,12 +128,14 @@ class DetailsScreenActivity : AppCompatActivity() {
                     this.type = "image"
                 }
                 startActivity(intent)
-
+                //Toast.makeText(this,"share",Toast.LENGTH_LONG).show()
+            }
+            if (id == R.id.addplace_tofav) {
+                addFavourites()
+                //Toast.makeText(this,"fav",Toast.LENGTH_LONG).show()
             }
             super.onOptionsItemSelected(item)
         }
-
-        addFavourites()
     }
 
 //    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -202,17 +201,7 @@ class DetailsScreenActivity : AppCompatActivity() {
             pno = it.pageNo
             psize = it.pageSize
 
-            setDataToLayout(
-                place_name,
-                place_image,
-                place_type,
-                overall_rating,
-                overview,
-                address,
-                phone_num,
-                latitude,
-                longitude
-            )
+            setDataToLayout(place_name, place_image, place_type, overall_rating, overview, address, phone_num, latitude, longitude)
         })
         /*homeViewModel.getPlaceDetailsByPlaceId(10).observe(this,{
         })*/
@@ -300,12 +289,12 @@ class DetailsScreenActivity : AppCompatActivity() {
 //    }
 
     private fun addFavourites() {
-        val userId = 110
+        val userId = 126
         val placeId = intent.getIntExtra("pid", 0)
         // val placeId =23
         Log.d("placeid", "${placeId}")
         var Token =
-            "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0MUBnbWFpbC5jb20iLCJleHAiOjE2MjA5MjU5MjUsImlhdCI6MTYyMDkwNzkyNX0.ZzTN92UMvhSSwS6ydFBHOMZ3KhP8MA9Xbv8QYzif3m07o4p_0CvTXgeukTKB0EnJt0NtSRXVnaXHcYjCwyVaeQ"
+            "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtYW5pc2gxMUBnbWFpbC5jb20iLCJleHAiOjE2MjEzMjk3NzksImlhdCI6MTYyMTMxMTc3OX0.xo_pnRwYeyio35ttJomKzwuH9yIbo33mIXRhTglDeEbTnKJbmLQvqXMB_R5qqRWVMtmRqw3WqHCJGOA3W-abhA"
 
         if (Token != null && placeId != null) {
             val newtoken = "Bearer $Token"
@@ -320,12 +309,10 @@ class DetailsScreenActivity : AppCompatActivity() {
                 if (it != null) {
                     println(it)
                     if (it.getStatus() == 200) {
-                        Toast.makeText(applicationContext, "Added to favourites", Toast.LENGTH_LONG)
-                            .show()
+                        Toast.makeText(applicationContext, "Added to favourites", Toast.LENGTH_LONG).show()
                         onBackPressed()
                     } else {
-                        Toast.makeText(applicationContext, it.getMessage(), Toast.LENGTH_SHORT)
-                            .show()
+                        Toast.makeText(applicationContext, it.getMessage(), Toast.LENGTH_SHORT).show()
                     }
                 }
             })
