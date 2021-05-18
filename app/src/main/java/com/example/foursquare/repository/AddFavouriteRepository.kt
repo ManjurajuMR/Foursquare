@@ -50,8 +50,7 @@ class AddFavouriteRepository(private val application: Application) {
                     addFavUser.value = response.body()
                 } else {
                     Log.d("response", "${response.body()}")
-                    Toast.makeText(application, response.errorBody()?.string(), Toast.LENGTH_SHORT)
-                        .show()
+                    Toast.makeText(application, response.errorBody()?.string(), Toast.LENGTH_SHORT).show()
                 }
             }
 

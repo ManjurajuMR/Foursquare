@@ -29,7 +29,7 @@ import com.google.gson.annotations.SerializedName
 //    fun getMessage() = message
 //}
 
-data class Addfav (
+/*data class Addfav (
     private val status: Int,
     private val message: String,
     private val pageNo: Int,
@@ -60,4 +60,36 @@ data class AddfavData(
     fun getReview() = review
     fun getDate() = date
 
+}*/
+
+
+import com.beust.klaxon.*
+
+private val klaxon = Klaxon()
+
+data class Addfav (
+    val status: Long,
+    val error: String,
+    val message: String,
+    val pageNo: Long,
+    val pageSize: Long,
+    val lastPage: Boolean,
+    val data: AddfavData
+) {
+    public fun toJson() = klaxon.toJsonString(this)
+
+    companion object {
+        public fun fromJson(json: String) = klaxon.parse<Addfav>(json)
+    }
 }
+
+data class AddfavData (
+    @Json(name = "fav_id")
+    val favID: Long,
+
+    @Json(name = "user_id")
+    val userID: Long,
+
+    @Json(name = "place_id")
+    val placeID: Long
+)
