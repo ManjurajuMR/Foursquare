@@ -127,7 +127,9 @@ class DetailsScreenActivity : AppCompatActivity() {
         detscreen_tb.setOnMenuItemClickListener { item ->
             val id = item?.itemId
             if (id == R.id.share_det) {
-                /*var intent = Intent().apply {
+
+                var intent = Intent().apply {
+
                     this.action = Intent.ACTION_SEND
                     this.putExtra(Intent.EXTRA_TEXT, "share")
                     this.type = "image"
@@ -135,12 +137,16 @@ class DetailsScreenActivity : AppCompatActivity() {
                 startActivity(intent)*/
                 Toast.makeText(this,"share",Toast.LENGTH_LONG).show()
             }
+            
             if (id == R.id.addplace_tofav) {
-                addFavourites()
-                //Toast.makeText(this,"fav",Toast.LENGTH_LONG).show()
+
+                Toast.makeText(this, "fav", Toast.LENGTH_SHORT).show()
+                //addFavourites()
             }
+
             super.onOptionsItemSelected(item)
         }
+
     }
 
 //    override fun onCreateOptionsMenu(menu: Menu?): Boolean {

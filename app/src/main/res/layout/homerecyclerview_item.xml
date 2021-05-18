@@ -119,10 +119,13 @@
                         android:id="@+id/dot"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+
+                  
                         android:layout_marginStart="2dp"
                         android:text="@string/dot"
                         android:textSize="14sp"
                         android:textStyle="bold" />
+
 
                     <TextView
                         android:id="@+id/price_range"
@@ -131,6 +134,7 @@
                         android:layout_marginStart="2dp"
                         android:text="@string/amount"
                         android:textSize="14sp"/>
+
 
                     <TextView
                         android:id="@+id/distance"
@@ -174,6 +178,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/card_item_layout"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="10dp"
@@ -342,4 +347,6 @@
 
         </androidx.cardview.widget.CardView>
 
+
     </androidx.constraintlayout.widget.ConstraintLayout>-->
+
