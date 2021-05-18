@@ -29,6 +29,7 @@ import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 
@@ -61,6 +62,12 @@ class NearyouFragment : Fragment(),RecyclerviewAdapter.OnSiteItemClickListener {
 
     }
 
+
+    override fun onResume() {
+        super.onResume()
+        Location()
+    }
+
     //
     fun Location(){
 
@@ -87,8 +94,16 @@ class NearyouFragment : Fragment(),RecyclerviewAdapter.OnSiteItemClickListener {
                 if(mapReady){
                     googleMap?.animateCamera(CameraUpdateFactory.newLatLngZoom(LatLng(it.latitude, it.longitude), 15.0f))
                     googleMap?.addMarker(MarkerOptions().position(LatLng(it.latitude,it.longitude)).title("Me"))
-                   // googleMap?.moveCamera(CameraUpdateFactory.newLatLng(LatLng(it!!.latitude,it!!.longitude)))
+                    //googleMap?.moveCamera(CameraUpdateFactory.newLatLng(LatLng(it!!.latitude,it!!.longitude)))
                 }
+
+                //Place current location marker
+         /*       val latLng = LatLng(it.latitude, it.longitude)
+                val markerOptions = MarkerOptions()
+                markerOptions.position(latLng)
+                markerOptions.title("Current Position")
+                markerOptions.icon(BitmapDescriptorFactory.fromBitmap(mapPin))
+                googleMap!!.addMarker(markerOptions)*/
 
                 //Toast.makeText(context, "${it.latitude},${it.longitude}", Toast.LENGTH_SHORT).show()
             }

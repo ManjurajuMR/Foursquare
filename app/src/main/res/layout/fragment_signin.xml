@@ -60,7 +60,6 @@
      android:layout_centerHorizontal="true"
      android:layout_marginTop="2dp"
      android:paddingBottom="20dp"
-     android:hint="Ryan_Wilson"
      android:inputType="textPersonName"
      android:textColorHint="@color/white"
      android:gravity="center"
@@ -91,11 +90,11 @@
      android:layout_centerHorizontal="true"
      android:layout_marginTop="2dp"
      android:paddingBottom="20dp"
-     android:hint=". . . . . ."
      android:textColorHint="@color/white"
      android:gravity="center"
      android:textColor="@color/white"
      android:textSize="24sp"
+
      android:maxLength="8"
      android:backgroundTint="#b5abab"/>
 

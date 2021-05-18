@@ -16,7 +16,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Foursquare"
         android:usesCleartextTraffic="true">
-        <activity android:name=".SplashScreenActivity"></activity>
+        <activity android:name=".SplashScreenActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -37,11 +43,7 @@
         <activity android:name=".Home.HomeActivity" />
         <activity android:name=".authentication.AuthenticationActivity" />
         <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 
