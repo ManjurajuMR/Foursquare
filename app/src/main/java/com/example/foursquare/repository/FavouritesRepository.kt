@@ -5,6 +5,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.foursquare.model.DelFavourite
 import com.example.foursquare.model.Favourites
 import com.example.foursquare.services.FavouritesApi
 import com.example.foursquare.services.RetrofitApiInstance
@@ -36,6 +37,28 @@ class FavouritesRepository(private val application: Application) {
 
         })
         return getFavourites
+    }
+
+    fun delFavourite(token: String, userId: Int, placeId: Int): LiveData<DelFavourite> {
+        val delFavPlace: MutableLiveData<DelFavourite> = MutableLiveData()
+        val addReviewUserCall = favouritesApi.delFavourite(token,userId,placeId)
+        addReviewUserCall.enqueue(object : retrofit2.Callback<DelFavourite> {
+            override fun onResponse(call: Call<DelFavourite>, response: Response<DelFavourite>) {
+                //TODO("Not yet implemented")
+                if (response.isSuccessful) {
+                    delFavPlace.value = response.body()
+                } else {
+                    Log.d("delresposne", "${response.body()}")
+                    Toast.makeText(application, response.errorBody()?.string(), Toast.LENGTH_SHORT).show()
+                }
+            }
+            override fun onFailure(call: Call<DelFavourite>, t: Throwable) {
+                //TODO("Not yet implemented")
+                delFavPlace.value = null
+                Toast.makeText(application, t.message, Toast.LENGTH_SHORT).show()
+            }
+        })
+        return delFavPlace
     }
 
 }
