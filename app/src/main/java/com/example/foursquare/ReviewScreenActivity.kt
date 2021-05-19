@@ -40,12 +40,18 @@ class ReviewScreenActivity : AppCompatActivity() {
         if (plc_id != null) {
                     reviewscreentoolbar_title.setText(placeName)
                     reviewsViewModel.getPlaceDetailsByPlaceId(plc_id,0,50).observe(this,{
-                        if(it != null){
+                        if(it.data != null){
                             val adapter = ReviewScreenAdapter(it.data,this)
                             val review_rv : RecyclerView = findViewById(R.id.rvscrn_rv)!!
                             review_rv.adapter = adapter
                             review_rv.layoutManager = LinearLayoutManager(this)
 
+                        }else{
+                            Toast.makeText(
+                                applicationContext,
+                                "NO Reviews added!!",
+                                Toast.LENGTH_LONG
+                            ).show()
                         }
                     })
         }

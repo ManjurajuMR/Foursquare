@@ -33,7 +33,7 @@ class ToppickFragment : Fragment(),RecyclerviewAdapter.OnSiteItemClickListener {
 
     private fun loadPlaceData() {
 
-        placeViewModel.getPlaceDetails(type="topPic", 13.343528531501212, 74.74668065517001)
+        placeViewModel.getPlaceDetails(type="topPic", 12.3079, 76.6534)
             ?.observe(viewLifecycleOwner, {
                 Log.d("res","re")
                 if (it != null) {
@@ -47,7 +47,7 @@ class ToppickFragment : Fragment(),RecyclerviewAdapter.OnSiteItemClickListener {
             })
     }
 
-    override fun onSiteClick(placeId: Long,distence:Double) {
+    override fun onSiteClick(placeId: Long,distence:Double,isfav:Boolean) {
         val placeID=placeId.toInt()
         Log.d("position", "${placeId} got")
         val sharedPreferences = requireContext().getSharedPreferences(Constents.Shared_pref, Context.MODE_PRIVATE)
@@ -56,6 +56,7 @@ class ToppickFragment : Fragment(),RecyclerviewAdapter.OnSiteItemClickListener {
         sharedEditor.apply()
         val intent = Intent(activity, DetailsScreenActivity::class.java)
         intent.putExtra("distence",distence)
+        intent.putExtra("isfav",isfav)
         activity?.startActivity(intent)
     }
 

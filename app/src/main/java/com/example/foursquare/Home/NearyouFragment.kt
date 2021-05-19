@@ -112,7 +112,7 @@ class NearyouFragment : Fragment(),RecyclerviewAdapter.OnSiteItemClickListener {
 
     private fun loadPlaceData() {
 
-            placeViewModel.getPlaceDetails(type="nearBy", 13.343528531501212, 74.74668065517001)
+            placeViewModel.getPlaceDetails(type="nearBy", 12.3079, 76.6534)
                 ?.observe(viewLifecycleOwner, {
                     Log.d("res","re")
                     if (it != null) {
@@ -169,7 +169,7 @@ class NearyouFragment : Fragment(),RecyclerviewAdapter.OnSiteItemClickListener {
         }
     }
 
-    override fun onSiteClick(placeId: Long,distence:Double) {
+    override fun onSiteClick(placeId: Long,distence:Double,isfav:Boolean) {
         val placeID=placeId.toInt()
         val sharedPreferences = requireContext().getSharedPreferences(Constents.Shared_pref, Context.MODE_PRIVATE)
         val sharedEditor = sharedPreferences.edit()
@@ -177,6 +177,7 @@ class NearyouFragment : Fragment(),RecyclerviewAdapter.OnSiteItemClickListener {
         sharedEditor.apply()
         val intent = Intent(activity, DetailsScreenActivity::class.java)
         intent.putExtra("distence",distence)
+        intent.putExtra("isfav",isfav)
         activity?.startActivity(intent)
     }
 }
