@@ -3,10 +3,7 @@ package com.example.foursquare.services
 import com.example.foursquare.model.DelFavourite
 import com.example.foursquare.model.Favourites
 import retrofit2.Call
-import retrofit2.http.DELETE
-import retrofit2.http.GET
-import retrofit2.http.Header
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface FavouritesApi {
 

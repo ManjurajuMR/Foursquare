@@ -5,7 +5,7 @@ import com.beust.klaxon.*
 private val klaxon = Klaxon()
 
 data class Favourites (
-    val status: Long,
+    val status: Int,
     val error: String,
     val message: String,
     val pageNo: Long,
