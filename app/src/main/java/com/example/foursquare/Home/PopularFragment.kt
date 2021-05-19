@@ -33,7 +33,7 @@ class PopularFragment : Fragment(),PopularPlaceAdapter.OnItemClickListener {
 
     private fun loadPlaceData() {
 
-        placeViewModel.getPopularPlaceDetails(type="popular", 13.343528531501212, 74.74668065517001)
+        placeViewModel.getPopularPlaceDetails(type="popular", 12.3079, 76.6534)
             ?.observe(viewLifecycleOwner, {
                 Log.d("res","re")
                 if (it != null) {
@@ -47,7 +47,7 @@ class PopularFragment : Fragment(),PopularPlaceAdapter.OnItemClickListener {
             })
     }
 
-    override fun onItemClick(placeId: Long) {
+    override fun onItemClick(placeId: Long,isfav:Boolean) {
         val placeID=placeId.toInt()
         Log.d("position", "${placeId} got")
         val sharedPreferences = requireContext().getSharedPreferences(Constents.Shared_pref, Context.MODE_PRIVATE)
@@ -56,6 +56,7 @@ class PopularFragment : Fragment(),PopularPlaceAdapter.OnItemClickListener {
         sharedEditor.apply()
         val intent = Intent(activity, DetailsScreenActivity::class.java)
         //intent.putExtra("placeId",placeID)
+        intent.putExtra("isfav",isfav)
         activity?.startActivity(intent)
 
            }

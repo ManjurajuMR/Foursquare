@@ -68,7 +68,7 @@ class RecyclerviewAdapter(private var arrayList: List<Datum>,private val myconte
         }
 
         override fun onClick(p0: View?) {
-            onClickListener.onSiteClick(arrayList[adapterPosition].place.id,arrayList[adapterPosition].distance)
+            onClickListener.onSiteClick(arrayList[adapterPosition].place.id,arrayList[adapterPosition].distance,checkIsFavourite(arrayList[adapterPosition].place.id))
         }
 
     }
@@ -108,7 +108,7 @@ class RecyclerviewAdapter(private var arrayList: List<Datum>,private val myconte
     }
 
     interface OnSiteItemClickListener {
-        fun onSiteClick(PlaceId: Long,distence:Double)
+        fun onSiteClick(PlaceId: Long,distence:Double,isfav:Boolean)
     }
 
 

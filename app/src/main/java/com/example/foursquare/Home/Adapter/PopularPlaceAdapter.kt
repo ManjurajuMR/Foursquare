@@ -99,7 +99,7 @@ class PopularPlaceAdapter(private var arrayList: List<Datum1>, private val mycon
                 if (position!=RecyclerView.NO_POSITION) {
                     listener.onItemClick(position)
                 }*/
-                onclicklistener.onItemClick(arrayList[adapterPosition].id)
+                onclicklistener.onItemClick(arrayList[adapterPosition].id,checkIsFavourite(arrayList[adapterPosition].id))
             }
 
             /*     init {
@@ -112,7 +112,7 @@ class PopularPlaceAdapter(private var arrayList: List<Datum1>, private val mycon
                  }*/
         }
     interface OnItemClickListener{
-        fun onItemClick(placeId:Long)
+        fun onItemClick(placeId:Long,isfav:Boolean)
     }
 
     //
