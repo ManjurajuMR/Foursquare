@@ -117,7 +117,7 @@ class NearyouFragment : Fragment(),RecyclerviewAdapter.OnSiteItemClickListener {
                     Log.d("res","re")
                     if (it != null) {
                            // Toast.makeText(context, "$it", Toast.LENGTH_SHORT).show()
-                        val adapter = RecyclerviewAdapter(it.data,/*requireContext(),*/this)
+                        val adapter = RecyclerviewAdapter(it.data,requireContext(),this)
                         val rv : RecyclerView = view?.findViewById(R.id.nearyou_recyclerView)!!
                         rv.adapter = adapter
                         rv.layoutManager = LinearLayoutManager(requireContext())
@@ -169,14 +169,14 @@ class NearyouFragment : Fragment(),RecyclerviewAdapter.OnSiteItemClickListener {
         }
     }
 
-    override fun onSiteClick(placeId: Long) {
+    override fun onSiteClick(placeId: Long,distence:Double) {
         val placeID=placeId.toInt()
         val sharedPreferences = requireContext().getSharedPreferences(Constents.Shared_pref, Context.MODE_PRIVATE)
         val sharedEditor = sharedPreferences.edit()
         sharedEditor.putInt(Constents.PLACE_ID, placeID)
         sharedEditor.apply()
         val intent = Intent(activity, DetailsScreenActivity::class.java)
-        //intent.putExtra("placeId",placeID)
+        intent.putExtra("distence",distence)
         activity?.startActivity(intent)
     }
 }

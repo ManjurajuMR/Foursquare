@@ -47,7 +47,7 @@ class ToppickFragment : Fragment(),RecyclerviewAdapter.OnSiteItemClickListener {
             })
     }
 
-    override fun onSiteClick(placeId: Long) {
+    override fun onSiteClick(placeId: Long,distence:Double) {
         val placeID=placeId.toInt()
         Log.d("position", "${placeId} got")
         val sharedPreferences = requireContext().getSharedPreferences(Constents.Shared_pref, Context.MODE_PRIVATE)
@@ -55,7 +55,7 @@ class ToppickFragment : Fragment(),RecyclerviewAdapter.OnSiteItemClickListener {
         sharedEditor.putInt(Constents.PLACE_ID, placeID)
         sharedEditor.apply()
         val intent = Intent(activity, DetailsScreenActivity::class.java)
-        //intent.putExtra("placeId",placeID)
+        intent.putExtra("distence",distence)
         activity?.startActivity(intent)
     }
 
