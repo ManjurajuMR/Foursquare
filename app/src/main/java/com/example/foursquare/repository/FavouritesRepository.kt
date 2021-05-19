@@ -6,10 +6,12 @@ import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.foursquare.model.DelFavourite
+import com.example.foursquare.model.FavouriteResponse
 import com.example.foursquare.model.Favourites
 import com.example.foursquare.services.FavouritesApi
 import com.example.foursquare.services.RetrofitApiInstance
 import retrofit2.Call
+import retrofit2.Callback
 import retrofit2.Response
 
 class FavouritesRepository(private val application: Application) {
@@ -60,6 +62,31 @@ class FavouritesRepository(private val application: Application) {
             }
         })
         return delFavPlace
+    }
+
+    //
+    fun deleteFavourite(token : String, favourite : HashMap<String,String>): LiveData<FavouriteResponse> {
+        var deleteFavouriteResponse : MutableLiveData<FavouriteResponse> = MutableLiveData()
+        val getFavouriteCall = favouritesApi.deleteFavourite(token,favourite)
+        getFavouriteCall.enqueue(object : Callback<FavouriteResponse> {
+            override fun onResponse(call: Call<FavouriteResponse>, response: Response<FavouriteResponse>) {
+                if (response.isSuccessful) {
+                    deleteFavouriteResponse.value = response.body()
+                } else {
+                    Log.d("response","${response.body()}")
+                    Toast.makeText(application,response.errorBody()?.string(), Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<FavouriteResponse>, t: Throwable) {
+
+                deleteFavouriteResponse.value = null
+                Toast.makeText(application, t.message, Toast.LENGTH_SHORT).show()
+
+            }
+
+        })
+        return deleteFavouriteResponse
     }
 
 }
