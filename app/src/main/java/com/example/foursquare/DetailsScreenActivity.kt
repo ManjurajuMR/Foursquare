@@ -274,8 +274,9 @@ class DetailsScreenActivity : AppCompatActivity() {
         res_address.setText(address)
         res_phno.setText(phone_num.toString())
         Glide.with(this).load(place_image).override(500, 350).into(res_img)
-        val distence= intent.getDoubleExtra("distence",8.5).toString()
-        res_dis.setText(distence)
+        val distence= intent.getDoubleExtra("distence",8.5)
+        val distence1=String.format("%.1f km", distence)
+        res_dis.setText(distence1)
 
         when (overall_rating.toInt()) {
             1 -> show_rating.rating = 0.5F
