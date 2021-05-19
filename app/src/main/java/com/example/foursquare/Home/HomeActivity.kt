@@ -4,14 +4,18 @@ import android.content.Intent
 import android.location.Location
 import android.location.LocationListener
 import android.os.Bundle
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager.widget.ViewPager
+import com.bumptech.glide.Glide
 import com.example.foursquare.*
 import com.example.foursquare.Home.Adapter.HomeAdapter
 
@@ -65,7 +69,7 @@ class HomeActivity : AppCompatActivity() {
 
         drawerLayout = findViewById(R.id.drawer)
         navigationView = findViewById(R.id.nav_view)
-
+        setUserProfile(navigationView)
         val toolbar = findViewById<androidx.appcompat.widget.Toolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
 
@@ -136,6 +140,21 @@ class HomeActivity : AppCompatActivity() {
         }
 
 
+    }
+
+    private fun setUserProfile(navView: NavigationView?) {
+        val sharedPreferences = getSharedPreferences(Constents.Shared_pref, MODE_PRIVATE)
+        val header = navView?.getHeaderView(0)
+        val profilePicture = header?.findViewById<ImageView>(R.id.profile_picture)
+        val userName = header?.findViewById<TextView>(R.id.user_name)
+        if(sharedPreferences.contains(Constents.USER_ID)){
+            val name = sharedPreferences.getString(Constents.USER_NAME,"")
+            val image = sharedPreferences.getString(Constents.USER_IMAGE,"")
+            userName?.text = name
+            if (profilePicture != null) {
+                Glide.with(applicationContext).load(image).into(profilePicture)
+            }
+        }
     }
 
 

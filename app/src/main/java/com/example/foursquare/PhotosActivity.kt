@@ -76,7 +76,7 @@ class PhotosActivity : AppCompatActivity() {
             photosViewModel.getPhotos(placeID)
                 ?.observe(this, {
                     Log.d("res", "re")
-                    if (it != null) {
+                    if (it.data != null) {
                         // Toast.makeText(context, "$it", Toast.LENGTH_SHORT).show()
                     /*    val adapter = PhotosAdapter(it, this)
                         var gridview = findViewById<GridView>(R.id.photos_gridview)
@@ -193,16 +193,15 @@ class PhotosActivity : AppCompatActivity() {
 
             }
 
-
+            Toast.makeText(applicationContext, "Photo uploading", Toast.LENGTH_LONG).show()
             PhotosApi.uploadReviewImage(
                 placeId, userId, token, reviewImagesParts
             ).enqueue(object : Callback<ApiResponse> {
                 override fun onResponse(call: Call<ApiResponse>, response: Response<ApiResponse>) {
                     if (response.isSuccessful) {
                         if (response.body()?.getStatus() == 200) {
-                            Toast.makeText(applicationContext, "Photo Added", Toast.LENGTH_LONG)
-                                .show()
-
+                            Toast.makeText(applicationContext, "Photo Added", Toast.LENGTH_LONG).show()
+                            loadPhotosData()
                         } else {
 
                             Toast.makeText(applicationContext, response.body()?.getMessage(), Toast.LENGTH_SHORT).show()
