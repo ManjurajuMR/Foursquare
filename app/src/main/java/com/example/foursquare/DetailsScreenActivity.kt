@@ -56,6 +56,7 @@ class DetailsScreenActivity : AppCompatActivity() {
     var tkn : String = ""
     var placeID : Int = 0
     var userid : String = ""
+    var average_rating : String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -173,6 +174,9 @@ class DetailsScreenActivity : AppCompatActivity() {
             myDialog.dismiss()
         }
 
+        val average: TextView = myDialog.findViewById(R.id.avg_rating_popup)
+        average.setText(average_rating)
+
         //myDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         myDialog.show()
     }
@@ -195,6 +199,8 @@ class DetailsScreenActivity : AppCompatActivity() {
             addres = it.data.address
             lati = it.data.latitude
             long = it.data.longitude
+            val rate = (overall_rating/2).toFloat()
+            average_rating = String.format("%.1f",rate)
 
             locnManager = this.let { LocationServices.getFusedLocationProviderClient(it) }!!
             val supportMapFragment = SupportMapFragment.newInstance()

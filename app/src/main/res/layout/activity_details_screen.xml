@@ -348,17 +348,25 @@
         android:text="@string/distance"
         android:fontFamily="@font/avenir_medium"/>
 
-    <Button
-        android:id="@+id/add_review"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_below="@+id/reslocn_img"
-        android:text="Add Review"
-        android:textSize="21sp"
-        android:textAllCaps="false"
-        android:textColor="#F7F7F7"
-        android:backgroundTint="#351347"
-        android:fontFamily="@font/avenir_medium"/>
+        android:layout_height="55dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical"
+        android:layout_below="@+id/reslocn_img">
+
+        <Button
+            android:id="@+id/add_review"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="Add Review"
+            android:textSize="21sp"
+            android:textAllCaps="false"
+            android:textColor="#F7F7F7"
+            android:backgroundTint="#351347"
+            android:fontFamily="@font/avenir_medium"/>
+
+    </LinearLayout>
 
 </RelativeLayout>
 
