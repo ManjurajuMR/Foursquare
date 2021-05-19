@@ -100,7 +100,7 @@ class DetailsScreenActivity : AppCompatActivity() {
 
             val intent = Intent(this,AddReviewActivity::class.java)
             //intent.putExtra("pid",placeID)
-            intent.putExtra("pname",pname)
+            //intent.putExtra("pname",pname)
             startActivity(intent)
         }
 
@@ -264,6 +264,8 @@ class DetailsScreenActivity : AppCompatActivity() {
         res_address.setText(address)
         res_phno.setText(phone_num.toString())
         Glide.with(this).load(place_image).override(500, 350).into(res_img)
+        val distence= intent.getDoubleExtra("distence",8.5).toString()
+        res_dis.setText(distence)
 
         when (overall_rating.toInt()) {
             1 -> show_rating.rating = 0.5F
