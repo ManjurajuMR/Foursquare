@@ -84,7 +84,7 @@ class DetailsScreenActivity : AppCompatActivity() {
             setlivedata()
         }
 
-        locnManager = this.let { LocationServices.getFusedLocationProviderClient(it) }!!
+        /*locnManager = this.let { LocationServices.getFusedLocationProviderClient(it) }!!
         val supportMapFragment = SupportMapFragment.newInstance()
         supportFragmentManager.beginTransaction().replace(R.id.reslocn_img, supportMapFragment).commit()
         supportMapFragment.getMapAsync {
@@ -93,8 +93,9 @@ class DetailsScreenActivity : AppCompatActivity() {
             if (mapReady) {
                 googleMap?.animateCamera(CameraUpdateFactory.newLatLngZoom(LatLng(lati, long), 15.0f))
                 googleMap?.addMarker(MarkerOptions().position(LatLng(lati, long)).title("mn"))
+                Log.d("latlon","$lati+$long")
             }
-        }
+        }*/
 
         add_review.setOnClickListener {
 
@@ -192,6 +193,21 @@ class DetailsScreenActivity : AppCompatActivity() {
             pno = it.pageNo
             psize = it.pageSize
             addres = it.data.address
+            lati = it.data.latitude
+            long = it.data.longitude
+
+            locnManager = this.let { LocationServices.getFusedLocationProviderClient(it) }!!
+            val supportMapFragment = SupportMapFragment.newInstance()
+            supportFragmentManager.beginTransaction().replace(R.id.reslocn_img, supportMapFragment).commit()
+            supportMapFragment.getMapAsync {
+                googleMap = it
+                mapReady = true
+                if (mapReady) {
+                    googleMap?.animateCamera(CameraUpdateFactory.newLatLngZoom(LatLng(lati, long), 15.0f))
+                    googleMap?.addMarker(MarkerOptions().position(LatLng(lati, long)).title("mn"))
+                    Log.d("latlon","$lati+$long")
+                }
+            }
 
             setDataToLayout(place_name, place_image, place_type, overall_rating, overview, address, phone_num, latitude, longitude)
         })
@@ -236,12 +252,14 @@ class DetailsScreenActivity : AppCompatActivity() {
         latitude: Double,
         longitude: Double
     ) {
+
         lati = latitude
         long = longitude
         //
         val isFavourite = intent.getBooleanExtra("isfav",false)
         if(isFavourite)
             tgladd_fav.isChecked = true
+
 
         val res_img = findViewById<ImageView>(R.id.rest_img)
         detscreentoolbar_title.setText(place_name)
