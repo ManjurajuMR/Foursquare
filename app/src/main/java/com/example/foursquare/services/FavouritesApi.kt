@@ -1,6 +1,7 @@
 package com.example.foursquare.services
 
 import com.example.foursquare.model.DelFavourite
+import com.example.foursquare.model.FavouriteResponse
 import com.example.foursquare.model.Favourites
 import retrofit2.Call
 import retrofit2.http.*
@@ -20,5 +21,9 @@ interface FavouritesApi {
         @Query("userId") userId: Int?,
         @Query("placeId") placeId: Int
     ) : Call<DelFavourite>
+
+    @HTTP(method = "DELETE", path = "deleteFavourite", hasBody = true)
+    fun deleteFavourite(@Header("Authorization") token : String,
+                        @Body favourite : HashMap<String,String> ) : Call<FavouriteResponse>
 
 }

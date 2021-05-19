@@ -38,7 +38,7 @@ class ToppickFragment : Fragment(),RecyclerviewAdapter.OnSiteItemClickListener {
                 Log.d("res","re")
                 if (it != null) {
                     // Toast.makeText(context, "$it", Toast.LENGTH_SHORT).show()
-                    val adapter = RecyclerviewAdapter(it.data/*,requireContext()*/,this)
+                    val adapter = RecyclerviewAdapter(it.data,requireContext(),this)
                     val rv : RecyclerView = view?.findViewById(R.id.toppick_recyclerView)!!
                     rv.adapter = adapter
                     rv.layoutManager = LinearLayoutManager(requireContext())

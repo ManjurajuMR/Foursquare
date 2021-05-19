@@ -15,6 +15,7 @@ import android.widget.Toast
 import android.widget.ToggleButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -26,13 +27,18 @@ import com.example.foursquare.authentication.Constents
 import com.example.foursquare.model.Datum
 import com.example.foursquare.model.FavPdata
 import com.example.foursquare.model.Place
+import com.example.foursquare.viewmodel.AddFavouriteViewModel
 import com.example.foursquare.viewmodel.FavouritesViewModel
 
 
 class RecyclerviewAdapter(private var arrayList: List<Datum>,private val mycontext: Context, private val clickListener: OnSiteItemClickListener) : RecyclerView.Adapter<RecyclerviewAdapter.ViewHolder>() {
     private val favouriteViewModel = ViewModelProvider.AndroidViewModelFactory(mycontext.applicationContext as Application).create(FavouritesViewModel::class.java)
+    private val addfavViewModel = ViewModelProvider.AndroidViewModelFactory(mycontext.applicationContext as Application).create(AddFavouriteViewModel::class.java)
     var favouriteData : List<FavPdata>?=null
     val sharedPreferences = mycontext.getSharedPreferences(Constents.Shared_pref, AppCompatActivity.MODE_PRIVATE)
+    val userId=sharedPreferences.getString(Constents.USER_ID,"")!!
+    val token=sharedPreferences.getString(Constents.USER_TOKEN,"")
+    //val placeID=sharedPreferences.getInt(Constents.PLACE_ID,1)
     init {
         if(sharedPreferences.contains(Constents.USER_ID)) {
             getFavourite()
@@ -52,11 +58,12 @@ class RecyclerviewAdapter(private var arrayList: List<Datum>,private val myconte
         init {
             itemView.setOnClickListener(this)
             favourite.setOnClickListener {
-                if (favourite.isChecked){
-                    favourite.isChecked=false
-                }else{
-                    favourite.isChecked=true
-                }
+                  if (favourite.isChecked){
+                      addFavourites(arrayList[adapterPosition].place.id)
+                  }else{
+                      val id=arrayList[adapterPosition].place.id
+                      deleteFavourite(id.toInt())
+                  }
             }
         }
 
@@ -108,8 +115,7 @@ class RecyclerviewAdapter(private var arrayList: List<Datum>,private val myconte
 
 
     private fun getFavourite() {
-        val userId=sharedPreferences.getString(Constents.USER_ID,"")
-        val token=sharedPreferences.getString(Constents.USER_TOKEN,"")
+
         if(userId!=null && token!=null) {
             val token = "Bearer $token"
             val pageNumber = 0
@@ -137,6 +143,61 @@ class RecyclerviewAdapter(private var arrayList: List<Datum>,private val myconte
             }
         }
         return isFavourite
+    }
+
+    private fun addFavourites(placeId: Long) {
+        //val userId = 126
+
+        // val placeId =23
+        //Log.d("placeid", "${placeId}")
+        //var Token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtYW5pc2gxMUBnbWFpbC5jb20iLCJleHAiOjE2MjEzMjk3NzksImlhdCI6MTYyMTMxMTc3OX0.xo_pnRwYeyio35ttJomKzwuH9yIbo33mIXRhTglDeEbTnKJbmLQvqXMB_R5qqRWVMtmRqw3WqHCJGOA3W-abhA"
+
+        if (token != null && placeId != null) {
+            val newtoken = "Bearer $token"
+            val placeId1 = placeId.toInt().toString()
+
+            val user = hashMapOf(
+                "userId" to userId,
+                "placeId" to placeId1
+            )
+            val owner = (mycontext as AppCompatActivity)
+            addfavViewModel.addfav(newtoken, user).observe(owner, {
+                if (it != null) {
+                    if (it.status.toInt() == 200) {
+                        Toast.makeText(mycontext, "Added to favourites", Toast.LENGTH_LONG).show()
+                        //onBackPressed()
+                    } else {
+                        Toast.makeText(mycontext, it.message, Toast.LENGTH_SHORT).show()
+                    }
+                }
+            })
+        }
+
+        //Toast.makeText(applicationContext, "$tkn", Toast.LENGTH_LONG).show()
+
+    }
+
+    private fun deleteFavourite(id: Int?) {
+        val placeId = id
+        val newToken = "Bearer $token"
+
+        val userFavourite = hashMapOf("userId" to userId, "placeId" to placeId.toString())
+
+        if (placeId != null) {
+            val owner = (mycontext as AppCompatActivity)
+            favouriteViewModel.deleteFavourite(newToken, userFavourite).observe(owner) {
+                if(it!=null) {
+                    if (it.getStatus() == 200) {
+                       // startActivity(Intent(this,FavouriteActivity::class.java))
+                        Toast.makeText(mycontext, it.getMessage(), Toast.LENGTH_SHORT).show()
+
+                    } else {
+                        Toast.makeText(mycontext, it.getMessage(), Toast.LENGTH_SHORT)
+                            .show()
+                    }
+                }
+            }
+        }
     }
 
 }
