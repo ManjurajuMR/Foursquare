@@ -15,6 +15,7 @@ import retrofit2.Response
 class FavouritesRepository(private val application: Application) {
     private val favouritesApi = RetrofitApiInstance.getApiInstance(FavouritesApi::class.java)
     val getFavourites: MutableLiveData<Favourites> = MutableLiveData()
+    val delFavPlace: MutableLiveData<DelFavourite> = MutableLiveData()
 
     fun getFavourites(token: String, userId: String?, pageNo:Int, pageSize:Int): LiveData<Favourites> {
         val favDetails = favouritesApi.getFavourites(token, userId, pageNo, pageSize)
@@ -40,7 +41,7 @@ class FavouritesRepository(private val application: Application) {
     }
 
     fun delFavourite(token: String, userId: Int, placeId: Int): LiveData<DelFavourite> {
-        val delFavPlace: MutableLiveData<DelFavourite> = MutableLiveData()
+
         val addReviewUserCall = favouritesApi.delFavourite(token,userId,placeId)
         addReviewUserCall.enqueue(object : retrofit2.Callback<DelFavourite> {
             override fun onResponse(call: Call<DelFavourite>, response: Response<DelFavourite>) {
@@ -49,7 +50,7 @@ class FavouritesRepository(private val application: Application) {
                     delFavPlace.value = response.body()
                 } else {
                     Log.d("delresposne", "${response.body()}")
-                    Toast.makeText(application, response.errorBody()?.string(), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(application, "hii", Toast.LENGTH_SHORT).show()
                 }
             }
             override fun onFailure(call: Call<DelFavourite>, t: Throwable) {

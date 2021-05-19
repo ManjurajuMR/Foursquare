@@ -31,14 +31,16 @@ import com.google.gson.annotations.SerializedName
 
 /*data class Addfav (
     private val status: Int,
+    private val error : String,
     private val message: String,
     private val pageNo: Int,
     private val pageSize: Int,
     private val lastPage: Boolean,
     private val data: List<AddfavData>) {
 
-    fun getStatus() = status
-    fun getMessage() = message
+    fun getStatu() = status
+    fun getError() = error
+    fun getMessag() = message
     fun getPageNo() = pageNo
     fun getPageSize() = pageSize
     fun getLastPage() = lastPage
@@ -46,19 +48,40 @@ import com.google.gson.annotations.SerializedName
 }
 
 data class AddfavData(
-    private val placeId : Int,
-    private val placeName : String,
-    private val userImage : String,
-    private val userName : String,
-    private val review : String,
-    private val date : String ) {
+    private val id: Int,
+    private val name: String,
+    private val placeType: List<AddFavtype>,
+    private val overallRating: Double,
+    private val latitude: Double,
+    private val longitude: Double,
+    private val cost: Long,
+    private val phone: Long,
+    private val landmark: String,
+    private val address: String,
+    private val overview: String,
+    private val image: String) {
 
-    fun getPlaceId() = placeId
-    fun getPlaceName() = placeName
-    fun getUserImage() = userImage
-    fun getUserName() = userName
-    fun getReview() = review
-    fun getDate() = date
+    fun getId() = id
+    fun getName() = name
+    fun getplaceType() = placeType
+    fun getoverallRating() = overallRating
+    fun getlatitude() = latitude
+    fun getlongitude() = longitude
+    fun getcost() = cost
+    fun getphone() = phone
+    fun getlandmark() = landmark
+    fun getaddress() = address
+    fun getoverview() = overview
+    fun getimage() = image
+
+}
+
+data class AddFavtype (
+    val id: Int,
+    val name: String) {
+
+    fun getfId() = id
+    fun getfname() = name
 
 }*/
 

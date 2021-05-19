@@ -2,7 +2,8 @@ package com.example.foursquare.model
 
 import com.beust.klaxon.*
 
-/*private val klaxon = Klaxon()
+/*
+private val klaxon = Klaxon()
 
 data class DelFavourite (
     val status: Long,
@@ -18,7 +19,9 @@ data class DelFavourite (
     companion object {
         public fun fromJson(json: String) = klaxon.parse<DelFavourite>(json)
     }
-}*/
+}
+*/
+
 
 
 data class DelFavourite (
@@ -30,13 +33,13 @@ data class DelFavourite (
     private val lastPage: Boolean,
     private val data: List<Favs>){
 
-    fun getStats() = status
-    fun getError() = error
-    fun getMesage() = message
-    fun getPageNo() = pageNo
-    fun getPageSize() = pageSize
-    fun getLastPage() = lastPage
-    fun getData() = data
+    fun gtStats() = status
+    fun gtError() = error
+    fun gtMesage() = message
+    fun gtPageNo() = pageNo
+    fun gtPageSize() = pageSize
+    fun gtLastPage() = lastPage
+    fun gtData() = data
 
 }
 
@@ -54,18 +57,18 @@ data class Favs (
     private val overview: String,
     private val image: String) {
 
-    fun getId() = id
-    fun getName() = name
-    fun getplaceType() = placeType
-    fun getoverallRating() = overallRating
-    fun getlatitude() = latitude
-    fun getlongitude() = longitude
-    fun getcost() = cost
-    fun getphone() = phone
-    fun getlandmark() = landmark
-    fun getaddress() = address
-    fun getoverview() = overview
-    fun getimage() = image
+    fun gtId() = id
+    fun gtName() = name
+    fun gtplaceType() = placeType
+    fun gtoverallRating() = overallRating
+    fun gtlatitude() = latitude
+    fun gtlongitude() = longitude
+    fun gtcost() = cost
+    fun gtphone() = phone
+    fun gtlandmark() = landmark
+    fun gtaddress() = address
+    fun gtoverview() = overview
+    fun gtimage() = image
 
 }
 
@@ -73,7 +76,36 @@ data class Favstype (
     val id: Int,
     val name: String) {
 
-    fun getfId() = id
-    fun getfname() = name
+    fun gtfId() = id
+    fun gtfname() = name
 
 }
+
+
+/*private val klaxon = Klaxon()
+
+data class DelFavourite (
+    private val status: Int,
+    private val error: String,
+    private val message: String,
+    private val pageNo: Int,
+    private val pageSize: Int,
+    private val lastPage: Boolean,
+    private val data: Any? = null){
+
+    public fun toJson() = klaxon.toJsonString(this)
+
+    companion object {
+        public fun fromJson(json: String) = klaxon.parse<DelFavourite>(json)
+    }
+
+    fun gtStats() = status
+    fun gtError() = error
+    fun gtMesage() = message
+    fun gtPageNo() = pageNo
+    fun gtPageSize() = pageSize
+    fun gtLastPage() = lastPage
+    fun gtData() = data
+
+}*/
+
