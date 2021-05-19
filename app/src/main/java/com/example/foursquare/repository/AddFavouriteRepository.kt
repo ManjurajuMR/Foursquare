@@ -55,7 +55,6 @@ class AddFavouriteRepository(private val application: Application) {
             }
 
             override fun onFailure(call: Call<Addfav>, t: Throwable) {
-
                 addFavUser.value = null
                 Toast.makeText(application, t.message, Toast.LENGTH_SHORT).show()
 

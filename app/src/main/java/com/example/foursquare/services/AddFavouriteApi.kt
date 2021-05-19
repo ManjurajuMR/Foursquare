@@ -15,7 +15,7 @@ interface AddFavouriteApi {
 //                  @Query("userId") userId:Int,
 //                  @Query("placeId") placeId:Int) : Call<FavData>
 
-    @POST("addfavourite")
+    @POST("addFavourite")
     fun addfav(
         @Header("Authorization") token:String,
         @Body fav : HashMap<String,String>

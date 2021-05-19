@@ -12,15 +12,14 @@ import com.example.foursquare.viewmodel.FavouritesViewModel
 
 class FavouritesActivity : AppCompatActivity(), FavouritesAdapter.OnFavItemClickListener {
     private lateinit var favouritesViewModel: FavouritesViewModel
-    val token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtYW5pc2gxMUBnbWFpbC5jb20iLCJleHAiOjE2MjEzMjk3NzksImlhdCI6MTYyMTMxMTc3OX0.xo_pnRwYeyio35ttJomKzwuH9yIbo33mIXRhTglDeEbTnKJbmLQvqXMB_R5qqRWVMtmRqw3WqHCJGOA3W-abhA"
-    val userid = 126
+    var token : String = ""
+    //var placeID : Int = 0
+    var userid : String = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_favourites)
 
         favouritesViewModel = ViewModelProvider.AndroidViewModelFactory(application).create(FavouritesViewModel::class.java)
-
-
         //val token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtYW5pc2gxMUBnbWFpbC5jb20iLCJleHAiOjE2MjEyNDk2NTAsImlhdCI6MTYyMTIzMTY1MH0.lvJd0_aIlLIYWhe5_Omq_ViSGWvYmBYAHs80AKMIpTUGpU0VhSi2org104T-93htzjH8CkQqE7RwIGQvcF7eKg"
         //val userid = 115
 
@@ -28,8 +27,9 @@ class FavouritesActivity : AppCompatActivity(), FavouritesAdapter.OnFavItemClick
         val pagesize = 50
 
         val sharedPreferences = getSharedPreferences(Constents.Shared_pref, MODE_PRIVATE)
-        val token = sharedPreferences.getString(Constents.USER_TOKEN,"")
-        val userid = sharedPreferences.getString(Constents.USER_ID,"")
+        token = sharedPreferences.getString(Constents.USER_TOKEN,"").toString()
+        userid = sharedPreferences.getString(Constents.USER_ID,"").toString()
+        //placeID = sharedPreferences.getInt(Constents.PLACE_ID,1)
 
         if (token != null && userid!=null) {
             val newtoken = "Bearer $token"
@@ -60,20 +60,21 @@ class FavouritesActivity : AppCompatActivity(), FavouritesAdapter.OnFavItemClick
         //TODO("Not yet implemented")
         if (token != null && userid!=null) {
             val ntoken = "Bearer $token"
-            favouritesViewModel.delFavourite(ntoken, userid, PlaceId.toInt()).observe(this, {
+
+            favouritesViewModel.delFavourite(ntoken, userid.toInt(), PlaceId.toInt()).observe(this, {
                 if (it != null){
-                    val stat : Int = it.getStats()
+                    val stat : Int = it.gtStats()
                     if (stat == 200){
                         Toast.makeText(applicationContext,"Deleted from Favourites",Toast.LENGTH_LONG).show()
                     }
                     else{
-                        Toast.makeText(applicationContext, it.getMesage(), Toast.LENGTH_SHORT).show()
+                        Toast.makeText(applicationContext, "vvv", Toast.LENGTH_SHORT).show()
                     }
                 }
-
-                //Toast.makeText(applicationContext,"${it.message}",Toast.LENGTH_LONG).show()
             })
         }
+
+        //Toast.makeText(applicationContext,"$userid",Toast.LENGTH_LONG).show()
 
     }
 }

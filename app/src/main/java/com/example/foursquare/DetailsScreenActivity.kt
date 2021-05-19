@@ -80,19 +80,13 @@ class DetailsScreenActivity : AppCompatActivity() {
 
         locnManager = this.let { LocationServices.getFusedLocationProviderClient(it) }!!
         val supportMapFragment = SupportMapFragment.newInstance()
-        supportFragmentManager.beginTransaction().replace(R.id.reslocn_img, supportMapFragment)
-            .commit()
+        supportFragmentManager.beginTransaction().replace(R.id.reslocn_img, supportMapFragment).commit()
         supportMapFragment.getMapAsync {
             googleMap = it
             mapReady = true
             if (mapReady) {
-                googleMap?.animateCamera(
-                    CameraUpdateFactory.newLatLngZoom(
-                        LatLng(lati, long),
-                        15.0f
-                    )
-                )
-                googleMap?.addMarker(MarkerOptions().position(LatLng(lati, long)).title("Me"))
+                googleMap?.animateCamera(CameraUpdateFactory.newLatLngZoom(LatLng(lati, long), 15.0f))
+                googleMap?.addMarker(MarkerOptions().position(LatLng(lati, long)).title("mn"))
             }
         }
 
@@ -134,14 +128,14 @@ class DetailsScreenActivity : AppCompatActivity() {
                     this.putExtra(Intent.EXTRA_TEXT, "share")
                     this.type = "image"
                 }
-                startActivity(intent)*/
+                startActivity(intent)
                 Toast.makeText(this,"share",Toast.LENGTH_LONG).show()
             }
             
             if (id == R.id.addplace_tofav) {
 
-                Toast.makeText(this, "fav", Toast.LENGTH_SHORT).show()
-                //addFavourites()
+                //Toast.makeText(this, "$lati+$long", Toast.LENGTH_SHORT).show()
+                addFavourites()
             }
 
             super.onOptionsItemSelected(item)
@@ -149,24 +143,6 @@ class DetailsScreenActivity : AppCompatActivity() {
 
     }
 
-//    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-//        menuInflater.inflate(R.menu.detscreen_menu,menu)
-//        return super.onCreateOptionsMenu(menu)
-//    }
-//
-//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-//        val id = item?.itemId
-//        if (id == R.id.share_det) {
-//            var intent = Intent().apply {
-//                this.action = Intent.ACTION_SEND
-//                this.putExtra(Intent.EXTRA_TEXT,"We are sharing data between 2 apps")
-//                this.type = "plain/text"
-//            }
-//            startActivity(intent)
-//
-//        }
-//            return super.onOptionsItemSelected(item)
-//    }
 
 
     fun ShowPopup(v: View?) {
@@ -308,13 +284,12 @@ class DetailsScreenActivity : AppCompatActivity() {
         //Log.d("placeid", "${placeId}")
         //var Token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtYW5pc2gxMUBnbWFpbC5jb20iLCJleHAiOjE2MjEzMjk3NzksImlhdCI6MTYyMTMxMTc3OX0.xo_pnRwYeyio35ttJomKzwuH9yIbo33mIXRhTglDeEbTnKJbmLQvqXMB_R5qqRWVMtmRqw3WqHCJGOA3W-abhA"
 
-        /*if (tkn != null && placeID != null) {
+        if (tkn != null && placeID != null) {
             val newtoken = "Bearer $tkn"
 
             val user = hashMapOf(
                 "userId" to userid,
-                "placeId" to placeID.toString(),
-                //"review" to review
+                "placeId" to placeID.toString()
             )
 
             addfavViewModel.addfav(newtoken, user).observe(this, {
@@ -322,15 +297,15 @@ class DetailsScreenActivity : AppCompatActivity() {
                     println(it)
                     if (it.status.toInt() == 200) {
                         Toast.makeText(applicationContext, "Added to favourites", Toast.LENGTH_LONG).show()
-                        onBackPressed()
+                        //onBackPressed()
                     } else {
                         Toast.makeText(applicationContext, it.message, Toast.LENGTH_SHORT).show()
                     }
                 }
             })
-        }*/
+        }
 
-        Toast.makeText(applicationContext, "$tkn", Toast.LENGTH_LONG).show()
+        //Toast.makeText(applicationContext, "$tkn", Toast.LENGTH_LONG).show()
 
     }
 
