@@ -97,15 +97,6 @@ class NearyouFragment : Fragment(),RecyclerviewAdapter.OnSiteItemClickListener {
                     //googleMap?.moveCamera(CameraUpdateFactory.newLatLng(LatLng(it!!.latitude,it!!.longitude)))
                 }
 
-                //Place current location marker
-         /*       val latLng = LatLng(it.latitude, it.longitude)
-                val markerOptions = MarkerOptions()
-                markerOptions.position(latLng)
-                markerOptions.title("Current Position")
-                markerOptions.icon(BitmapDescriptorFactory.fromBitmap(mapPin))
-                googleMap!!.addMarker(markerOptions)*/
-
-                //Toast.makeText(context, "${it.latitude},${it.longitude}", Toast.LENGTH_SHORT).show()
             }
         } }
 
