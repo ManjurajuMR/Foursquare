@@ -24,6 +24,8 @@ import com.example.foursquare.viewmodel.AddFavouriteViewModel
 import com.example.foursquare.viewmodel.AuthenticationViewModel
 
 import com.example.foursquare.authentication.Constents
+import com.example.foursquare.model.FavPdata
+import com.example.foursquare.viewmodel.FavouritesViewModel
 
 import com.example.foursquare.viewmodel.HomeViewModel
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -39,6 +41,8 @@ class DetailsScreenActivity : AppCompatActivity() {
     lateinit var myDialog: Dialog
     private lateinit var homeViewModel: HomeViewModel
     private lateinit var addfavViewModel: AddFavouriteViewModel
+    private lateinit var favouritesViewModel: FavouritesViewModel
+    var favouriteData : List<FavPdata>?=null
     lateinit var locnManager: FusedLocationProviderClient
     private var googleMap: GoogleMap? = null
     private var mapReady: Boolean = false
@@ -58,8 +62,9 @@ class DetailsScreenActivity : AppCompatActivity() {
         setContentView(R.layout.activity_details_screen)
         //supportActionBar?.hide()
         homeViewModel = ViewModelProvider.AndroidViewModelFactory(application).create(HomeViewModel::class.java)
-
+        favouritesViewModel = ViewModelProvider.AndroidViewModelFactory(application).create(FavouritesViewModel::class.java)
         addfavViewModel = ViewModelProvider.AndroidViewModelFactory(application).create(AddFavouriteViewModel::class.java)
+
 
         val detscreen_tb = findViewById<androidx.appcompat.widget.Toolbar>(R.id.detailscreen_toolbar)
         detscreen_tb.setNavigationOnClickListener {
@@ -120,28 +125,6 @@ class DetailsScreenActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        /*detscreen_tb.setOnMenuItemClickListener { item ->
-            val id = item?.itemId
-            if (id == R.id.share_det) {
-                val sendIntent: Intent = Intent().apply {
-                    action = Intent.ACTION_SEND
-                    putExtra(Intent.EXTRA_TEXT,  pname  +  addres)
-                    type = "text/plain"
-                }
-
-                val shareIntent = Intent.createChooser(sendIntent, null)
-                startActivity(shareIntent)
-                Toast.makeText(this,"share",Toast.LENGTH_LONG).show()
-            }
-            
-            if (id == R.id.addplace_tofav) {
-
-                //Toast.makeText(this, "$lati+$long", Toast.LENGTH_SHORT).show()
-                addFavourites()
-            }
-
-            super.onOptionsItemSelected(item)
-        }*/
 
         share_details.setOnClickListener {
             val sendIntent: Intent = Intent().apply {
@@ -156,7 +139,11 @@ class DetailsScreenActivity : AppCompatActivity() {
         }
 
         tgladd_fav.setOnClickListener {
-            addFavourites()
+            if (tgladd_fav.isChecked){
+                addFavourites()
+            }else{
+                deleteFavourite()
+            }
         }
 
     }
@@ -266,6 +253,14 @@ class DetailsScreenActivity : AppCompatActivity() {
         longitude: Double
     ) {
 
+        lati = latitude
+        long = longitude
+        //
+        val isFavourite = intent.getBooleanExtra("isfav",false)
+        if(isFavourite)
+            tgladd_fav.isChecked = true
+
+
         val res_img = findViewById<ImageView>(R.id.rest_img)
         detscreentoolbar_title.setText(place_name)
         res_type.setText(place_type)
@@ -291,24 +286,6 @@ class DetailsScreenActivity : AppCompatActivity() {
 
     }
 
-/*    private fun loadPlaceData() {
-
-        var Token = "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ2YWliaGF2aUBnbWFpbC5jb20iLCJleHAiOjE2MjA5MDUyMTIsImlhdCI6MTYyMDg4NzIxMn0.tdfvDyW2-RAWvraegZVaLXgPFRatDHJD6DfYh4g9iPftuICADfScIo_e9j7cTJ0jtq_oVslt5zqzM_xTmgdNNw"
-
-        addfavViewModel.addfav(Token,129,12)
-            ?.observe(this, {
-//                Log.d("res", "re")
-                if(it!= null){
-                    if (it.getStatus() == 200)
-                        Toast.makeText(applicationContext, "Added to favourite", Toast.LENGTH_SHORT).show()
-                    else {
-                        val msg = it.getMessage()
-
-                        Toast.makeText(applicationContext, "msg", Toast.LENGTH_SHORT).show()
-                    }
-                }
-            })
-    }*/
 
     private fun addFavourites() {
         //val userId = 126
@@ -340,6 +317,28 @@ class DetailsScreenActivity : AppCompatActivity() {
 
         //Toast.makeText(applicationContext, "$tkn", Toast.LENGTH_LONG).show()
 
+    }
+
+    fun deleteFavourite(){
+        val newToken = "Bearer $tkn"
+
+        val userFavourite = hashMapOf("userId" to userid, "placeId" to placeID.toString())
+
+        if (placeID != null) {
+            favouritesViewModel.deleteFavourite(newToken, userFavourite).observe(this) {
+                if(it!=null) {
+                    if (it.getStatus() == 200) {
+                        // startActivity(Intent(this,FavouriteActivity::class.java))
+
+                        Toast.makeText(this, it.getMessage(), Toast.LENGTH_SHORT).show()
+
+                    } else {
+                        Toast.makeText(this, it.getMessage(), Toast.LENGTH_SHORT)
+                            .show()
+                    }
+                }
+            }
+        }
     }
 
 }

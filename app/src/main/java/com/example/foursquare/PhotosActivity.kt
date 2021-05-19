@@ -86,6 +86,12 @@ class PhotosActivity : AppCompatActivity() {
                         rv.adapter = adapter
                         rv.layoutManager = GridLayoutManager(this,3,
                             GridLayoutManager.VERTICAL,false)
+                    }else{
+                        Toast.makeText(
+                            applicationContext,
+                            "NO Photos added!!",
+                            Toast.LENGTH_LONG
+                        ).show()
                     }
 
                 })
