@@ -46,6 +46,7 @@ class DetailsScreenActivity : AppCompatActivity() {
     private var long: Double = 0.0
     private var pid: Long = 0
     private var pname: String = ""
+    private var addres: String = ""
     private var pno: Long = 0
     private var psize: Long = 0
     var tkn : String = ""
@@ -121,14 +122,14 @@ class DetailsScreenActivity : AppCompatActivity() {
         detscreen_tb.setOnMenuItemClickListener { item ->
             val id = item?.itemId
             if (id == R.id.share_det) {
-
-                var intent = Intent().apply {
-
-                    this.action = Intent.ACTION_SEND
-                    this.putExtra(Intent.EXTRA_TEXT, "share")
-                    this.type = "image"
+                val sendIntent: Intent = Intent().apply {
+                    action = Intent.ACTION_SEND
+                    putExtra(Intent.EXTRA_TEXT,  pname  +  addres)
+                    type = "text/plain"
                 }
-                startActivity(intent)
+
+                val shareIntent = Intent.createChooser(sendIntent, null)
+                startActivity(shareIntent)
                 Toast.makeText(this,"share",Toast.LENGTH_LONG).show()
             }
             
@@ -187,6 +188,7 @@ class DetailsScreenActivity : AppCompatActivity() {
             pname = it.data.name
             pno = it.pageNo
             psize = it.pageSize
+            addres = it.data.address
 
             setDataToLayout(place_name, place_image, place_type, overall_rating, overview, address, phone_num, latitude, longitude)
         })

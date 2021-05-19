@@ -81,8 +81,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/transparent_color"
-            app:navigationIcon="@drawable/close_icon"
-            app:menu="@menu/photodetailscreen_menu">
+            app:navigationIcon="@drawable/close_icon">
 
             <TextView
                 android:id="@+id/toolbar_title"
@@ -92,6 +91,19 @@
                 android:textColor="@color/white"
                 android:text="Attil"
                 android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/share_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/share_icon"
+                tools:ignore="ContentDescription"
+                android:clickable="true"
+                android:layout_gravity="right"
+                android:gravity="center"
+                android:layout_marginRight="20sp"
+                android:focusable="true" />
+
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
