@@ -119,7 +119,7 @@ class DetailsScreenActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        detscreen_tb.setOnMenuItemClickListener { item ->
+        /*detscreen_tb.setOnMenuItemClickListener { item ->
             val id = item?.itemId
             if (id == R.id.share_det) {
                 val sendIntent: Intent = Intent().apply {
@@ -140,6 +140,22 @@ class DetailsScreenActivity : AppCompatActivity() {
             }
 
             super.onOptionsItemSelected(item)
+        }*/
+
+        share_details.setOnClickListener {
+            val sendIntent: Intent = Intent().apply {
+                action = Intent.ACTION_SEND
+                putExtra(Intent.EXTRA_TEXT,  pname  +  addres)
+                type = "text/plain"
+            }
+
+            val shareIntent = Intent.createChooser(sendIntent, null)
+            startActivity(shareIntent)
+            Toast.makeText(this,"share",Toast.LENGTH_LONG).show()
+        }
+
+        tgladd_fav.setOnClickListener {
+            addFavourites()
         }
 
     }

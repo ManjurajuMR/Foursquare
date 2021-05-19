@@ -31,10 +31,9 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@android:color/transparent"
-            app:navigationIcon="@drawable/back_icon"
-            app:menu="@menu/detscreen_menu">
+            app:navigationIcon="@drawable/back_icon">
 
-            <TextView
+            <!--<TextView
                 android:id="@+id/detscreentoolbar_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -42,7 +41,50 @@
                 android:textColor="@color/white"
                 android:text="Attil"
                 android:fontFamily="@font/avenir_medium"
-                android:textSize="20sp"/>
+                android:textSize="20sp"/>-->
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/share_details"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/share_icon"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/detscreentoolbar_title"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ToggleButton
+                    android:id="@+id/tgladd_fav"
+                    style="@style/toggleButton"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:checked="false"
+                    android:background="@drawable/favourite_selector"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/share_details"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/detscreentoolbar_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="60dp"
+                    android:fontFamily="@font/avenir_medium"
+                    android:text="Attil"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.appcompat.widget.Toolbar>
 
