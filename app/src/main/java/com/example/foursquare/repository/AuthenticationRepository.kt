@@ -47,7 +47,8 @@ class AuthenticationRepository(private val application: Application) {
                     loginUser.value = response.body()
                 } else {
                     Log.d("resposne","${response.body()?.error}")
-                    Toast.makeText(application,response.errorBody()?.toString(), Toast.LENGTH_SHORT).show()
+                    //Toast.makeText(application,response.errorBody()?.toString(), Toast.LENGTH_SHORT).show()
+                    Toast.makeText(application,"Ivalid UserId Or Password", Toast.LENGTH_SHORT).show()
                 }
             }
 

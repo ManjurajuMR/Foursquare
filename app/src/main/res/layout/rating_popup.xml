@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#00FFFFFF">
+
+<RelativeLayout
     android:layout_width="350dp"
     android:layout_height="480dp"
-    android:layout_gravity="center">
+    android:layout_gravity="center"
+    android:background="@drawable/rating_dialog_background">
 
     <TextView
         android:id="@+id/close_popup"
@@ -58,10 +64,10 @@
         android:layout_height="50dp"
         android:numStars="5"
         android:stepSize="0.5"
-        android:rating="5"
+        android:rating="2.5"
         android:layout_below="@id/ur_exp_popup"
         android:layout_centerHorizontal="true"
-        android:theme="@style/RatingBar"
+        android:progressDrawable="@drawable/custom_rating_bar"
         android:clickable="true"
         android:contextClickable="true"
         android:outlineProvider="bounds"
@@ -85,7 +91,7 @@
 
     </LinearLayout>
 
-
-
 </RelativeLayout>
+
+</FrameLayout>
 

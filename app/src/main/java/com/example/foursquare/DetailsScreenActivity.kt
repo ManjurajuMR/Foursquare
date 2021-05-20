@@ -199,7 +199,7 @@ class DetailsScreenActivity : AppCompatActivity() {
             addres = it.data.address
             lati = it.data.latitude
             long = it.data.longitude
-            val rate = (overall_rating/2).toFloat()
+            val rate = (overall_rating).toFloat()
             average_rating = String.format("%.1f",rate)
 
             locnManager = this.let { LocationServices.getFusedLocationProviderClient(it) }!!

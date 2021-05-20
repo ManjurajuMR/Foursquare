@@ -73,6 +73,7 @@ class SigninFragment : Fragment() {
                         activity?.finish()
                     } else {
                         Toast.makeText(activity, it.getMessage(), Toast.LENGTH_SHORT).show()
+                        Toast.makeText(activity,"Ivalid UserId Or Password", Toast.LENGTH_SHORT).show()
                     }
                 }
             })}
