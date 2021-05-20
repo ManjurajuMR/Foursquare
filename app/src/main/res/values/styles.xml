@@ -10,4 +10,5 @@
         <item name="android:textOn"></item>
         <item name="android:textOff"></item>
     </style>
+
 </resources>

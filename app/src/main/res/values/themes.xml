@@ -27,7 +27,12 @@
 
     <style name="RatingBar" parent="Theme.AppCompat">
         <item name="colorAccent">#FA9110</item>
-        <item name="android:colorControlNormal">#ffffff</item>
+        <item name="android:colorControlNormal">#BDBCBC</item>
+    </style>
+
+    <style name="RatingBarDet" parent="Theme.AppCompat">
+        <item name="colorAccent">#FFD700</item>
+        <item name="android:colorControlNormal">@color/transparent_color</item>
     </style>
 
     <style name="navigation" parent="ThemeOverlay.AppCompat.Light">
