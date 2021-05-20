@@ -4,7 +4,7 @@
         <!-- Primary brand color. -->
 
         <item name="colorPrimary">@android:color/transparent</item>
-        <item name="colorPrimaryVariant">@color/black</item>
+        <item name="colorPrimaryVariant">@color/toolbar_color</item>
 
         <!--<item name="colorPrimary">@color/purple_500</item>-->
         <!--<item name="colorPrimaryVariant">@color/black</item>-->
@@ -28,6 +28,11 @@
     <style name="RatingBar" parent="Theme.AppCompat">
         <item name="colorAccent">#FA9110</item>
         <item name="android:colorControlNormal">#ffffff</item>
+    </style>
+
+    <style name="navigation" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:listDivider">@color/separator</item>
+        <item name="android:textColorSecondary">@color/white</item>
     </style>
 
 </resources>
