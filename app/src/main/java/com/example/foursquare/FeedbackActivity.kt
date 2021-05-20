@@ -13,5 +13,11 @@ class FeedbackActivity : AppCompatActivity() {
         topAppbar.setNavigationOnClickListener {
             onBackPressed()
         }
+        topAppbar.setOnMenuItemClickListener {
+            when(it.itemId){
+                R.id.home -> onBackPressed()
+            }
+            true
+        }
     }
 }

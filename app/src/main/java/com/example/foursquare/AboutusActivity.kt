@@ -14,5 +14,11 @@ class AboutusActivity : AppCompatActivity() {
         aboutus_tb.setNavigationOnClickListener {
             onBackPressed()
         }
+        aboutus_tb.setOnMenuItemClickListener {
+            when(it.itemId){
+                R.id.home -> onBackPressed()
+            }
+            true
+        }
     }
 }

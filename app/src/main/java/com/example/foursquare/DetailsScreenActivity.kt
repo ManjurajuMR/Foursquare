@@ -136,7 +136,7 @@ class DetailsScreenActivity : AppCompatActivity() {
 
             val shareIntent = Intent.createChooser(sendIntent, null)
             startActivity(shareIntent)
-            Toast.makeText(this,"share",Toast.LENGTH_LONG).show()
+            //Toast.makeText(this,"share",Toast.LENGTH_LONG).show()
         }
 
         tgladd_fav.setOnClickListener {
