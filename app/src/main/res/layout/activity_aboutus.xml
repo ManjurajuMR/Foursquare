@@ -24,7 +24,8 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="#370F24"
-            app:navigationIcon="@drawable/back_icon">
+            app:navigationIcon="@drawable/back_icon"
+            app:menu="@menu/menu_home_icon">
 
             <TextView
                 android:id="@+id/aboutustoolbar_title"

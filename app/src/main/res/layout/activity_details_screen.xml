@@ -97,13 +97,13 @@
                     android:src="@drawable/share_icon"
                     android:layout_marginTop="15dp"
                     android:layout_toEndOf="@+id/detscreentoolbar_title"
-                    android:layout_marginStart="15dp"/>
+                    android:layout_marginStart="25dp"/>
 
                 <ToggleButton
                     android:id="@+id/tgladd_fav"
                     style="@style/toggleButton"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="23dp"
+                    android:layout_height="23dp"
                     android:checked="false"
                     android:background="@drawable/favourite_selector"
                     android:layout_toEndOf="@+id/share_details"
@@ -134,7 +134,7 @@
         android:layout_height="wrap_content"
         android:text="heollo this is walter white"
         android:textAlignment="center"
-        android:layout_marginTop="330dp"
+        android:layout_marginTop="305dp"
         android:textColor="@color/white"
         android:layout_centerHorizontal="true"
         android:textSize="23sp"
@@ -148,8 +148,8 @@
         android:progressDrawable="@drawable/custom_rating_bar"
         android:rating="2.5"
         android:stepSize="0.5"
-        android:scaleX="0.7"
-        android:scaleY="0.7"
+        android:scaleX="0.5"
+        android:scaleY="0.5"
         android:isIndicator="true"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/res_type" />

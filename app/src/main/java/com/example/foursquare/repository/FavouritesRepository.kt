@@ -47,16 +47,15 @@ class FavouritesRepository(private val application: Application) {
         val addReviewUserCall = favouritesApi.delFavourite(token,userId,placeId)
         addReviewUserCall.enqueue(object : retrofit2.Callback<DelFavourite> {
             override fun onResponse(call: Call<DelFavourite>, response: Response<DelFavourite>) {
-                //TODO("Not yet implemented")
+
                 if (response.isSuccessful) {
                     delFavPlace.value = response.body()
                 } else {
-                    Log.d("delresposne", "${response.body()}")
-                    Toast.makeText(application, "hii", Toast.LENGTH_SHORT).show()
+                    Log.d("dres", "${response.body()}")
                 }
             }
             override fun onFailure(call: Call<DelFavourite>, t: Throwable) {
-                //TODO("Not yet implemented")
+
                 delFavPlace.value = null
                 Toast.makeText(application, t.message, Toast.LENGTH_SHORT).show()
             }
