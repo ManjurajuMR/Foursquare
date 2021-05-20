@@ -20,6 +20,9 @@
         app:itemIconSize="18dp"
         app:itemIconTint="@color/white"
         app:itemTextColor="@color/white"
-        app:menu="@menu/nav_menu" />
+        app:menu="@menu/nav_menu"
+
+        android:theme="@style/navigation"
+        android:paddingHorizontal="20sp"/>
 
 </androidx.drawerlayout.widget.DrawerLayout>
