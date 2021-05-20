@@ -49,6 +49,7 @@
                android:layout_marginLeft="20sp"
                android:layout_marginTop="10dp"
                android:text="Saish Balu"
+               android:singleLine="true"
                android:textSize="20sp"
                android:fontFamily="@font/avenir_medium"
                android:textColor="@color/white"/>
